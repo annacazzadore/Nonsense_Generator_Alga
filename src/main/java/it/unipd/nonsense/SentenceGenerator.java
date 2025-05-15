@@ -1,7 +1,6 @@
 package it.unipd.nonsense.generator;
 
 import java.util.List;
-import java.util.Random;
 
 public class SentenceGenerator {
     private Noun noun;
