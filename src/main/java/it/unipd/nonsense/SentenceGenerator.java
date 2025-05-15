@@ -1,5 +1,6 @@
-package it.unipd.nonsense.generator;
+package it.unipd.nonsense;
 
+import java.io.IOException;
 import java.util.List;
 
 public class SentenceGenerator {
@@ -16,6 +17,7 @@ public class SentenceGenerator {
     }
 
     public String generateSentence() {
+        //AGGIUNGERE SCELTA DEL TEMPLATE E NON RANDOMICO
         String template = structure.getRandom();
         return template.replace("[noun]", noun.getRandom())
                        .replace("[verb]", verb.getRandom())

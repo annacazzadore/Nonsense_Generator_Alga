@@ -1,6 +1,12 @@
-package it.unipd.nonsense.generator;
+package it.unipd.nonsense;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Noun {
     private List<String> nouns;

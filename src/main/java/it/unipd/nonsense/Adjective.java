@@ -1,6 +1,12 @@
-package it.unipd.nonsense.generator;
+package it.unipd.nonsense;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Adjective {
     private List<String> adjectives;
@@ -13,6 +19,6 @@ public class Adjective {
 
     public String getRandom() {
         Random rand = new Random();
-        return noadjectivesuns.get(rand.nextInt(adjectives.size()));
+        return adjectives.get(rand.nextInt(adjectives.size()));
     }
 }
