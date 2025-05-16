@@ -1,9 +1,12 @@
 package it.unipd.nonsense.utils;
 
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.language.v1.*;
 import com.google.cloud.language.v1.Document.Type;
+import com.google.api.gax.core.FixedCredentialsProvider;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
@@ -11,10 +14,49 @@ import java.util.*;
 public class SentenceAnalyzer {
 
     private static final String DIZIONARI_DIR = "src/resources/dictionaries/";
+    private static final String CONFIG_FILE = "config.properties";
     private final LanguageServiceClient language;
 
     public SentenceAnalyzer() throws IOException {
-        this.language = LanguageServiceClient.create();
+        // Carica il file di configurazione
+        Properties props = new Properties();
+        try (FileInputStream fis = new FileInputStream(CONFIG_FILE)) {
+            props.load(fis);
+        } catch (IOException e) {
+            throw new IOException("File di configurazione " + CONFIG_FILE + " non trovato o illeggibile", e);
+        }
+
+        // Determina il percorso delle credenziali in base all'OS
+        String os = System.getProperty("os.name").toLowerCase();
+        String credPath;
+
+        if (os.contains("win")) {
+            credPath = props.getProperty("windows.key");
+        } else if (os.contains("mac")) {
+            credPath = props.getProperty("macos.key");
+        } else {
+            throw new RuntimeException("Sistema operativo non supportato: " + os);
+        }
+
+        if (credPath == null) {
+            throw new IOException("Percorso della chiave non configurato per il sistema operativo: " + os);
+        }
+
+        // Carica le credenziali
+        GoogleCredentials credentials;
+        try
+        {
+            credentials = GoogleCredentials.fromStream(new FileInputStream(credPath).createScoped(LanguageServiceClient.getServiceScopes());
+        }
+        catch (IOException e) {
+            throw new IOException("Impossibile trovare o leggere il file delle credenziali in: " + credPath, e);
+        }
+
+        // Crea il client con le credenziali
+        LanguageServiceSettings settings = LanguageServiceSettings.newBuilder()
+                .setCredentialsProvider(FixedCredentialsProvider.create(credentials))
+                .build();
+        this.language = LanguageServiceClient.create(settings);
     }
 
     public AnalyzeSyntaxResponse analyzeSentence(String sentence) throws IOException {
