@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.main">
+   <children>
+      <TextField alignment="CENTER" layoutX="-24.0" layoutY="47.0" prefHeight="45.0" prefWidth="595.0" style="-fx-background-color: transparent;" text="Random Sentence Generator ALGA">
+         <font>
+            <Font name="Hiragino Sans W9" size="22.0" />
+         </font>
+      </TextField>
+      <Pane layoutX="73.0" layoutY="107.0" prefHeight="200.0" prefWidth="448.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
+         <children>
+            <TextField alignment="CENTER" layoutX="70.0" layoutY="11.0" style="-fx-background-color: transparent;" text="Enter your sentence">
+               <font>
+                  <Font name="Hiragino Sans W7" size="21.0" />
+               </font>
+            </TextField>
+            <Button id="analyser" alignment="CENTER" layoutX="131.0" layoutY="123.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Analyse the sentence">
+               <font>
+                  <Font name="Hiragino Sans W5" size="13.0" />
+               </font>
+            </Button>
+            <CheckBox alignment="CENTER" layoutX="138.0" layoutY="46.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="151.0" text="View syntax tree">
+               <font>
+                  <Font name="Hiragino Sans W6" size="13.0" />
+               </font>
+            </CheckBox>
+            <TextField layoutX="18.0" layoutY="76.0" prefHeight="26.0" prefWidth="409.0" style="-fx-border-radius: 18 18 18 18;">
+               <font>
+                  <Font name="Hiragino Sans W4" size="13.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+      <ImageView fitHeight="45.0" fitWidth="58.0" layoutX="508.0" layoutY="45.0">
+         <image>
+            <Image url="/views/—Pngtree—green seaweed clipart design_8508042.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="0.21" contrast="-0.17" hue="-0.05" saturation="-0.5" />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>
