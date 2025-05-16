@@ -1,4 +1,4 @@
-package it.unipd.nonsense;
+package it.unipd.nonsense.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

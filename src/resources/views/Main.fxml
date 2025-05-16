@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="334.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.Main">
+<AnchorPane prefHeight="334.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.MainController">
    <children>
       <Label id="title" layoutX="86.0" layoutY="30.0" text="Nonsense Generator ALGA" textAlignment="CENTER">
          <font>
