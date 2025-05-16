@@ -46,8 +46,7 @@ public class SentenceAnalyzer {
         GoogleCredentials credentials;
         try
         {
-            credentials = GoogleCredentials.fromStream(new FileInputStream(credPath))
-                    .createScoped(LanguageServiceSettings.getDefaultServiceScopes());
+            credentials = GoogleCredentials.fromStream(new FileInputStream(credPath)).createScoped(LanguageServiceSettings.getDefaultServiceScopes());
         }
         catch (IOException e) {
             throw new IOException("Impossibile trovare o leggere il file delle credenziali in: " + credPath, e);
