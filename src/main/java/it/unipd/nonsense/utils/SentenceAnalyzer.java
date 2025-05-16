@@ -46,8 +46,7 @@ public class SentenceAnalyzer {
         GoogleCredentials credentials;
         try
         {
-            credentials = GoogleCredentials.fromStream(new FileInputStream(credPath))
-                    .createScoped(LanguageServiceSettings.getDefaultServiceScopes());
+            credentials = GoogleCredentials.fromStream(new FileInputStream(credPath)).createScoped(LanguageServiceSettings.getDefaultServiceScopes());
         }
         catch (IOException e) {
             throw new IOException("Impossibile trovare o leggere il file delle credenziali in: " + credPath, e);
@@ -147,5 +146,22 @@ public class SentenceAnalyzer {
 
     public void close() throws Exception {
         language.close();
+    }
+
+    public boolean validateToxicity(String sentence) throws IOException {
+        Document doc = Document.newBuilder()
+                .setContent(sentence)
+                .setType(Document.Type.PLAIN_TEXT)
+                .build();
+
+        ModerateTextResponse response = language.moderateText(doc);
+        double toxicityScore = response.getModerationCategoriesList().stream()
+                .filter(category -> category.getName().equals("Toxic"))
+                .findFirst()
+                .map(category -> category.getConfidence())
+                .orElse(0.0f);
+
+        // Soglia personalizzabile (es: 0.5 = 50% di confidenza)
+        return toxicityScore < 0.5f;
     }
 }
