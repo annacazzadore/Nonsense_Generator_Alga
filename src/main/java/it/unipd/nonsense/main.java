@@ -7,20 +7,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class main extends Application {
-    private static Stage primaryStage;
-
     @Override
-    public void start(Stage stage) throws Exception {
-        primaryStage = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("/views/Main.fxml"));
-        stage.setTitle("Finestra 1");
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
+    public void start(Stage primaryStage) throws Exception {
+        // Carica il file FXML
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Main.fxml"));
+        Parent root = loader.load();
 
-    public static void cambiaScene(String fxml) throws Exception {
-        Parent pane = FXMLLoader.load(main.class.getResource(fxml));
-        primaryStage.setScene(new Scene(pane));
+        // Configura la finestra principale
+        primaryStage.setTitle("Random Sentence Generator ALGA");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

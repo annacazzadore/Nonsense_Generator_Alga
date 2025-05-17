@@ -27,7 +27,7 @@
                   <Font name="Hiragino Sans W4" size="11.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="DISAPPEAR" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
             <TextField editable="false" focusTraversable="false" layoutX="163.0" layoutY="114.0" style="-fx-background-color: transparent;" text="Select a template">
@@ -35,7 +35,7 @@
                   <Font name="Hiragino Sans W4" size="11.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="DISAPPEAR" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
             <TextField fx:id="number" layoutX="295.0" layoutY="79.0" prefHeight="20.0" prefWidth="32.0" style="-fx-background-color: white;">

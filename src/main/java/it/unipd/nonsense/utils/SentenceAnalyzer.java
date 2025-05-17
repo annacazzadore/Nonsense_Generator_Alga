@@ -14,7 +14,7 @@ import java.util.*;
 public class SentenceAnalyzer {
 
     private static final String DIZIONARI_DIR = "src/resources/dictionaries/";
-    private static final String CONFIG_FILE = "config.properties";
+    private static final String CONFIG_FILE = "src/resources/config.properties";
     private final LanguageServiceClient language;
 
     public SentenceAnalyzer() throws IOException {

@@ -27,7 +27,7 @@
                   <Font name="Hiragino Sans W7" size="15.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="DISAPPEAR" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
             <Button fx:id="end" layoutX="232.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: white;" text="End">

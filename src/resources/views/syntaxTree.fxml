@@ -22,7 +22,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="DISAPPEAR" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
             <ImageView id="back_button" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0">
@@ -36,7 +36,7 @@
                   <Font name="Hiragino Sans W4" size="11.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="DISAPPEAR" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
             <TextField editable="false" focusTraversable="false" layoutX="263.0" layoutY="120.0" style="-fx-background-color: transparent;" text="Select a template">
@@ -44,7 +44,7 @@
                   <Font name="Hiragino Sans W4" size="11.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="DISAPPEAR" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
             <TextField fx:id="numberT" layoutX="395.0" layoutY="85.0" prefHeight="20.0" prefWidth="32.0" style="-fx-background-color: white;">

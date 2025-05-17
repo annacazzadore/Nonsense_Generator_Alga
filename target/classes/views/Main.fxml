@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.main">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.MainController">
    <children>
       <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="2.0" layoutY="44.0" prefHeight="45.0" prefWidth="595.0" style="-fx-background-color: transparent;" text="Random Sentence Generator ALGA">
          <font>
@@ -31,7 +31,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <Button id="analyser" fx:id="analyze" alignment="CENTER" layoutX="138.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Analyse the sentence">
+            <Button id="analyser" fx:id="analyze" onAction="#analyzeSentence" alignment="CENTER" layoutX="138.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Analyse the sentence">
                <font>
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
