@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="" />
+    <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/noSyntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/noSyntaxTree.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/results.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/results.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/noSyntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/noSyntaxTree.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +42,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2551724",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -72,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1747471742497</updated>
-      <workItem from="1747471747714" duration="4084000" />
+      <workItem from="1747471747714" duration="6489000" />
     </task>
     <servers />
   </component>
