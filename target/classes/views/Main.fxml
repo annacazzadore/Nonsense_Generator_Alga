@@ -18,7 +18,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
          <cursor>
-            <Cursor fx:constant="DISAPPEAR" />
+            <Cursor fx:constant="DEFAULT" />
          </cursor>
       </TextField>
       <Pane layoutX="76.0" layoutY="111.0" prefHeight="200.0" prefWidth="448.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
@@ -28,20 +28,20 @@
                   <Font name="Hiragino Sans W7" size="21.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="NONE" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <Button id="analyser" alignment="CENTER" layoutX="138.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Analyse the sentence">
+            <Button id="analyser" fx:id="analyze" alignment="CENTER" layoutX="138.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: white;" text="Analyse the sentence">
                <font>
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
             </Button>
-            <CheckBox alignment="CENTER" layoutX="148.0" layoutY="100.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="151.0" text="View syntax tree">
+            <CheckBox fx:id="tree" alignment="CENTER" layoutX="148.0" layoutY="100.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="151.0" text="View syntax tree">
                <font>
                   <Font name="Hiragino Sans W6" size="13.0" />
                </font>
             </CheckBox>
-            <TextField layoutX="20.0" layoutY="65.0" prefHeight="26.0" prefWidth="409.0" style="-fx-border-radius: 18 18 18 18;">
+            <TextField fx:id="sentence" layoutX="20.0" layoutY="65.0" prefHeight="26.0" prefWidth="409.0" style="-fx-border-radius: 18 18 18 18;">
                <font>
                   <Font name="Hiragino Sans W4" size="13.0" />
                </font>
