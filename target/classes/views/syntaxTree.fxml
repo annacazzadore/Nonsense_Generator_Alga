@@ -24,7 +24,7 @@
             </TextField>
             <ImageView id="back_button" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0">
                <image>
-                  <Image url="@views/1410611-200.png" />
+                  <Image url="@/views/style/1410611-200.png" />
                </image>
             </ImageView>
             <Line endX="-100.0" endY="131.234130859375" layoutX="351.0" layoutY="99.0" startX="-100.00003051757812" startY="-60.0" />

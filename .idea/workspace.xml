@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/Main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/noSyntaxTree.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/results.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/syntaxTree.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/1410611-200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/—Pngtree—green seaweed clipart design_8508042.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/noSyntaxTree.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/results.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/syntaxTree.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/1410611-200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/—Pngtree—green seaweed clipart design_8508042.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +49,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2551724",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -74,7 +87,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1747471742497</updated>
-      <workItem from="1747471747714" duration="1901000" />
+      <workItem from="1747471747714" duration="2638000" />
     </task>
     <servers />
   </component>

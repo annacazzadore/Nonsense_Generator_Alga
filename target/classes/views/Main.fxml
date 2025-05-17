@@ -44,7 +44,7 @@
       </Pane>
       <ImageView fitHeight="45.0" fitWidth="58.0" layoutX="508.0" layoutY="45.0">
          <image>
-            <Image url="/views/—Pngtree—green seaweed clipart design_8508042.png" />
+            <Image url="@/views/style/—Pngtree—green seaweed clipart design_8508042.png" />
          </image>
          <effect>
             <ColorAdjust brightness="0.21" contrast="-0.17" hue="-0.05" saturation="-0.5" />
