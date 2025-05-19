@@ -2,6 +2,7 @@ package it.unipd.nonsense.controller;
 
 import com.google.cloud.language.v1.Token;
 import it.unipd.nonsense.utils.AnalysisResult;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,9 +11,9 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import org.w3c.dom.Node;
+import javafx.scene.Node;
 
-import java.awt.event.ActionEvent;
+
 import java.io.IOException;
 
 public class SyntaxTreeController {
