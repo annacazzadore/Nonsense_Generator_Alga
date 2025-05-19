@@ -42,7 +42,7 @@ public class SyntaxTreeController {
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Main Window");
+            stage.setTitle("Random Sentence Generator ALGA");
             stage.show();
 
             // Chiudi la finestra attuale
