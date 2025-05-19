@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="104.0" prefWidth="320.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="104.0" prefWidth="320.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.PopUpController">
    <children>
       <Pane layoutX="38.0" layoutY="13.0" prefHeight="79.0" prefWidth="242.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
          <children>
@@ -29,7 +28,7 @@
                   <Font size="8.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="121.0" layoutY="50.0" prefHeight="15.0" prefWidth="31.0" style="-fx-background-color: transparent;" text=" ">
+            <TextField fx:id="toxicity" alignment="CENTER" editable="false" focusTraversable="false" layoutX="131.0" layoutY="50.0" prefHeight="15.0" prefWidth="31.0" style="-fx-background-color: transparent;" text=" ">
                <font>
                   <Font size="8.0" />
                </font>

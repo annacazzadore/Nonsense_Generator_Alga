@@ -12,11 +12,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.ResultsController">
    <children>
       <Pane layoutX="46.0" layoutY="54.0" prefHeight="277.0" prefWidth="503.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
          <children>
-            <TextField alignment="CENTER" layoutX="173.0" layoutY="39.0" prefHeight="26.0" prefWidth="303.0" style="-fx-background-color: transparent;" />
             <ImageView id="back_button" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0">
                <image>
                   <Image url="@/views/style/1410611-200.png" />
@@ -30,12 +29,12 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <Button fx:id="end" layoutX="232.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: white;" text="End">
+            <Button fx:id="end" onAction="#handleEnd" layoutX="232.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: white;" text="End">
                <font>
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
             </Button>
-            <TextArea fx:id="result" layoutX="102.0" layoutY="77.0" prefHeight="83.0" prefWidth="303.0" />
+            <TextArea fx:id="result" editable="false" focusTraversable="false" layoutX="102.0" layoutY="77.0" prefHeight="83.0" prefWidth="303.0" />
             <ScrollBar layoutX="390.0" layoutY="78.0" orientation="VERTICAL" prefHeight="81.0" prefWidth="16.0" style="-fx-background-color: white;" />
          </children>
       </Pane>

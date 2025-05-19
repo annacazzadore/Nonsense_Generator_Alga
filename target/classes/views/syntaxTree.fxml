@@ -58,7 +58,7 @@
                   <Font name="Hiragino Sans W4" size="9.0" />
                </font>
             </MenuButton>
-            <Button fx:id="generateT" layoutX="346.0" layoutY="179.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Generate">
+            <Button fx:id="generateT" onMouseClicked="#handleGenerate" layoutX="346.0" layoutY="179.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Generate">
                <font>
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>

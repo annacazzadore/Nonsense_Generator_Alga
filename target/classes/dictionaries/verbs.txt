@@ -7,3 +7,4 @@ have
 is
 has
 find
+are

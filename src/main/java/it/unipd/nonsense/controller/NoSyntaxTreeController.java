@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +21,7 @@ public class NoSyntaxTreeController {
     @FXML private TextField number;
     @FXML private MenuButton template;
     @FXML private TextField words;
+    @FXML private Button generate;
 
     public void initializeWithResult(AnalysisResult result) {
         // Mostra il numero di variazioni
@@ -65,6 +67,25 @@ public class NoSyntaxTreeController {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleGenerate(MouseEvent event) {
+        try {
+            // Carica la finestra results.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Results");
+            stage.show();
+
+            // Chiudi la finestra attuale
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

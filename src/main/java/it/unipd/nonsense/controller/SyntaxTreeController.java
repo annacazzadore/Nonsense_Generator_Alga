@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +23,7 @@ public class SyntaxTreeController {
     @FXML private TextField numberT;
     @FXML private MenuButton templateT;
     @FXML private Pane treePane; // Cambiato da TextFlow a Pane per disegnare
+    @FXML private Button generateT;
 
     private DependencyTreeVisualizer treeVisualizer;
 
@@ -62,6 +64,24 @@ public class SyntaxTreeController {
             stage.setTitle("Random Sentence Generator ALGA");
             stage.show();
 
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void handleGenerate(MouseEvent event) {
+        try {
+            // Carica la finestra results.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Results");
+            stage.show();
+
+            // Chiudi la finestra attuale
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {

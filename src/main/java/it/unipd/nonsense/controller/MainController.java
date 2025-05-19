@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -39,7 +40,10 @@ public class MainController {
 
 // Soglia personalizzabile (es. 0.5 = 50%)
                 if (toxicityScore >= 0.5f) {
-                    showErrorDialog(String.format("La frase contiene contenuto potenzialmente tossico (livello: %.2f%%)", toxicityScore * 100));
+                    showErrorDialog(
+                            String.format("La frase contiene contenuto potenzialmente tossico (livello: %.2f%%)", toxicityScore * 100),
+                            toxicityScore
+                    );
                     analyzer.close();
                     return;
                 }
@@ -91,14 +95,37 @@ public class MainController {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                showErrorDialog("Errore durante l'analisi della frase: " + e.getMessage());
+                showError("Errore durante l'analisi della frase: " + e.getMessage());
             }
         } else {
-            showErrorDialog("Inserisci una frase da analizzare");
+            showError("Inserisci una frase da analizzare");
         }
     }
 
-    private void showErrorDialog(String message) {
+    private void showErrorDialog(String message, double toxicityScore) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/popUp.fxml"));
+            Parent root = loader.load();
+
+            // Ottieni il controller del popUp e imposta il tasso di tossicità
+            PopUpController controller = loader.getController();
+            controller.setToxicityRate(toxicityScore);
+
+            Stage popUpStage = new Stage();
+            popUpStage.setScene(new Scene(root));
+            popUpStage.setTitle("Error");
+            popUpStage.initModality(Modality.APPLICATION_MODAL);
+            popUpStage.initOwner((Stage) analyze.getScene().getWindow());
+            popUpStage.showAndWait();
+
+            sentence.clear();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showError(String message) {
         // Implementa una finestra di dialogo per mostrare gli errori
         // Puoi usare Alert di JavaFX o un altro metodo a tua scelta
         System.err.println(message);
