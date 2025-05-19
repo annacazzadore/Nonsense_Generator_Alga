@@ -20,7 +20,7 @@
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor></TextField>
-            <ImageView id="back_button" fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" onMouseClicked="#handleBack">
+            <ImageView id="back_button" fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#handleBack" pickOnBounds="true">
                <image>
                   <Image url="@/views/style/1410611-200.png" />
                </image>
@@ -60,7 +60,7 @@
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
             </Button>
-            <TextField editable="false" focusTraversable="false" layoutX="213.0" layoutY="35.0" prefHeight="25.0" prefWidth="196.0">
+            <TextField fx:id="words" editable="false" focusTraversable="false" layoutX="213.0" layoutY="35.0" prefHeight="25.0" prefWidth="196.0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
