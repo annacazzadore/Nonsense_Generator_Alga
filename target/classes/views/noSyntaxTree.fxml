@@ -20,7 +20,7 @@
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor></TextField>
-            <ImageView id="back_button" fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#handleBack">
+            <ImageView id="back_button" fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" onMouseClicked="#handleBack">
                <image>
                   <Image url="@/views/style/1410611-200.png" />
                </image>
