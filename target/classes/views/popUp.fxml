@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="104.0" prefWidth="320.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="38.0" layoutY="13.0" prefHeight="79.0" prefWidth="242.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
+         <children>
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="9.0" layoutY="31.0" prefHeight="26.0" prefWidth="231.0" style="-fx-background-color: transparent;" text="The sentence contains potentially toxic elements!">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="39.0" layoutY="14.0" style="-fx-background-color: TRANSPARENT;" text="ERROR">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="55.0" layoutY="50.0" style="-fx-background-color: TRANSPARENT;" text="Toxicity rate:">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="121.0" layoutY="50.0" prefHeight="15.0" prefWidth="31.0" style="-fx-background-color: transparent;" text=" ">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </TextField>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Pane>
+   </children>
+</AnchorPane>

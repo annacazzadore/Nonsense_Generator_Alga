@@ -5,3 +5,5 @@ challenged
 ride
 have
 is
+has
+find

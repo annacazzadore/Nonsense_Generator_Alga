@@ -5,3 +5,8 @@ disco-dancing
 Flying
 hot
 beautiful
+pink
+red
+black
+blue
+new

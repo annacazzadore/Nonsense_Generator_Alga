@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/NoSyntaxTreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/NoSyntaxTreeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxTreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxTreeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +46,7 @@
     &quot;Application.main.executor&quot;: &quot;Run&quot;,
     &quot;Applicazione.Nonsense_Generator_Alga.executor&quot;: &quot;Run&quot;,
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
@@ -72,7 +78,7 @@
       </option>
       <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.main" />
       <module name="Nonsense_Generator_Alga" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\acazz\Downloads\javafx-sdk-24.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --enable-native-access=ALL-UNNAMED" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\javafx-sdk-24.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --enable-native-access=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -94,6 +100,9 @@
       <option name="presentableId" value="Default" />
       <updated>1747471742497</updated>
       <workItem from="1747471747714" duration="18683000" />
+      <workItem from="1747671029995" duration="41000" />
+      <workItem from="1747671895851" duration="3548000" />
+      <workItem from="1747678398468" duration="91000" />
     </task>
     <servers />
   </component>

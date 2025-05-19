@@ -9,7 +9,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.SyntaxTreeController">
@@ -17,7 +16,7 @@
       <Pane layoutX="46.0" layoutY="54.0" prefHeight="277.0" prefWidth="503.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
          <children>
             <TextField alignment="CENTER" layoutX="173.0" layoutY="39.0" prefHeight="26.0" prefWidth="303.0" style="-fx-background-color: transparent;" />
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="33.0" layoutY="39.0" style="-fx-background-color: transparent;" text="Syntax Tree">
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="39.0" layoutY="20.0" style="-fx-background-color: transparent;" text="Syntax Tree">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -25,12 +24,11 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <ImageView id="back_button" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" onMouseClicked="#handleBack">
+            <ImageView id="back_button" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#handleBack" pickOnBounds="true">
                <image>
                   <Image url="@/views/style/1410611-200.png" />
                </image>
             </ImageView>
-            <Line endX="-100.0" endY="131.234130859375" layoutX="351.0" layoutY="99.0" startX="-100.00003051757812" startY="-60.0" />
             <TextField editable="false" focusTraversable="false" layoutX="262.0" layoutY="85.0" style="-fx-background-color: transparent;" text="Number of variations:">
                <font>
                   <Font name="Hiragino Sans W4" size="11.0" />
@@ -53,10 +51,10 @@
                </font>
             </TextField>
             <MenuButton fx:id="templateT" layoutX="374.0" layoutY="123.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Template">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
                <font>
                   <Font name="Hiragino Sans W4" size="9.0" />
                </font>
@@ -66,8 +64,9 @@
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
             </Button>
+            <!-- Modifica del treePane esistente -->
+            <Pane fx:id="treePane" layoutX="14.0" layoutY="50.0" prefHeight="218.0" prefWidth="244.0" style="-fx-background-color: white; -fx-border-color: #9eb59c; -fx-border-radius: 5;" />
          </children>
       </Pane>
-      <Line endX="100.0" startX="-100.0" />
    </children>
 </AnchorPane>

@@ -2,6 +2,7 @@ package it.unipd.nonsense.controller;
 
 import com.google.cloud.language.v1.Token;
 import it.unipd.nonsense.utils.AnalysisResult;
+import it.unipd.nonsense.utils.DependencyTreeVisualizer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,31 +11,47 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-
 
 import java.io.IOException;
 
 public class SyntaxTreeController {
     @FXML private TextField numberT;
     @FXML private MenuButton templateT;
-    @FXML private TextFlow syntaxTreeDisplay;
+    @FXML private Pane treePane; // Cambiato da TextFlow a Pane per disegnare
+
+    private DependencyTreeVisualizer treeVisualizer;
+
+    @FXML
+    public void initialize() {
+        treeVisualizer = new DependencyTreeVisualizer(treePane);
+
+        // Aggiungi listener per il ridimensionamento
+        treePane.widthProperty().addListener((obs, oldVal, newVal) -> {
+            if (currentResult != null) {
+                initializeWithResult(currentResult);
+            }
+        });
+
+        treePane.heightProperty().addListener((obs, oldVal, newVal) -> {
+            if (currentResult != null) {
+                initializeWithResult(currentResult);
+            }
+        });
+    }
+
+    private AnalysisResult currentResult;
 
     public void initializeWithResult(AnalysisResult result) {
-        // Mostra il numero di variazioni
-        numberT.setText("1"); // Puoi modificare questo valore
+        numberT.setText("1");
 
-        // Popola l'albero sintattico
-        StringBuilder treeBuilder = new StringBuilder();
-        for (Token token : result.getSyntaxResponse().getTokensList()) {
-            treeBuilder.append(String.format("Parola: %-10s Tipo: %s%n",
-                    token.getText().getContent(),
-                    token.getPartOfSpeech().getTag()));
-        }
-
+        DependencyTreeVisualizer visualizer = new DependencyTreeVisualizer(treePane);
+        visualizer.drawDependencyTree(result.getSyntaxResponse().getTokensList());
     }
+
     @FXML
     private void handleBack(MouseEvent event) {
         try {
@@ -45,13 +62,10 @@ public class SyntaxTreeController {
             stage.setTitle("Random Sentence Generator ALGA");
             stage.show();
 
-            // Chiudi la finestra attuale
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }
