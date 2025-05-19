@@ -4,3 +4,4 @@ started
 challenged
 ride
 have
+is

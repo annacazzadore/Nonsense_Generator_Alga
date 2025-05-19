@@ -33,9 +33,13 @@ public class MainController {
                 // Analizza la frase
                 AnalyzeSyntaxResponse syntaxResponse = analyzer.analyzeSentence(inputText);
 
-                // Verifica la tossicità della frase
-                if (!analyzer.validateToxicity(inputText)) {
-                    showErrorDialog("La frase contiene contenuto potenzialmente tossico");
+                // Calcola e stampa il punteggio di tossicità
+                float toxicityScore = analyzer.getToxicityScore(inputText);
+                System.out.printf("Livello di tossicità: %.2f%%%n", toxicityScore * 100);
+
+// Soglia personalizzabile (es. 0.5 = 50%)
+                if (toxicityScore >= 0.5f) {
+                    showErrorDialog(String.format("La frase contiene contenuto potenzialmente tossico (livello: %.2f%%)", toxicityScore * 100));
                     analyzer.close();
                     return;
                 }
