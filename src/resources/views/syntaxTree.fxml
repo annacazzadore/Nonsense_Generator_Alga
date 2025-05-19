@@ -15,7 +15,6 @@
    <children>
       <Pane layoutX="46.0" layoutY="54.0" prefHeight="277.0" prefWidth="503.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
          <children>
-            <TextField alignment="CENTER" layoutX="173.0" layoutY="39.0" prefHeight="26.0" prefWidth="303.0" style="-fx-background-color: transparent;" />
             <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="39.0" layoutY="20.0" style="-fx-background-color: transparent;" text="Syntax Tree">
                <font>
                   <Font name="System Bold" size="14.0" />
