@@ -23,11 +23,7 @@
 .DS_Store
 
 # File IntelliJ da ignorare
-.idea/workspace.xml
-.idea/usage.statistics.xml
-.idea/tasks.xml
-.idea/dictionaries/
-.idea/.name
+.idea/
 
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
