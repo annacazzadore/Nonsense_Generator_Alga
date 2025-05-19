@@ -2,4 +2,7 @@ tiny
 confused
 banana-shaped
 disco-dancing
-flying
+Flying
+hot
+
+beautiful

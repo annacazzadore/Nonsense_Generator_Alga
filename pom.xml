@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <javafx.version>21.0.7</javafx.version>
+        <javafx.version>24.0.1</javafx.version>
     </properties>
 
     <dependencies>
@@ -49,12 +49,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>21.0.7</version>
+            <version>24.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>21.0.7</version>
+            <version>24.0.1</version>
         </dependency>
 
     </dependencies>

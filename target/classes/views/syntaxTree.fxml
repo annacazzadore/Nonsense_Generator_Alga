@@ -49,7 +49,7 @@
             </TextField>
             <TextField fx:id="numberT" layoutX="395.0" layoutY="85.0" prefHeight="20.0" prefWidth="32.0" style="-fx-background-color: white;">
                <font>
-                  <Font size="1.0" />
+                  <Font size="11.0" />
                </font>
             </TextField>
             <MenuButton fx:id="templateT" layoutX="374.0" layoutY="123.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Template">

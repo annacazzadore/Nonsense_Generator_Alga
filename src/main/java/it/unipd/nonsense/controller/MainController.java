@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -16,9 +17,10 @@ public class MainController {
 
     @FXML
     private TextField sentence;
-
     @FXML
     private CheckBox tree;
+    @FXML
+    private Button analyze;
 
     @FXML
     private void analyzeSentence() {
@@ -38,6 +40,8 @@ public class MainController {
                     return;
                 }
 
+                // Ottieni lo Stage corrente
+                Stage currentStage = (Stage) analyze.getScene().getWindow();
                 // Carica la finestra appropriata in base alla selezione del checkbox
                 FXMLLoader loader;
                 if (tree.isSelected()) {
@@ -47,9 +51,13 @@ public class MainController {
                 }
 
                 Parent root = loader.load();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.setTitle("Sentence Analyzer");
+                Stage newStage = new Stage();
+                newStage.setScene(new Scene(root));
+                newStage.setTitle("Sentence Analyzer");
+                newStage.show();
+
+                // Chiudi la finestra attuale
+                currentStage.close();
 
                 // Crea il risultato dell'analisi
                 AnalysisResult result = new AnalysisResult();
@@ -74,7 +82,7 @@ public class MainController {
                     noSyntaxTreeController.initializeWithResult(result);
                 }
 
-                stage.show();
+                newStage.show();
                 analyzer.close();
 
             } catch (Exception e) {

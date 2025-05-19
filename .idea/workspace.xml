@@ -5,8 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_media1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/NoSyntaxTreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/NoSyntaxTreeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxTreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxTreeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/views/noSyntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/noSyntaxTree.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/noSyntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/noSyntaxTree.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +54,13 @@
   "keyToString": {
     "Application.Nonsense_Generator_Alga.executor": "Run",
     "Application.main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -47,12 +70,14 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2551724",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="Nonsense_Generator_Alga" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Java/jdk-24" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <envs>
         <env name="GOOGLE_APPLICATION_CREDENTIALS" value="" />
       </envs>
@@ -61,7 +86,7 @@
       </option>
       <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.main" />
       <module name="Nonsense_Generator_Alga" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\javafx-sdk-21.0.7\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\javafx-sdk-24.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --enable-native-access=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -82,11 +107,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1747471742497</updated>
-      <workItem from="1747471747714" duration="10964000" />
+      <workItem from="1747471747714" duration="18047000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

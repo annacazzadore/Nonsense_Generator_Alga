@@ -2,8 +2,15 @@ package it.unipd.nonsense.controller;
 
 import it.unipd.nonsense.utils.AnalysisResult;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.w3c.dom.Node;
+
+import java.awt.event.ActionEvent;
 
 public class NoSyntaxTreeController {
     @FXML private TextField number;
@@ -21,4 +28,23 @@ public class NoSyntaxTreeController {
             template.getItems().add(item);
         }
     }
+    @FXML
+    private void handleBack(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Main Window");
+            stage.show();
+
+            // Chiudi la finestra attuale
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
