@@ -8,3 +8,5 @@ cat
 tree
 chicken
 bat
+dream
+ball
