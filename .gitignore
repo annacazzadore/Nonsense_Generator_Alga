@@ -22,6 +22,11 @@
 # File di sistema di macOS
 .DS_Store
 
+# File IntelliJ da ignorare
+.idea/runConfigurations/
+.idea/workspace.xml
+.idea/vcs.xml
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
