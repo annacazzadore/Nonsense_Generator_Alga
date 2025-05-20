@@ -15,7 +15,8 @@ public class main extends Application {
 
         // Configura la finestra principale
         primaryStage.setTitle("Random Sentence Generator ALGA");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.sizeToScene();
         primaryStage.setResizable(false);
         primaryStage.show();
     }

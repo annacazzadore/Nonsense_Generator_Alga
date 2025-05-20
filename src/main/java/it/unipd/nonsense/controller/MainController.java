@@ -62,6 +62,7 @@ public class MainController {
                 Stage newStage = new Stage();
                 newStage.setScene(new Scene(root));
                 newStage.setTitle("Sentence Analyzer");
+                newStage.setResizable(false);
                 newStage.show();
 
                 // Chiudi la finestra attuale
@@ -112,6 +113,7 @@ public class MainController {
             controller.setToxicityRate(toxicityScore);
 
             Stage popUpStage = new Stage();
+            popUpStage.setResizable(false);
             popUpStage.setScene(new Scene(root));
             popUpStage.setTitle("Error");
             popUpStage.initModality(Modality.APPLICATION_MODAL);

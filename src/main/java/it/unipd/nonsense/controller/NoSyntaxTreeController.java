@@ -21,7 +21,7 @@ import java.util.StringJoiner;
 public class NoSyntaxTreeController {
     @FXML private TextField number;
     @FXML private ChoiceBox<String> templates;
-    @FXML private TextArea words;
+    @FXML private Label wordsLabel;
     @FXML private Button generate;
     private AnalysisResult currentResult;
 
@@ -48,7 +48,7 @@ public class NoSyntaxTreeController {
         }
 
         // Imposta il testo nel TextField
-        words.setText(wordsJoiner.toString());
+        wordsLabel.setText(wordsJoiner.toString());
     }
 
     @FXML
@@ -63,6 +63,7 @@ public class NoSyntaxTreeController {
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.setTitle("Random Sentence Generator ALGA");
             stage.show();
 
@@ -83,6 +84,7 @@ public class NoSyntaxTreeController {
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.setTitle("Results");
             stage.show();
 
