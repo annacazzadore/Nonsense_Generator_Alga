@@ -88,7 +88,8 @@ public class SyntaxTreeController {
             Parent root = loader.load();
             ResultsController controller = loader.getController();
             controller.setPreviousView("tree");
-            controller.setOriginalText(currentResult.getOriginalText());
+            //controller.setOriginalText(currentResult.getOriginalText());
+            controller.setAnalysisResult(currentResult);
             // Imposta qui eventuali risultati nel TextArea se necessario
 
             Stage stage = new Stage();

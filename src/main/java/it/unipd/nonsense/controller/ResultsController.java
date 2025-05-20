@@ -1,5 +1,6 @@
 package it.unipd.nonsense.controller;
 
+import it.unipd.nonsense.utils.AnalysisResult;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +23,8 @@ public class ResultsController {
     @FXML
     private ImageView back;
 
-    private String previousView; // "tree" o "noTree"
+    private String previousView; // "tree" o "noTree
+    private AnalysisResult analysisResult;
     private String originalText; // testo originale della frase analizzata
 
     public void setPreviousView(String previousView) {
@@ -35,6 +37,10 @@ public class ResultsController {
 
     public void setResultText(String text) {
         result.setText(text);
+    }
+
+    public void setAnalysisResult(AnalysisResult analysisResult) {
+        this.analysisResult = analysisResult;
     }
 
     @FXML
@@ -66,10 +72,10 @@ public class ResultsController {
             // Passa il testo originale al controller
             if ("tree".equals(previousView)) {
                 SyntaxTreeController controller = loader.getController();
-                // Qui dovresti anche passare l'AnalysisResult se necessario
+                controller.initializeWithResult(analysisResult);
             } else {
                 NoSyntaxTreeController controller = loader.getController();
-                // Qui dovresti anche passare l'AnalysisResult se necessario
+                controller.initializeWithResult(analysisResult);
             }
 
             // Chiudi la finestra corrente

@@ -84,6 +84,7 @@ public class NoSyntaxTreeController {
             ResultsController controller = loader.getController();
             controller.setPreviousView("noTree");
             controller.setOriginalText(currentResult.getOriginalText());
+            controller.setAnalysisResult(currentResult);
             // Imposta qui eventuali risultati nel TextArea se necessario
 
             Stage stage = new Stage();

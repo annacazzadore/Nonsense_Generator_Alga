@@ -23,6 +23,8 @@ public class MainController {
     @FXML
     private Button analyze;
 
+    private AnalysisResult lastAnalysisResult;
+
     @FXML
     private void analyzeSentence() {
         String inputText = sentence.getText().trim();
@@ -90,7 +92,7 @@ public class MainController {
                     NoSyntaxTreeController noSyntaxTreeController = loader.getController();
                     noSyntaxTreeController.initializeWithResult(result);
                 }
-
+                this.lastAnalysisResult = result;
                 newStage.show();
                 analyzer.close();
 
@@ -137,5 +139,9 @@ public class MainController {
         if (text != null && !text.trim().isEmpty()) {
             sentence.setText(text.trim());
         }
+    }
+
+    public void setAnalysisResult(AnalysisResult result) {
+        this.lastAnalysisResult = result;
     }
 }
