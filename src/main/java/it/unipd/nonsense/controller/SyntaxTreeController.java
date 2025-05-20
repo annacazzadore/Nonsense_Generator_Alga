@@ -3,6 +3,7 @@ package it.unipd.nonsense.controller;
 import com.google.cloud.language.v1.Token;
 import it.unipd.nonsense.utils.AnalysisResult;
 import it.unipd.nonsense.utils.DependencyTreeVisualizer;
+import it.unipd.nonsense.utils.SentenceGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +19,12 @@ import javafx.scene.Node;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
+import java.util.*;
 
 public class SyntaxTreeController {
     @FXML private TextField numberT;
     @FXML private ChoiceBox templates;
+    @FXML private Label wordsLabel;
     @FXML private Pane treePane; // Cambiato da TextFlow a Pane per disegnare
     @FXML private Button generateT;
     private AnalysisResult currentResult;
@@ -51,10 +53,29 @@ public class SyntaxTreeController {
     }
 
     public void initializeWithResult(AnalysisResult result) {
-
+        // Salva il risultato come campo della classe
         this.currentResult = result;
 
+        // Mostra il numero di variazioni
         numberT.setText("1");
+
+        // Prepara il testo da mostrare nel TextField
+        StringJoiner wordsJoiner = new StringJoiner(", ");
+        Map<String, Set<String>> wordsByType = result.getWordsByType();
+
+        // Aggiungi nomi, verbi e aggettivi al testo
+        if (wordsByType.containsKey("NOUN")) {
+            wordsByType.get("NOUN").forEach(word -> wordsJoiner.add(word));
+        }
+        if (wordsByType.containsKey("VERB")) {
+            wordsByType.get("VERB").forEach(word -> wordsJoiner.add(word));
+        }
+        if (wordsByType.containsKey("ADJ")) {
+            wordsByType.get("ADJ").forEach(word -> wordsJoiner.add(word));
+        }
+
+        // Imposta il testo nel TextField
+        wordsLabel.setText(wordsJoiner.toString());
 
         DependencyTreeVisualizer visualizer = new DependencyTreeVisualizer(treePane);
         visualizer.drawDependencyTree(result.getSyntaxResponse().getTokensList());
@@ -84,13 +105,41 @@ public class SyntaxTreeController {
     @FXML
     private void handleGenerate(MouseEvent event) {
         try {
+            // Ottieni i parametri dall'interfaccia
+            int numSentences;
+            try {
+                numSentences = Integer.parseInt(numberT.getText());
+                if (numSentences <= 0) {
+                    showAlert("Errore", "Il numero di frasi deve essere maggiore di 0");
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                showAlert("Errore", "Inserisci un numero valido");
+                return;
+            }
+            String template = templates.getValue().toString();
+            if (template == null || template.isEmpty() || template.equals("-")) {
+                showAlert("Errore", "Seleziona un template valido");
+                return;
+            }
+
+            // Estrai le parole dalle liste
+            Map<String, Set<String>> wordsByType = currentResult.getWordsByType();
+            List<String> nouns = new ArrayList<>(wordsByType.getOrDefault("NOUN", Collections.emptySet()));
+            List<String> verbs = new ArrayList<>(wordsByType.getOrDefault("VERB", Collections.emptySet()));
+            List<String> adjectives = new ArrayList<>(wordsByType.getOrDefault("ADJ", Collections.emptySet()));
+
+            // Genera le frasi
+            SentenceGenerator generator = new SentenceGenerator();
+            List<String> sentences = generator.generateSentences(numSentences, template, nouns, verbs, adjectives);
+
+            // Mostra i risultati
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
             Parent root = loader.load();
             ResultsController controller = loader.getController();
             controller.setPreviousView("tree");
-            //controller.setOriginalText(currentResult.getOriginalText());
             controller.setAnalysisResult(currentResult);
-            // Imposta qui eventuali risultati nel TextArea se necessario
+            controller.showGeneratedSentences(sentences);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -101,8 +150,19 @@ public class SyntaxTreeController {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
+            showAlert("Errore", "Errore durante la generazione delle frasi: " + e.getMessage());
             e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            showAlert("Errore", e.getMessage());
         }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     //gestione del menú per i template

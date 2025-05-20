@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ResultsController {
     @FXML
@@ -22,6 +23,8 @@ public class ResultsController {
     private TextArea result;
     @FXML
     private ImageView back;
+    @FXML
+    private TextArea resultArea;
 
     private String previousView; // "tree" o "noTree
     private AnalysisResult analysisResult;
@@ -86,4 +89,13 @@ public class ResultsController {
             e.printStackTrace();
         }
     }
+
+    public void showGeneratedSentences(List<String> sentences) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < sentences.size(); i++) {
+            sb.append((i + 1)).append(". ").append(sentences.get(i)).append("\n\n");
+        }
+        resultArea.setText(sb.toString());
+    }
+
 }

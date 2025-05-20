@@ -34,7 +34,7 @@
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
             </Button>
-            <TextArea fx:id="result" editable="false" focusTraversable="false" layoutX="102.0" layoutY="77.0" prefHeight="83.0" prefWidth="303.0" />
+            <TextArea fx:id="resultArea" editable="false" focusTraversable="false" layoutX="102.0" layoutY="77.0" prefHeight="83.0" prefWidth="303.0" />
             <ScrollBar layoutX="390.0" layoutY="78.0" orientation="VERTICAL" prefHeight="81.0" prefWidth="16.0" style="-fx-background-color: white;" />
          </children>
       </Pane>

@@ -1,6 +1,7 @@
 package it.unipd.nonsense.controller;
 
 import it.unipd.nonsense.utils.AnalysisResult;
+import it.unipd.nonsense.utils.SentenceGenerator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,10 +14,7 @@ import javafx.scene.Node;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class NoSyntaxTreeController {
     @FXML private TextField number;
@@ -79,13 +77,27 @@ public class NoSyntaxTreeController {
     @FXML
     private void handleGenerate(MouseEvent event) {
         try {
+            // Ottieni i parametri dall'interfaccia
+            int numSentences = Integer.parseInt(number.getText());
+            String template = templates.getValue().toString();
+
+            // Estrai le parole dalle liste
+            Map<String, Set<String>> wordsByType = currentResult.getWordsByType();
+            List<String> nouns = new ArrayList<>(wordsByType.getOrDefault("NOUN", Collections.emptySet()));
+            List<String> verbs = new ArrayList<>(wordsByType.getOrDefault("VERB", Collections.emptySet()));
+            List<String> adjectives = new ArrayList<>(wordsByType.getOrDefault("ADJ", Collections.emptySet()));
+
+            // Genera le frasi
+            SentenceGenerator generator = new SentenceGenerator();
+            List<String> sentences = generator.generateSentences(numSentences, template, nouns, verbs, adjectives);
+
+            // Mostra i risultati
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
             Parent root = loader.load();
             ResultsController controller = loader.getController();
-            controller.setPreviousView("noTree");
-            controller.setOriginalText(currentResult.getOriginalText());
+            controller.setPreviousView("noTree"); // o "tree" per SyntaxTreeController
             controller.setAnalysisResult(currentResult);
-            // Imposta qui eventuali risultati nel TextArea se necessario
+            controller.showGeneratedSentences(sentences);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -96,6 +108,10 @@ public class NoSyntaxTreeController {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
+            e.printStackTrace();
+            // Gestisci l'errore (mostra un messaggio all'utente)
+        } catch (NumberFormatException e) {
+            // Gestisci errore di conversione del numero
             e.printStackTrace();
         }
     }
