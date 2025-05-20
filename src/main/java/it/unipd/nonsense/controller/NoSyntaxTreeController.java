@@ -5,38 +5,34 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringJoiner;
 
 public class NoSyntaxTreeController {
     @FXML private TextField number;
-    @FXML private MenuButton template;
-    @FXML private TextField words;
+    @FXML private ChoiceBox<String> templates;
+    @FXML private TextArea words;
     @FXML private Button generate;
 
     public void initializeWithResult(AnalysisResult result) {
+        //initializeTemplates();
+
         // Mostra il numero di variazioni
         number.setText("1");
 
-        // Aggiungi i template al menu button
-        template.getItems().clear();
-        for (String type : result.getWordsByType().keySet()) {
-            javafx.scene.control.MenuItem item = new javafx.scene.control.MenuItem(type);
-            template.getItems().add(item);
-        }
-
         // Prepara il testo da mostrare nel TextField
         StringJoiner wordsJoiner = new StringJoiner(", ");
-        Map<String, Set<String>> wordsByType = result.getWordsByType(); // Usa Set<String> invece di List<String>
+        Map<String, Set<String>> wordsByType = result.getWordsByType();
 
         // Aggiungi nomi, verbi e aggettivi al testo
         if (wordsByType.containsKey("NOUN")) {
@@ -89,5 +85,33 @@ public class NoSyntaxTreeController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    //gestione del menú per i template
+    @FXML
+    public void initialize() {
+        try {
+            // 1. Leggi tutte le righe dal file
+            List<String> options = Files.readAllLines(Paths.get("src/resources/dictionaries/templates.txt"));
+
+            // 2. Pulisci eventuali elementi esistenti e aggiungi i nuovi
+            templates.getItems().clear();
+            templates.getItems().addAll(options);
+
+            // 3. Imposta un valore predefinito (opzionale)
+            if (!options.isEmpty()) {
+                templates.setValue("-");
+            }
+
+        } catch (IOException e) {
+            System.err.println("Errore nel caricamento delle opzioni: " + e.getMessage());
+
+            // Fallback con valori di default
+            templates.setValue("-");
+        }
+    }
+
+    private void handleMenuAction(String action) {
+        System.out.println("Eseguito: " + action);
     }
 }

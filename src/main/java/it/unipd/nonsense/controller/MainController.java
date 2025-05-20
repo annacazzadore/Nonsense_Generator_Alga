@@ -119,7 +119,7 @@ public class MainController {
             popUpStage.showAndWait();
 
             sentence.clear();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
