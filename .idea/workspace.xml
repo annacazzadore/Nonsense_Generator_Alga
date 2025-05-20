@@ -10,8 +10,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_media1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_media1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/noSyntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/noSyntaxTree.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/views/results.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/results.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/results.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/results.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +35,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;larisaapostol&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/annacazzadore/Nonsense_Generator_Alga.git&quot;,
+    &quot;accountId&quot;: &quot;f99d1d8d-eb61-4657-99fa-8fbf82888a1a&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -65,17 +84,17 @@
 }</component>
   <component name="RunManager">
     <configuration name="Nonsense_Generator_Alga" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-24" />
+      <option name="ALTERNATIVE_JRE_PATH" value="24" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <envs>
         <env name="GOOGLE_APPLICATION_CREDENTIALS" value="" />
       </envs>
       <option name="envFilePaths">
-        <option value="$PROJECT_DIR$/../../../../../nonsense-generator-alga-133489f89750.json" />
+        <option value="$USER_HOME$/Desktop/nonsense-generator-alga-133489f89750.json" />
       </option>
       <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.main" />
       <module name="Nonsense_Generator_Alga" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\javafx-sdk-24.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --enable-native-access=ALL-UNNAMED" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$USER_HOME$/Downloads/javafx-sdk-24.0.1/lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --enable-native-access=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -102,6 +121,9 @@
       <workItem from="1747678398468" duration="91000" />
       <workItem from="1747731650273" duration="650000" />
       <workItem from="1747738404078" duration="1254000" />
+      <workItem from="1747747481131" duration="164000" />
+      <workItem from="1747747648081" duration="978000" />
+      <workItem from="1747748633610" duration="6230000" />
     </task>
     <servers />
   </component>
