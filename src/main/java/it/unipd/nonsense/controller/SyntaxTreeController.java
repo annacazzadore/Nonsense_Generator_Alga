@@ -19,10 +19,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringJoiner;
 
 public class SyntaxTreeController {
     @FXML private TextField numberT;
     @FXML private ChoiceBox templates;
+    @FXML private Label wordsLabel;
     @FXML private Pane treePane; // Cambiato da TextFlow a Pane per disegnare
     @FXML private Button generateT;
     private AnalysisResult currentResult;
@@ -50,11 +54,31 @@ public class SyntaxTreeController {
         });
     }
 
-    public void initializeWithResult(AnalysisResult result) {
 
+    public void initializeWithResult(AnalysisResult result) {
+// Salva il risultato come campo della classe
         this.currentResult = result;
 
+        // Mostra il numero di variazioni
         numberT.setText("1");
+
+        // Prepara il testo da mostrare nel TextField
+        StringJoiner wordsJoiner = new StringJoiner(", ");
+        Map<String, Set<String>> wordsByType = result.getWordsByType();
+
+        // Aggiungi nomi, verbi e aggettivi al testo
+        if (wordsByType.containsKey("NOUN")) {
+            wordsByType.get("NOUN").forEach(word -> wordsJoiner.add(word));
+        }
+        if (wordsByType.containsKey("VERB")) {
+            wordsByType.get("VERB").forEach(word -> wordsJoiner.add(word));
+        }
+        if (wordsByType.containsKey("ADJ")) {
+            wordsByType.get("ADJ").forEach(word -> wordsJoiner.add(word));
+        }
+
+        // Imposta il testo nel TextField
+        wordsLabel.setText(wordsJoiner.toString());
 
         DependencyTreeVisualizer visualizer = new DependencyTreeVisualizer(treePane);
         visualizer.drawDependencyTree(result.getSyntaxResponse().getTokensList());
