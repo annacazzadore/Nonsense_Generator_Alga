@@ -1,6 +1,8 @@
 package it.unipd.nonsense.controller;
 
 import it.unipd.nonsense.utils.AnalysisResult;
+import it.unipd.nonsense.utils.SentenceAnalyzer;
+import it.unipd.nonsense.utils.SentenceGenerator;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,12 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResultsController {
@@ -90,12 +97,55 @@ public class ResultsController {
         }
     }
 
-    public void showGeneratedSentences(List<String> sentences) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < sentences.size(); i++) {
-            sb.append((i + 1)).append(". ").append(sentences.get(i)).append("\n\n");
+    public void saveSentencesToFile(List<String> sentences, String filePath) {
+        Path path = Paths.get(filePath);
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+            for (int i = 0; i < sentences.size(); i++) {
+                writer.write((i + 1) + ". " + sentences.get(i));
+                writer.newLine();
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        resultArea.setText(sb.toString());
+    }
+
+
+    public void showGeneratedSentences(List<String> inputSentences) {
+        try {
+            // Numero di frasi che vuoi mostrare
+            int desiredCount = inputSentences.size();
+            List<String> nonToxicSentences = new ArrayList<>();
+            int attempts = 0;
+            int maxAttempts = desiredCount * 10;
+
+            SentenceAnalyzer analyzer = new SentenceAnalyzer();
+
+            while (nonToxicSentences.size() < desiredCount && attempts < maxAttempts) {
+                String sentence = inputSentences.get(attempts % inputSentences.size());
+                float toxicity = analyzer.getToxicityScore(sentence);
+                if (toxicity < 0.5f) {
+                    nonToxicSentences.add(sentence);
+                }
+                attempts++;
+            }
+
+            analyzer.close();
+
+            // Mostra solo le non tossiche
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < nonToxicSentences.size(); i++) {
+                sb.append((i + 1)).append(". ").append(nonToxicSentences.get(i)).append("\n\n");
+            }
+            resultArea.setText(sb.toString());
+
+            // Salva nel file
+            saveSentencesToFile(nonToxicSentences, "generated_sentences.txt");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            resultArea.setText("Errore durante la generazione e il filtro delle frasi.");
+        }
     }
 
 }
