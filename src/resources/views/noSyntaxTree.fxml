@@ -51,9 +51,9 @@
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
             </Button>
-            <ScrollPane layoutX="213.0" layoutY="35.0" prefHeight="25.0" prefWidth="196.0" style="-fx-background: transparent; -fx-background-color: transparent;" vbarPolicy="NEVER">
+            <ScrollPane layoutX="213.0" layoutY="35.0" prefHeight="25.0" prefWidth="196.0" style="-fx-background: transparent; -fx-background-color: transparent;" fitToWidth="true" hbarPolicy="AS_NEEDED" vbarPolicy="NEVER">
                <content>
-                  <TextArea fx:id="words" editable="false" focusTraversable="false" prefHeight="36.0" prefWidth="524.0" style="-fx-background-color: #ffffff; -fx-border-width: 0; -fx-padding: 0; -fx-control-inner-background: transparent; -fx-text-fill: black;" wrapText="true">
+                  <TextArea fx:id="words" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: white; -fx-border-width: 0; -fx-padding: 0;" wrapText="false">
                      <font>
                         <Font size="11.0" />
                      </font>
