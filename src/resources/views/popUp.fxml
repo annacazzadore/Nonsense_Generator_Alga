@@ -6,31 +6,31 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="104.0" prefWidth="320.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.PopUpController">
+<AnchorPane prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.PopUpController">
    <children>
-      <Pane layoutX="38.0" layoutY="13.0" prefHeight="79.0" prefWidth="242.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
+      <Pane layoutX="70.0" layoutY="51.0" prefHeight="198.0" prefWidth="560.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
          <children>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="9.0" layoutY="31.0" prefHeight="26.0" prefWidth="231.0" style="-fx-background-color: transparent;" text="The sentence contains potentially toxic elements!">
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="91.0" layoutY="68.0" prefHeight="33.0" prefWidth="377.0" style="-fx-background-color: transparent;" text="The sentence contains potentially toxic elements!">
                <font>
-                  <Font size="8.0" />
+                  <Font size="17.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="39.0" layoutY="14.0" style="-fx-background-color: TRANSPARENT;" text="ERROR">
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="106.0" layoutY="14.0" style="-fx-background-color: TRANSPARENT;" text="ERROR">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="27.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="55.0" layoutY="50.0" style="-fx-background-color: TRANSPARENT;" text="Toxicity rate:">
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="122.0" layoutY="96.0" style="-fx-background-color: TRANSPARENT;" text="Toxicity rate:">
                <font>
-                  <Font size="8.0" />
+                  <Font size="17.0" />
                </font>
             </TextField>
-            <TextField fx:id="toxicity" alignment="CENTER" editable="false" focusTraversable="false" layoutX="128.0" layoutY="50.0" prefHeight="17.0" prefWidth="42.0" style="-fx-background-color: transparent;" text=" ">
+            <TextField fx:id="toxicity" alignment="CENTER" editable="false" focusTraversable="false" layoutX="278.0" layoutY="97.0" prefHeight="33.0" prefWidth="82.0" style="-fx-background-color: transparent;" text=" ">
                <font>
-                  <Font size="8.0" />
+                  <Font size="17.0" />
                </font>
             </TextField>
          </children>

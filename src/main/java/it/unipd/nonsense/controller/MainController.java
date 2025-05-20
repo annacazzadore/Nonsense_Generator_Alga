@@ -117,6 +117,8 @@ public class MainController {
             Stage popUpStage = new Stage();
             popUpStage.setResizable(false);
             popUpStage.setScene(new Scene(root));
+            popUpStage.setX(370);
+            popUpStage.setY(265);
             popUpStage.setTitle("Error");
             popUpStage.initModality(Modality.APPLICATION_MODAL);
             popUpStage.initOwner((Stage) analyze.getScene().getWindow());
