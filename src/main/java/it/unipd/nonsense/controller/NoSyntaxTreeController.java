@@ -79,16 +79,19 @@ public class NoSyntaxTreeController {
     @FXML
     private void handleGenerate(MouseEvent event) {
         try {
-            // Carica la finestra results.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
             Parent root = loader.load();
+            ResultsController controller = loader.getController();
+            controller.setPreviousView("noTree");
+            controller.setOriginalText(currentResult.getOriginalText());
+            // Imposta qui eventuali risultati nel TextArea se necessario
+
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.setTitle("Results");
             stage.show();
 
-            // Chiudi la finestra attuale
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {

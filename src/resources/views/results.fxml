@@ -16,7 +16,7 @@
    <children>
       <Pane layoutX="46.0" layoutY="54.0" prefHeight="277.0" prefWidth="503.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;">
          <children>
-            <ImageView id="back_button" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0">
+            <ImageView fx:id="back" pickOnBounds="true" onMouseClicked="#handleBack" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0">
                <image>
                   <Image url="@/views/style/1410611-200.png" />
                </image>
