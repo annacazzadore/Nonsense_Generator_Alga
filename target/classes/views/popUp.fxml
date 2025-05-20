@@ -28,7 +28,7 @@
                   <Font size="8.0" />
                </font>
             </TextField>
-            <TextField fx:id="toxicity" alignment="CENTER" editable="false" focusTraversable="false" layoutX="131.0" layoutY="50.0" prefHeight="15.0" prefWidth="31.0" style="-fx-background-color: transparent;" text=" ">
+            <TextField fx:id="toxicity" alignment="CENTER" editable="false" focusTraversable="false" layoutX="128.0" layoutY="50.0" prefHeight="17.0" prefWidth="42.0" style="-fx-background-color: transparent;" text=" ">
                <font>
                   <Font size="8.0" />
                </font>
