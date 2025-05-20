@@ -23,4 +23,10 @@ public class Adjective {
         return adjectives.get(rand.nextInt(adjectives.size()));
     }
 
+    private List<String> getRandomAdjectiveFromDictionary() throws IOException {
+        Adjective adjectiveGenerator = new Adjective();
+        List<String> adjectives = new ArrayList<>();
+        adjectives.add(adjectiveGenerator.getRandom());
+        return adjectives;
+    }
 }

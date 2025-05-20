@@ -23,4 +23,10 @@ public class Verb {
         return verbs.get(rand.nextInt(verbs.size()));
     }
 
+    private List<String> getRandomVerbFromDictionary() throws IOException {
+        Verb verbGenerator = new Verb();
+        List<String> verbs = new ArrayList<>();
+        verbs.add(verbGenerator.getRandom());
+        return verbs;
+    }
 }

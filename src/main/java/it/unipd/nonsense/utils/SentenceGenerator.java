@@ -19,10 +19,7 @@ public class SentenceGenerator {
         structure = new SentenceStructure();
     }
 
-    public List<String> generateSentences(int count, String template,
-                                          List<String> nouns,
-                                          List<String> verbs,
-                                          List<String> adjectives) throws IOException {
+    public List<String> generateSentences(int count, String template, List<String> nouns, List<String> verbs, List<String> adjectives) throws IOException {
         List<String> sentences = new ArrayList<>();
         Random rand = new Random();
 
@@ -65,56 +62,54 @@ public class SentenceGenerator {
         return sentences;
     }
 
-    private String replacePlaceholders(String template, List<String> nouns,
-                                       List<String> verbs, List<String> adjectives,
-                                       Random rand) {
+    private String replacePlaceholders(String template, List<String> nouns, List<String> verbs, List<String> adjectives, Random rand) {
         String result = template;
 
-        // Crea liste combinate di parole disponibili e parole dai dizionari
-        List<String> availableNouns = new ArrayList<>(nouns);
-        List<String> availableVerbs = new ArrayList<>(verbs);
-        List<String> availableAdjectives = new ArrayList<>(adjectives);
+        // Conta quanti placeholder servono
+        int nounCount = countPlaceholders(result, "\\[noun\\]");
+        int verbCount = countPlaceholders(result, "\\[verb\\]");
+        int adjCount = countPlaceholders(result, "\\[adjective\\]");
 
-        // Sostituisci tutti i [noun]
-        while (result.contains("[noun]")) {
-            if (availableNouns.isEmpty()) {
-                try {
-                    availableNouns.addAll(getRandomNounFromDictionary());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+        // Completa le liste se servono più parole
+        try {
+            while (nouns.size() < nounCount) {
+                nouns.addAll(getRandomNounFromDictionary());
             }
-            result = result.replaceFirst("\\[noun\\]",
-                    availableNouns.remove(rand.nextInt(availableNouns.size())));
+            while (verbs.size() < verbCount) {
+                verbs.addAll(getRandomVerbFromDictionary());
+            }
+            while (adjectives.size() < adjCount) {
+                adjectives.addAll(getRandomAdjectiveFromDictionary());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
-        // Sostituisci tutti i [verb]
-        while (result.contains("[verb]")) {
-            if (availableVerbs.isEmpty()) {
-                try{
-                    availableVerbs.addAll(getRandomVerbFromDictionary());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            result = result.replaceFirst("\\[verb\\]",
-                    availableVerbs.remove(rand.nextInt(availableVerbs.size())));
-        }
+        // Prendi solo il numero giusto di parole e mescola
+        List<String> nounPool = new ArrayList<>(nouns.subList(0, nounCount));
+        List<String> verbPool = new ArrayList<>(verbs.subList(0, verbCount));
+        List<String> adjPool = new ArrayList<>(adjectives.subList(0, adjCount));
 
-        // Sostituisci tutti i [adjective]
-        while (result.contains("[adjective]")) {
-            if (availableAdjectives.isEmpty()) {
-                try {
-                    availableAdjectives.addAll(getRandomAdjectiveFromDictionary());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            result = result.replaceFirst("\\[adjective\\]",
-                    availableAdjectives.remove(rand.nextInt(availableAdjectives.size())));
+        Collections.shuffle(nounPool, rand);
+        Collections.shuffle(verbPool, rand);
+        Collections.shuffle(adjPool, rand);
+
+        // Sostituisci
+        for (String noun : nounPool) {
+            result = result.replaceFirst("\\[noun\\]", noun);
+        }
+        for (String verb : verbPool) {
+            result = result.replaceFirst("\\[verb\\]", verb);
+        }
+        for (String adj : adjPool) {
+            result = result.replaceFirst("\\[adjective\\]", adj);
         }
 
         return result;
+    }
+
+    private int countPlaceholders(String text, String placeholderRegex) {
+        return text.split(placeholderRegex, -1).length - 1;
     }
 
     private List<String> getAllNounsFromDictionary() throws IOException {

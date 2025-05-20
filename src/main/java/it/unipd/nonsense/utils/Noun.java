@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Noun {
+public class Noun implements WordProvider {
     private List<String> nouns;
 
     public Noun() throws IOException {
@@ -23,4 +23,10 @@ public class Noun {
         return nouns.get(rand.nextInt(nouns.size()));
     }
 
+    private List<String> getRandomNounFromDictionary() throws IOException {
+        Noun nounGenerator = new Noun();
+        List<String> nouns = new ArrayList<>();
+        nouns.add(nounGenerator.getRandom());
+        return nouns;
+    }
 }

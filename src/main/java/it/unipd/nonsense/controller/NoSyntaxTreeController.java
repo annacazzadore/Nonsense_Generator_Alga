@@ -86,6 +86,7 @@ public class NoSyntaxTreeController {
             List<String> nouns = new ArrayList<>(wordsByType.getOrDefault("NOUN", Collections.emptySet()));
             List<String> verbs = new ArrayList<>(wordsByType.getOrDefault("VERB", Collections.emptySet()));
             List<String> adjectives = new ArrayList<>(wordsByType.getOrDefault("ADJ", Collections.emptySet()));
+            
 
             // Genera le frasi
             SentenceGenerator generator = new SentenceGenerator();
