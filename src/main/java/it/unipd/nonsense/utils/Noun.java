@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Noun implements WordProvider {
+public class Noun {
     private List<String> nouns;
 
     public Noun() throws IOException {
