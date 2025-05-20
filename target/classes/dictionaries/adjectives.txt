@@ -11,3 +11,9 @@ black
 blue
 new
 nice
+white
+yellow
+dark
+brown
+quick
+lazy
