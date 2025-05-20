@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxTreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxTreeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +66,7 @@
         <env name="GOOGLE_APPLICATION_CREDENTIALS" value="" />
       </envs>
       <option name="envFilePaths">
-        <option value="$PROJECT_DIR$/../../../../../nonsense-generator-alga-133489f89750.json" />
+        <option value="$PROJECT_DIR$/../../../../nonsense-generator-alga-133489f89750.json" />
       </option>
       <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.main" />
       <module name="Nonsense_Generator_Alga" />

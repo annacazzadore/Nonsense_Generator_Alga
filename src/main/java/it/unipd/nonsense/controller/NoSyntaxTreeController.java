@@ -110,8 +110,4 @@ public class NoSyntaxTreeController {
             templates.setValue("-");
         }
     }
-
-    private void handleMenuAction(String action) {
-        System.out.println("Eseguito: " + action);
-    }
 }

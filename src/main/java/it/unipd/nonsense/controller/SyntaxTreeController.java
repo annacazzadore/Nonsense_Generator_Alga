@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.TextFlow;
@@ -19,10 +16,13 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class SyntaxTreeController {
     @FXML private TextField numberT;
-    @FXML private MenuButton templateT;
+    @FXML private ChoiceBox templates;
     @FXML private Pane treePane; // Cambiato da TextFlow a Pane per disegnare
     @FXML private Button generateT;
 
@@ -30,6 +30,9 @@ public class SyntaxTreeController {
 
     @FXML
     public void initialize() {
+
+        initializeTemplate();
+
         treeVisualizer = new DependencyTreeVisualizer(treePane);
 
         // Aggiungi listener per il ridimensionamento
@@ -87,6 +90,30 @@ public class SyntaxTreeController {
             currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    //gestione del menú per i template
+    @FXML
+    public void initializeTemplate() {
+        try {
+            // 1. Leggi tutte le righe dal file
+            List<String> options = Files.readAllLines(Paths.get("src/resources/dictionaries/templates.txt"));
+
+            // 2. Pulisci eventuali elementi esistenti e aggiungi i nuovi
+            templates.getItems().clear();
+            templates.getItems().addAll(options);
+
+            // 3. Imposta un valore predefinito (opzionale)
+            if (!options.isEmpty()) {
+                templates.setValue("-");
+            }
+
+        } catch (IOException e) {
+            System.err.println("Errore nel caricamento delle opzioni: " + e.getMessage());
+
+            // Fallback con valori di default
+            templates.setValue("-");
         }
     }
 }
