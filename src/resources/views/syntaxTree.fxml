@@ -57,9 +57,9 @@
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
             </Button>
-            <ScrollPane layoutX="213.0" layoutY="35.0" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: transparent; -fx-padding: 0; -fx-background-insets: 0;" pannable="false" fitToHeight="true" fitToWidth="false" hbarPolicy="AS_NEEDED" vbarPolicy="NEVER">
+            <ScrollPane fx:id="treeScrollPane" layoutX="18.0" layoutY="50.0" prefHeight="218.0" prefWidth="227.0">
                <content>
-                  <Label fx:id="wordsLabel" style="-fx-background-color: white; -fx-padding: 0; -fx-font-size: 11px;" text="Parole usate, parole molto lunghe eventualmente con ancora più parole che vanno oltre il bordo" wrapText="false" />
+                  <Pane fx:id="treePane" />
                </content>
             </ScrollPane>
          </children>
