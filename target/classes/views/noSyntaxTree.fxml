@@ -27,13 +27,11 @@
             <ScrollPane fitToHeight="true" fitToWidth="false" hbarPolicy="AS_NEEDED" layoutX="307.0" layoutY="42.0" pannable="false" prefHeight="36.0" prefWidth="328.0" style="-fx-background-color: white; -fx-padding: 0; -fx-background-insets: 0;" vbarPolicy="NEVER">
                <content>
                   <Label fx:id="wordsLabel"
-                         style="-fx-background-color: white; -fx-padding: 0;"
-                         wrapText="false">
+                         style="-fx-background-color: white; -fx-padding: 0 10 0 10;" wrapText="false">
                      <font>
                         <Font name="Hiragino Sans W4" size="18.0"/>
                      </font>
                   </Label>
-
                </content>
             </ScrollPane>
 
