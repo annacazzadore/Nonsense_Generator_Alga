@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/NoSyntaxTreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/NoSyntaxTreeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

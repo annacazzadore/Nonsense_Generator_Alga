@@ -23,9 +23,11 @@ public class NoSyntaxTreeController {
     @FXML private ChoiceBox<String> templates;
     @FXML private TextArea words;
     @FXML private Button generate;
+    private AnalysisResult currentResult;
 
     public void initializeWithResult(AnalysisResult result) {
-        //initializeTemplates();
+        // Salva il risultato come campo della classe
+        this.currentResult = result;
 
         // Mostra il numero di variazioni
         number.setText("1");
@@ -54,6 +56,11 @@ public class NoSyntaxTreeController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
             Parent root = loader.load();
+
+            // Ottieni il controller e passa la frase
+            MainController mainController = loader.getController();
+            mainController.setSentenceText(currentResult.getOriginalText());
+
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Random Sentence Generator ALGA");

@@ -130,4 +130,10 @@ public class MainController {
         // Puoi usare Alert di JavaFX o un altro metodo a tua scelta
         System.err.println(message);
     }
+
+    public void setSentenceText(String text) {
+        if (text != null && !text.trim().isEmpty()) {
+            sentence.setText(text.trim());
+        }
+    }
 }

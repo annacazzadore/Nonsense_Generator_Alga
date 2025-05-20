@@ -25,6 +25,7 @@ public class SyntaxTreeController {
     @FXML private ChoiceBox templates;
     @FXML private Pane treePane; // Cambiato da TextFlow a Pane per disegnare
     @FXML private Button generateT;
+    private AnalysisResult currentResult;
 
     private DependencyTreeVisualizer treeVisualizer;
 
@@ -49,9 +50,10 @@ public class SyntaxTreeController {
         });
     }
 
-    private AnalysisResult currentResult;
-
     public void initializeWithResult(AnalysisResult result) {
+
+        this.currentResult = result;
+
         numberT.setText("1");
 
         DependencyTreeVisualizer visualizer = new DependencyTreeVisualizer(treePane);
@@ -63,6 +65,11 @@ public class SyntaxTreeController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
             Parent root = loader.load();
+
+            // Ottieni il controller e passa la frase
+            MainController mainController = loader.getController();
+            mainController.setSentenceText(currentResult.getOriginalText());
+
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Random Sentence Generator ALGA");
