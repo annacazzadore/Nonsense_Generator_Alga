@@ -6,15 +6,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.SyntaxTreeController">
    <children>
-      <Pane layoutX="101.0" layoutY="143.0" prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
+      <Pane layoutX="100.0" layoutY="150.0" prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
          <children>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="-10.0" layoutY="17.0" style="-fx-background-color: transparent;" text="Syntax Tree">
+            <ImageView fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#handleBack" pickOnBounds="true">
+               <image>
+                  <Image url="@/views/style/1410611-200.png" />
+               </image>
+            </ImageView>
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="62.0" layoutY="21.0" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: transparent;" text="Syntax Tree">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
@@ -36,7 +43,7 @@
                   </Label>
                </content>
             </ScrollPane>
-            <TextField editable="false" focusTraversable="false" layoutX="288.0" layoutY="124.0" style="-fx-background-color: transparent;" text="Number of variations:">
+            <TextField editable="false" focusTraversable="false" layoutX="288.0" layoutY="117.0" style="-fx-background-color: transparent;" text="Number of variations:">
                <font>
                   <Font name="Hiragino Sans W4" size="18.0" />
                </font>
@@ -44,7 +51,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <TextField editable="false" focusTraversable="false" layoutX="288.0" layoutY="163.0" style="-fx-background-color: transparent;" text="Select a template">
+            <TextField editable="false" focusTraversable="false" layoutX="288.0" layoutY="156.0" style="-fx-background-color: transparent;" text="Select a template:">
                <font>
                   <Font name="Hiragino Sans W4" size="18.0" />
                </font>
@@ -52,13 +59,13 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <TextField fx:id="numberT" layoutX="514.0" layoutY="117.0" prefHeight="20.0" prefWidth="32.0" style="-fx-background-color: white;">
+            <TextField fx:id="numberT" focusTraversable="false" layoutX="514.0" layoutY="117.0" prefHeight="30.0" prefWidth="63.0" style="-fx-background-color: white;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <ChoiceBox fx:id="templates" layoutX="500.0" layoutY="163.0" prefHeight="19.0" prefWidth="63.0" style="-fx-background-color: #ffffff;" />
-            <Button fx:id="generateT" layoutX="420.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#handleGenerate" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: white;" text="Generate">
+            <ChoiceBox fx:id="templates" layoutX="500.0" layoutY="163.0" prefHeight="22.0" prefWidth="90.0" style="-fx-background-color: #ffffff;" />
+            <Button fx:id="generateT" layoutX="422.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleGenerate" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: white;" text="Generate">
                <font>
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>

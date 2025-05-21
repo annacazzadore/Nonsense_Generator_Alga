@@ -26,17 +26,16 @@
 
             <ScrollPane fitToHeight="true" fitToWidth="false" hbarPolicy="AS_NEEDED" layoutX="307.0" layoutY="42.0" pannable="false" prefHeight="36.0" prefWidth="328.0" style="-fx-background-color: white; -fx-padding: 0; -fx-background-insets: 0;" vbarPolicy="NEVER">
                <content>
-                  <Label fx:id="wordsLabel"
-                         style="-fx-background-color: rgba(0,0,0,0);; -fx-padding: 0 10 0 10;" wrapText="false">
+                  <Label fx:id="wordsLabel" style="-fx-background-color: rgba(0,0,0,0);; -fx-padding: 0 10 0 10;" wrapText="false">
                      <font>
-                        <Font name="Hiragino Sans W4" size="18.0"/>
+                        <Font name="Hiragino Sans W4" size="18.0" />
                      </font>
                   </Label>
                </content>
             </ScrollPane>
 
 
-            <TextField editable="false" focusTraversable="false" layoutX="154.0" layoutY="92.0" prefHeight="30.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Number of variations:">
+            <TextField editable="false" focusTraversable="false" layoutX="154.0" layoutY="100.0" prefHeight="30.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Number of variations:">
                <font>
                   <Font name="Hiragino Sans W4" size="18.0" />
                </font>
@@ -45,13 +44,13 @@
                </cursor>
             </TextField>
 
-            <TextField fx:id="number" focusTraversable="false" layoutX="405.0" layoutY="92.0" prefHeight="30.0" prefWidth="63.0" style="-fx-background-color: white;">
+            <TextField fx:id="number" focusTraversable="false" layoutX="414.0" layoutY="101.0" prefHeight="30.0" prefWidth="63.0" style="-fx-background-color: white;">
                <font>
                   <Font name="Hiragino Sans W4" size="18.0" />
                </font>
             </TextField>
 
-            <TextField editable="false" focusTraversable="false" layoutX="154.0" layoutY="134.0" prefHeight="30.0" prefWidth="209.0" style="-fx-background-color: transparent;" text="Select a template:">
+            <TextField editable="false" focusTraversable="false" layoutX="154.0" layoutY="146.0" prefHeight="30.0" prefWidth="209.0" style="-fx-background-color: transparent;" text="Select a template:">
                <font>
                   <Font name="Hiragino Sans W4" size="18.0" />
                </font>
@@ -60,9 +59,9 @@
                </cursor>
             </TextField>
 
-            <ChoiceBox fx:id="templates" layoutX="360.0" layoutY="136.0" prefHeight="22.0" prefWidth="90.0" style="-fx-background-color: white;" />
+            <ChoiceBox fx:id="templates" layoutX="400.0" layoutY="154.0" prefHeight="22.0" prefWidth="90.0" style="-fx-background-color: white;" />
 
-            <Button fx:id="generate" layoutX="290.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#handleGenerate" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white;" text="Generate">
+            <Button fx:id="generate" layoutX="290.0" layoutY="215.0" mnemonicParsing="false" onMouseClicked="#handleGenerate" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: white;" text="Generate">
                <font>
                   <Font name="Hiragino Sans W5" size="18.0" />
                </font>
