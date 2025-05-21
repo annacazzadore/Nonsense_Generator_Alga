@@ -20,7 +20,7 @@
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
             </Button>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="180.0" layoutY="33.0" style="-fx-background-color: transparent;" text="Enter your sentence">
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="202.0" layoutY="32.0" style="-fx-background-color: transparent;" text="Results">
                <font>
                   <Font name="Hiragino Sans W7" size="24.0" />
                </font>

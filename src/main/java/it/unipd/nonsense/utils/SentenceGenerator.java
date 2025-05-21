@@ -32,36 +32,28 @@ public class SentenceGenerator {
             throw new IllegalArgumentException("Seleziona un template valido");
         }
 
-        // Se le liste sono vuote, usa parole dai dizionari
-        if (nouns == null || nouns.isEmpty()) {
-            nouns = getAllNounsFromDictionary();
-        }
-
-        if (verbs == null || verbs.isEmpty()) {
-            verbs = getAllVerbsFromDictionary();
-        }
-
-        if (adjectives == null || adjectives.isEmpty()) {
-            adjectives = getAllAdjectivesFromDictionary();
-        }
-
         for (int i = 0; i < count; i++) {
             String sentence = template;
 
+            // Per ogni frase, ottieni nuove parole dai dizionari se le liste fornite sono vuote
+            List<String> currentNouns = (nouns == null || nouns.isEmpty()) ? getAllNounsFromDictionary() : new ArrayList<>(nouns);
+            List<String> currentVerbs = (verbs == null || verbs.isEmpty()) ? getAllVerbsFromDictionary() : new ArrayList<>(verbs);
+            List<String> currentAdjectives = (adjectives == null || adjectives.isEmpty()) ? getAllAdjectivesFromDictionary() : new ArrayList<>(adjectives);
+
             // Mescola le liste per randomizzare la selezione
-            Collections.shuffle(nouns);
-            Collections.shuffle(verbs);
-            Collections.shuffle(adjectives);
+            Collections.shuffle(currentNouns, rand);
+            Collections.shuffle(currentVerbs, rand);
+            Collections.shuffle(currentAdjectives, rand);
 
             // Sostituisci i placeholder con parole casuali
-            sentence = replacePlaceholders(sentence, nouns, verbs, adjectives, rand);
+            sentence = replacePlaceholders(sentence, currentNouns, currentVerbs, currentAdjectives, rand);
 
             sentences.add(sentence);
         }
 
         return sentences;
     }
-
+    
     private String replacePlaceholders(String template, List<String> nouns, List<String> verbs, List<String> adjectives, Random rand) {
         String result = template;
 

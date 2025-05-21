@@ -60,3 +60,4 @@ computer
 charger
 book
 lipstick
+hat
