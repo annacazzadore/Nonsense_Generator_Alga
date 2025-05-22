@@ -111,16 +111,16 @@ public class SyntaxTreeController {
             try {
                 numSentences = Integer.parseInt(numberT.getText());
                 if (numSentences <= 0) {
-                    showAlert("Errore", "Il numero di frasi deve essere maggiore di 0");
+                    showAlert("Errore", "The number of sentences must be greater than 0.");
                     return;
                 }
             } catch (NumberFormatException e) {
-                showAlert("Errore", "Inserisci un numero valido");
+                showAlert("Errore", "Insert a valid number.");
                 return;
             }
             String template = templates.getValue().toString();
             if (template == null || template.isEmpty() || template.equals("-")) {
-                showAlert("Errore", "Seleziona un template valido");
+                showAlert("Errore", "Select a valid template.");
                 return;
             }
 
@@ -151,10 +151,10 @@ public class SyntaxTreeController {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
-            showAlert("Errore", "Errore durante la generazione delle frasi: " + e.getMessage());
+            showAlert("Error", "An error occurred while generating the sentences." + e.getMessage());
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            showAlert("Errore", e.getMessage());
+            showAlert("Error", e.getMessage());
         }
     }
 
@@ -183,7 +183,7 @@ public class SyntaxTreeController {
             }
 
         } catch (IOException e) {
-            System.err.println("Errore nel caricamento delle opzioni: " + e.getMessage());
+            System.err.println("Failed to load options." + e.getMessage());
 
             // Fallback con valori di default
             templates.setValue("-");

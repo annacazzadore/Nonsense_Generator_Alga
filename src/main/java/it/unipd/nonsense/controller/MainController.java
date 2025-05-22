@@ -31,36 +31,37 @@ public class MainController {
         String inputText = sentence.getText().trim();
         if (!inputText.isEmpty()) {
             try {
-                // Inizializza l'analizzatore di frasi
+                // Initialize the sentence analyzer
                 SentenceAnalyzer analyzer = new SentenceAnalyzer();
 
-                // Verifica che la frase sia in inglese
+                // Check that the sentence is in English
                 if (!analyzer.isEnglish(inputText)) {
-                    showError("Per favore inserisci solo frasi o parole in inglese");
+                    showError("Please avoid using non-English terms.");
                     analyzer.close();
                     return;
                 }
 
-                // Analizza la frase
+                // Analyze the sentence
                 AnalyzeSyntaxResponse syntaxResponse = analyzer.analyzeSentence(inputText);
 
-                // Calcola e stampa il punteggio di tossicità
+                // Compute and print toxicity score
                 float toxicityScore = analyzer.getToxicityScore(inputText);
-                System.out.printf("Livello di tossicità: %.2f%%%n", toxicityScore * 100);
+                System.out.printf("Toxicity rate: %.2f%%%n", toxicityScore * 100);
 
-// Soglia personalizzabile (es. 0.5 = 50%)
+                // Custom threshold (e.g., 0.5 = 50%)
                 if (toxicityScore >= 0.5f) {
                     showErrorDialog(
-                            String.format("La frase contiene contenuto potenzialmente tossico (livello: %.2f%%)", toxicityScore * 100),
+                            String.format("This sentence may include harmful or offensive language. (rate: %.2f%%)", toxicityScore * 100),
                             toxicityScore
                     );
                     analyzer.close();
                     return;
                 }
 
-                // Ottieni lo Stage corrente
+                // Get the current stage
                 Stage currentStage = (Stage) analyze.getScene().getWindow();
-                // Carica la finestra appropriata in base alla selezione del checkbox
+
+                // Load the appropriate view depending on the checkbox selection
                 FXMLLoader loader;
                 if (tree.isSelected()) {
                     loader = new FXMLLoader(getClass().getResource("/views/syntaxTree.fxml"));
@@ -75,24 +76,24 @@ public class MainController {
                 newStage.setResizable(false);
                 newStage.show();
 
-                // Chiudi la finestra attuale
+                // Close the current window
                 currentStage.close();
 
-                // Crea il risultato dell'analisi
+                // Create the analysis result
                 AnalysisResult result = new AnalysisResult();
                 result.setOriginalText(inputText);
                 result.setSyntaxResponse(syntaxResponse);
                 result.setWordsByType(analyzer.extractWordsByType(syntaxResponse));
 
-                // Stampa l'albero sintattico se richiesto
+                // Print syntax tree if requested
                 if (tree.isSelected()) {
                     analyzer.printSyntaxTree(syntaxResponse);
                 }
 
-                // Salva le parole nei dizionari
+                // Save words to dictionaries
                 analyzer.saveWordsToDictionaries(result.getWordsByType());
 
-                // Passa i risultati al controller appropriato
+                // Pass results to the appropriate controller
                 if (tree.isSelected()) {
                     SyntaxTreeController syntaxTreeController = loader.getController();
                     syntaxTreeController.initializeWithResult(result);
@@ -100,16 +101,17 @@ public class MainController {
                     NoSyntaxTreeController noSyntaxTreeController = loader.getController();
                     noSyntaxTreeController.initializeWithResult(result);
                 }
+
                 this.lastAnalysisResult = result;
                 newStage.show();
                 analyzer.close();
 
             } catch (Exception e) {
                 e.printStackTrace();
-                showError("Errore durante l'analisi della frase: " + e.getMessage());
+                showError("An error occurred while analyzing the sentence : " + e.getMessage());
             }
         } else {
-            showError("Inserisci una frase da analizzare");
+            showError("Please enter a sentence to analyze.");
         }
     }
 
@@ -118,7 +120,7 @@ public class MainController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/popUp.fxml"));
             Parent root = loader.load();
 
-            // Ottieni il controller del popUp e imposta il tasso di tossicità
+            // Get the pop-up controller and set the toxicity score
             PopUpController controller = loader.getController();
             controller.setToxicityRate(toxicityScore);
 
@@ -140,13 +142,13 @@ public class MainController {
     }
 
     private void showError(String message) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText(message);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
 
-            // Mostra la finestra e aspetta che l'utente la chiuda
-            alert.showAndWait();
+        // Show the alert and wait for user to close it
+        alert.showAndWait();
     }
 
     public void setSentenceText(String text) {

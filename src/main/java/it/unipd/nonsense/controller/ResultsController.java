@@ -144,7 +144,7 @@ public class ResultsController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            resultArea.setText("Errore durante la generazione e il filtro delle frasi.");
+            resultArea.setText("Error during sentence generation and filtering.");
         }
     }
 
