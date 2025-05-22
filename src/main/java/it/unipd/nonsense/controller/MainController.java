@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -32,6 +33,13 @@ public class MainController {
             try {
                 // Inizializza l'analizzatore di frasi
                 SentenceAnalyzer analyzer = new SentenceAnalyzer();
+
+                // Verifica che la frase sia in inglese
+                if (!analyzer.isEnglish(inputText)) {
+                    showError("Per favore inserisci solo frasi o parole in inglese");
+                    analyzer.close();
+                    return;
+                }
 
                 // Analizza la frase
                 AnalyzeSyntaxResponse syntaxResponse = analyzer.analyzeSentence(inputText);
@@ -132,9 +140,13 @@ public class MainController {
     }
 
     private void showError(String message) {
-        // Implementa una finestra di dialogo per mostrare gli errori
-        // Puoi usare Alert di JavaFX o un altro metodo a tua scelta
-        System.err.println(message);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+
+            // Mostra la finestra e aspetta che l'utente la chiuda
+            alert.showAndWait();
     }
 
     public void setSentenceText(String text) {

@@ -61,3 +61,5 @@ charger
 book
 lipstick
 hat
+casa
+volta

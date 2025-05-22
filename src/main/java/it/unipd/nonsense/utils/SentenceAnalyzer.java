@@ -162,5 +162,21 @@ public class SentenceAnalyzer {
                 .orElse(0.0f);
     }
 
+    public boolean isEnglish(String text) throws IOException {
+        Document doc = Document.newBuilder()
+                .setContent(text)
+                .setType(Type.PLAIN_TEXT)
+                .build();
+
+        AnalyzeEntitiesRequest request = AnalyzeEntitiesRequest.newBuilder()
+                .setDocument(doc)
+                .setEncodingType(EncodingType.UTF8)
+                .build();
+
+        AnalyzeEntitiesResponse response = language.analyzeEntities(request);
+        String languageCode = response.getLanguage();
+
+        return "en".equals(languageCode);
+    }
 
 }
