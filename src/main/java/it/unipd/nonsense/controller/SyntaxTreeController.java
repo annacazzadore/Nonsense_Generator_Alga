@@ -24,7 +24,7 @@ import java.util.*;
 
 public class SyntaxTreeController {
 
-    @FXML    private Spinner<Integer> number;
+    @FXML private Spinner<Integer> number;
     @FXML private ChoiceBox templates;
     @FXML private Label wordsLabel;
     @FXML private Pane treePane; // Cambiato da TextFlow a Pane per disegnare
