@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -59,17 +60,13 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <TextField fx:id="numberT" focusTraversable="false" layoutX="514.0" layoutY="117.0" prefHeight="30.0" prefWidth="63.0" style="-fx-background-color: white;">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
             <ChoiceBox fx:id="templates" layoutX="500.0" layoutY="163.0" prefHeight="22.0" prefWidth="90.0" style="-fx-background-color: #ffffff;" />
             <Button fx:id="generateT" layoutX="422.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleGenerate" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: white;" text="Generate">
                <font>
                   <Font name="Hiragino Sans W5" size="13.0" />
                </font>
             </Button>
+            <Spinner fx:id="number" editable="true" focusTraversable="false" layoutX="508.0" layoutY="120.0" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" />
          </children>
       </Pane>
    </children>
