@@ -78,8 +78,22 @@ public class NoSyntaxTreeController {
     private void handleGenerate(MouseEvent event) {
         try {
             // Ottieni i parametri dall'interfaccia
-            int numSentences = Integer.parseInt(number.getText());
+            int numSentences;
+            try {
+                numSentences = Integer.parseInt(number.getText());
+                if (numSentences <= 0) {
+                    showAlert("Errore", "Il numero di frasi deve essere maggiore di 0");
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                showAlert("Errore", "Inserisci un numero valido");
+                return;
+            }
             String template = templates.getValue().toString();
+            if (template == null || template.isEmpty() || template.equals("-")) {
+                showAlert("Errore", "Seleziona un template valido");
+                return;
+            }
 
             // Estrai le parole dalle liste
             Map<String, Set<String>> wordsByType = currentResult.getWordsByType();
@@ -109,11 +123,10 @@ public class NoSyntaxTreeController {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
+            showAlert("Errore", "Errore durante la generazione delle frasi: " + e.getMessage());
             e.printStackTrace();
-            // Gestisci l'errore (mostra un messaggio all'utente)
-        } catch (NumberFormatException e) {
-            // Gestisci errore di conversione del numero
-            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            showAlert("Errore", e.getMessage());
         }
     }
 
@@ -139,5 +152,13 @@ public class NoSyntaxTreeController {
             // Fallback con valori di default
             templates.setValue("-");
         }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
