@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_media1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_media1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/adjectives.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/SentenceAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/SentenceAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/nouns.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/dictionaries/verbs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/results.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/results.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/syntaxTree.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/adjectives.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/nouns.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dictionaries/verbs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/noSyntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/noSyntaxTree.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/views/results.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/results.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/syntaxTree.fxml" afterDir="false" />
     </list>
@@ -84,17 +80,17 @@
 }</component>
   <component name="RunManager">
     <configuration name="Nonsense_Generator_Alga" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="24" />
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Java/jdk-24" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <envs>
         <env name="GOOGLE_APPLICATION_CREDENTIALS" value="" />
       </envs>
       <option name="envFilePaths">
-        <option value="$USER_HOME$/Desktop/nonsense-generator-alga-133489f89750.json" />
+        <option value="$PROJECT_DIR$/../../../../nonsense-generator-alga-4496c59a3154.json" />
       </option>
       <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.main" />
       <module name="Nonsense_Generator_Alga" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;$USER_HOME$/Downloads/javafx-sdk-24.0.1/lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --enable-native-access=ALL-UNNAMED" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/../../../../../javafx-sdk-24.0.1/lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --enable-native-access=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -124,6 +120,7 @@
       <workItem from="1747747481131" duration="164000" />
       <workItem from="1747747648081" duration="978000" />
       <workItem from="1747748633610" duration="6230000" />
+      <workItem from="1747899191318" duration="2735000" />
     </task>
     <servers />
   </component>
