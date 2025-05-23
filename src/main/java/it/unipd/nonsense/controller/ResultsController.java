@@ -129,6 +129,7 @@ public class ResultsController {
             // Numero di frasi che vuoi mostrare
             int desiredCount = inputSentences.size();
             List<String> nonToxicSentences = new ArrayList<>();
+            List<Float> toxicityScores = new ArrayList<>();
             int attempts = 0;
             int maxAttempts = desiredCount * 10;
 
@@ -139,6 +140,7 @@ public class ResultsController {
                 float toxicity = analyzer.getToxicityScore(sentence);
                 if (toxicity < 0.5f) {
                     nonToxicSentences.add(sentence);
+                    toxicityScores.add(toxicity);
                 }
                 attempts++;
             }
@@ -148,7 +150,12 @@ public class ResultsController {
             // Mostra solo le non tossiche
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < nonToxicSentences.size(); i++) {
-                sb.append((i + 1)).append(". ").append(nonToxicSentences.get(i)).append("\n\n");
+                sb.append((i + 1))
+                        .append(". ")
+                        .append(nonToxicSentences.get(i))
+                        .append("\n   Toxicity score: ")
+                        .append(String.format("%.2f%%", toxicityScores.get(i) * 100))
+                        .append("\n\n");
             }
             resultArea.setText(sb.toString());
 
