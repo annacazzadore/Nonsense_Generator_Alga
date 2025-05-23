@@ -3,7 +3,8 @@ package it.unipd.nonsense.controller;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
-public class NoSyntaxTreeController extends SyntaxController {
+public class NoSyntaxTreeController extends SyntaxController
+{
     private static final String VIEW_TYPE = "noTree";
     public ImageView back;
     public Button generate;

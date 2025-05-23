@@ -21,7 +21,8 @@ public class DependencyTreeVisualizer {
     private static final double NODE_WIDTH = 80;
     private static final double NODE_HEIGHT = 40;
 
-    public DependencyTreeVisualizer(Pane drawingPane) {
+    public DependencyTreeVisualizer(Pane drawingPane)
+    {
         this.drawingPane = drawingPane;
         this.paneWidth = drawingPane.getWidth();
         this.paneHeight = drawingPane.getHeight();
@@ -38,22 +39,28 @@ public class DependencyTreeVisualizer {
 
     }
 
-    private void redrawTree() {
-        if (currentTokens != null) {
+    private void redrawTree()
+    {
+        if (currentTokens != null)
+        {
             drawDependencyTree(currentTokens);
         }
     }
 
-    private Token findRootToken(List<Token> tokens) {
-        for (Token token : tokens) {
-            if (token.getDependencyEdge().getLabel() == DependencyEdge.Label.ROOT) {
+    private Token findRootToken(List<Token> tokens)
+    {
+        for (Token token : tokens)
+        {
+            if (token.getDependencyEdge().getLabel() == DependencyEdge.Label.ROOT)
+            {
                 return token;
             }
         }
         return null;
     }
 
-    public void drawDependencyTree(List<Token> tokens) {
+    public void drawDependencyTree(List<Token> tokens)
+    {
         this.currentTokens = tokens;
         drawingPane.getChildren().clear();
         if (tokens.isEmpty()) return;
@@ -64,7 +71,7 @@ public class DependencyTreeVisualizer {
         TreeNodeLayout rootLayout = buildLayout(rootToken, tokens);
 
         double totalTreeWidth = rootLayout.subtreeWidth;
-        double scale = Math.min((paneWidth - 40) / totalTreeWidth, 1.0); // scaling solo se serve
+        double scale = Math.min((paneWidth - 40) / totalTreeWidth, 1.0);
 
         Map<Token, Position> positions = new HashMap<>();
         double centerX = paneWidth / 2;
@@ -75,13 +82,15 @@ public class DependencyTreeVisualizer {
         double actualTreeWidth = maxX - minX;
         double offset = (paneWidth - actualTreeWidth) / 2 - minX;
 
-        for (Position pos : positions.values()) {
+        for (Position pos : positions.values())
+        {
             pos.x += offset;
         }
 
-
-        if (scale < 1.0) {
-            for (Position pos : positions.values()) {
+        if (scale < 1.0)
+        {
+            for (Position pos : positions.values())
+            {
                 pos.x = centerX + (pos.x - centerX) * scale;
             }
         }
@@ -91,69 +100,75 @@ public class DependencyTreeVisualizer {
     }
 
 
-    private List<Token> getChildren(Token parent, List<Token> allTokens) {
+    private List<Token> getChildren(Token parent, List<Token> allTokens)
+    {
         List<Token> children = new ArrayList<>();
         int parentIndex = allTokens.indexOf(parent);
 
-        for (Token token : allTokens) {
-            if (token.getDependencyEdge().getHeadTokenIndex() == parentIndex &&
-                    token != parent) {
+        for (Token token : allTokens)
+        {
+            if (token.getDependencyEdge().getHeadTokenIndex() == parentIndex && token != parent)
+            {
                 children.add(token);
             }
         }
 
-        // Sort children by their position in the sentence
         children.sort(Comparator.comparingInt(allTokens::indexOf));
         return children;
     }
 
-    private void drawAllConnections(List<Token> tokens, Map<Token, Position> positions) {
-        for (Token token : tokens) {
+    private void drawAllConnections(List<Token> tokens, Map<Token, Position> positions)
+    {
+        for (Token token : tokens)
+        {
             DependencyEdge edge = token.getDependencyEdge();
             int headIndex = edge.getHeadTokenIndex();
 
-            if (token.getDependencyEdge().getLabel() != DependencyEdge.Label.ROOT &&
-                    headIndex >= 0 && headIndex < tokens.size()) {
+            if (token.getDependencyEdge().getLabel() != DependencyEdge.Label.ROOT && headIndex >= 0 && headIndex < tokens.size())
+            {
 
                 Token headToken = tokens.get(headIndex);
                 Position headPos = positions.get(headToken);
                 Position childPos = positions.get(token);
 
-                if (headPos != null && childPos != null) {
-                    // Aggiunto 10px all'offset verticale per far partire le frecce più in basso
+                if (headPos != null && childPos != null)
+                {
                     double startYOffset = NODE_HEIGHT/2 + 10;
-                    double endYOffset = 15; // Puoi regolare anche questo se vuoi cambiare il punto di arrivo
-
-                    drawConnection(headPos.x, headPos.y + startYOffset,
-                            childPos.x, childPos.y - endYOffset
-                    );
+                    double endYOffset = 15;
+                    drawConnection(headPos.x, headPos.y + startYOffset, childPos.x, childPos.y - endYOffset);
                 }
             }
         }
     }
 
-    private void drawAllNodes(List<Token> tokens, Map<Token, Position> positions) {
-        for (Token token : tokens) {
+    private void drawAllNodes(List<Token> tokens, Map<Token, Position> positions)
+    {
+        for (Token token : tokens)
+        {
             Position pos = positions.get(token);
-            if (pos != null) {
+            if (pos != null)
+            {
                 drawNode(token, pos.x, pos.y);
             }
         }
     }
 
-    private void drawNode(Token token, double x, double y) {
+    private void drawNode(Token token, double x, double y)
+    {
         String content = token.getText().getContent();
         String label;
-        if (token.getDependencyEdge().getLabel() == DependencyEdge.Label.ROOT) {
-            label = token.getPartOfSpeech().getTag().toString(); // E.g. NOUN, VERB, ADJ...
-        } else {
+
+        if (token.getDependencyEdge().getLabel() == DependencyEdge.Label.ROOT)
+        {
+            label = token.getPartOfSpeech().getTag().toString();
+        }
+        else
+        {
             label = token.getDependencyEdge().getLabel().toString();
         }
 
-
         boolean isRoot = token.getDependencyEdge().getLabel() == DependencyEdge.Label.ROOT;
 
-        // Crea il testo
         Text text = new Text(content + "\n(" + label + ")");
         text.setFont(Font.font("Arial", 11));
         text.setTextAlignment(TextAlignment.CENTER);
@@ -161,11 +176,13 @@ public class DependencyTreeVisualizer {
         text.setX(x - (NODE_WIDTH / 2) + 5);
         text.setY(y + (NODE_HEIGHT / 4));
 
-        // Stile speciale per la radice
-        if (isRoot) {
+        if (isRoot)
+        {
             text.setFill(Color.DARKRED);
             text.setStyle("-fx-font-weight: bold;");
-        } else {
+        }
+        else
+        {
             text.setFill(Color.BLACK);
         }
 
@@ -173,18 +190,19 @@ public class DependencyTreeVisualizer {
     }
 
 
-    private void drawConnection(double startX, double startY, double endX, double endY) {
+    private void drawConnection(double startX, double startY, double endX, double endY)
+    {
         Line line = new Line(startX, startY, endX, endY);
         line.setStroke(Color.GRAY);
         line.setStrokeWidth(1);
         line.getStrokeDashArray().addAll(2d, 4d);
         drawingPane.getChildren().add(line);
 
-        // Add arrow head
         drawArrowHead(startX, startY, endX, endY);
     }
 
-    private void drawArrowHead(double startX, double startY, double endX, double endY) {
+    private void drawArrowHead(double startX, double startY, double endX, double endY)
+    {
         double angle = Math.atan2(endY - startY, endX - startX);
         double arrowLength = 8;
 
@@ -207,48 +225,59 @@ public class DependencyTreeVisualizer {
         drawingPane.getChildren().addAll(arrow1, arrow2);
     }
 
-    private static class Position {
+    private static class Position
+    {
         double x, y;
-        Position(double x, double y) {
+        Position(double x, double y)
+        {
             this.x = x;
             this.y = y;
         }
     }
 
-    private static class TreeNodeLayout {
+    private static class TreeNodeLayout
+    {
         Token token;
         List<TreeNodeLayout> children = new ArrayList<>();
         double subtreeWidth;
     }
 
 
-    private TreeNodeLayout buildLayout(Token current, List<Token> allTokens) {
+    private TreeNodeLayout buildLayout(Token current, List<Token> allTokens)
+    {
         TreeNodeLayout node = new TreeNodeLayout();
         node.token = current;
-
         List<Token> childrenTokens = getChildren(current, allTokens);
-        for (Token child : childrenTokens) {
+
+        for (Token child : childrenTokens)
+        {
             node.children.add(buildLayout(child, allTokens));
         }
 
-        if (node.children.isEmpty()) {
+        if (node.children.isEmpty())
+        {
             node.subtreeWidth = NODE_WIDTH;
-        } else {
+        }
+        else
+        {
             node.subtreeWidth = 0;
-            for (TreeNodeLayout child : node.children) {
+            for (TreeNodeLayout child : node.children)
+            {
                 node.subtreeWidth += child.subtreeWidth + MIN_H_SPACING;
             }
-            node.subtreeWidth -= MIN_H_SPACING; // rimuovi l’ultimo spazio extra
+            node.subtreeWidth -= MIN_H_SPACING;
         }
 
         return node;
     }
 
-    private void assignPositions(TreeNodeLayout node, double x, double y, Map<Token, Position> positions) {
+    private void assignPositions(TreeNodeLayout node, double x, double y, Map<Token, Position> positions)
+    {
         positions.put(node.token, new Position(x, y));
-
         double currentX = x - node.subtreeWidth / 2;
-        for (TreeNodeLayout child : node.children) {
+
+        for (TreeNodeLayout child : node.children)
+        {
             double childCenterX = currentX + child.subtreeWidth / 2;
             assignPositions(child, childCenterX, y + VERTICAL_SPACING, positions);
             currentX += child.subtreeWidth + MIN_H_SPACING;

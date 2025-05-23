@@ -11,57 +11,64 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-public class SyntaxTreeController extends SyntaxController {
+public class SyntaxTreeController extends SyntaxController
+{
     private static final double SIZE_CHANGE_THRESHOLD = 5.0;
+    private DependencyTreeVisualizer treeVisualizer;
+    private final ChangeListener<Number> sizeListener = this::handlePaneSizeChange;
     public ImageView back;
     public ScrollPane treeScrollPane;
     public Button generateT;
 
-    @FXML
-    private Pane treePane;
-
-    private DependencyTreeVisualizer treeVisualizer;
-    private final ChangeListener<Number> sizeListener = this::handlePaneSizeChange;
+    @FXML private Pane treePane;
 
     @Override
-    public void initialize() {
+    public void initialize()
+    {
         super.initialize();
         initializeTreeVisualizer();
         setupSizeListeners();
     }
 
     @Override
-    public void initializeWithResult(AnalysisResult result) {
+    public void initializeWithResult(AnalysisResult result)
+    {
         super.initializeWithResult(result);
         redrawDependencyTree(result);
     }
 
     @Override
-    protected String getPreviousViewType() {
+    protected String getPreviousViewType()
+    {
         return "tree";
     }
 
-    private void initializeTreeVisualizer() {
-        if (treeVisualizer == null) {
+    private void initializeTreeVisualizer()
+    {
+        if (treeVisualizer == null)
+        {
             treeVisualizer = new DependencyTreeVisualizer(treePane);
         }
     }
 
-    private void setupSizeListeners() {
+    private void setupSizeListeners()
+    {
         treePane.widthProperty().addListener(sizeListener);
         treePane.heightProperty().addListener(sizeListener);
     }
 
-    private void handlePaneSizeChange(ObservableValue<? extends Number> obs,
-                                      Number oldVal, Number newVal) {
-        if (currentResult != null &&
-                Math.abs(oldVal.doubleValue() - newVal.doubleValue()) > SIZE_CHANGE_THRESHOLD) {
+    private void handlePaneSizeChange(ObservableValue<? extends Number> obs, Number oldVal, Number newVal)
+    {
+        if (currentResult != null && Math.abs(oldVal.doubleValue() - newVal.doubleValue()) > SIZE_CHANGE_THRESHOLD)
+        {
             Platform.runLater(() -> redrawDependencyTree(currentResult));
         }
     }
 
-    private void redrawDependencyTree(AnalysisResult result) {
-        if (result != null && result.getSyntaxResponse() != null) {
+    private void redrawDependencyTree(AnalysisResult result)
+    {
+        if (result != null && result.getSyntaxResponse() != null)
+        {
             treeVisualizer.drawDependencyTree(result.getSyntaxResponse().getTokensList());
         }
     }

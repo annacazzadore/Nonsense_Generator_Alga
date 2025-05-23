@@ -7,62 +7,57 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class MainController {
+public class MainController
+{
+
+    @FXML private TextField sentence;
+    @FXML private CheckBox tree;
+    @FXML private Button analyze;
 
     @FXML
-    private TextField sentence;
-    @FXML
-    private CheckBox tree;
-    @FXML
-    private Button analyze;
-
-    @FXML
-    private void analyzeSentence() {
+    private void analyzeSentence()
+    {
         String inputText = sentence.getText().trim();
-        if (!inputText.isEmpty()) {
-            try {
-                // Initialize the sentence analyzer
+
+        if (!inputText.isEmpty())
+        {
+            try
+            {
                 SentenceAnalyzer analyzer = new SentenceAnalyzer();
 
-                // Check that the sentence is in English
-                if (!analyzer.isEnglish(inputText)) {
+                if (!analyzer.isEnglish(inputText))
+                {
                     showError("Please avoid using non-English terms.");
                     analyzer.close();
                     return;
                 }
 
-                // Analyze the sentence
                 AnalyzeSyntaxResponse syntaxResponse = analyzer.analyzeSentence(inputText);
 
-                // Compute and print toxicity score
                 float toxicityScore = analyzer.getToxicityScore(inputText);
                 System.out.printf("Toxicity rate: %.2f%%%n", toxicityScore * 100);
 
-                // Custom threshold (e.g., 0.5 = 50%)
-                if (toxicityScore >= 0.5f) {
-                    showErrorDialog(
-                            toxicityScore
-                    );
+                if (toxicityScore >= 0.5f)
+                {
+                    showErrorDialog(toxicityScore);
                     analyzer.close();
                     return;
                 }
 
-                // Get the current stage
                 Stage currentStage = (Stage) analyze.getScene().getWindow();
 
-                // Load the appropriate view depending on the checkbox selection
                 FXMLLoader loader;
-                if (tree.isSelected()) {
+                if (tree.isSelected())
+                {
                     loader = new FXMLLoader(getClass().getResource("/views/syntaxTree.fxml"));
-                } else {
+                }
+                else
+                {
                     loader = new FXMLLoader(getClass().getResource("/views/noSyntaxTree.fxml"));
                 }
 
@@ -73,28 +68,27 @@ public class MainController {
                 newStage.setResizable(false);
                 newStage.show();
 
-                // Close the current window
                 currentStage.close();
 
-                // Create the analysis result
                 AnalysisResult result = new AnalysisResult();
                 result.setOriginalText(inputText);
                 result.setSyntaxResponse(syntaxResponse);
                 result.setWordsByType(analyzer.extractWordsByType(syntaxResponse));
 
-                // Print syntax tree if requested
-                if (tree.isSelected()) {
+                if (tree.isSelected())
+                {
                     analyzer.printSyntaxTree(syntaxResponse);
                 }
 
-                // Save words to dictionaries
                 analyzer.saveWordsToDictionaries(result.getWordsByType());
 
-                // Pass results to the appropriate controller
-                if (tree.isSelected()) {
+                if (tree.isSelected())
+                {
                     SyntaxTreeController syntaxTreeController = loader.getController();
                     syntaxTreeController.initializeWithResult(result);
-                } else {
+                }
+                else
+                {
                     NoSyntaxTreeController noSyntaxTreeController = loader.getController();
                     noSyntaxTreeController.initializeWithResult(result);
                 }
@@ -102,21 +96,26 @@ public class MainController {
                 newStage.show();
                 analyzer.close();
 
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
                 showError("An error occurred while analyzing the sentence : " + e.getMessage());
             }
-        } else {
+        }
+        else
+        {
             showError("Please enter a sentence to analyze.");
         }
     }
 
-    private void showErrorDialog(double toxicityScore) {
-        try {
+    private void showErrorDialog(double toxicityScore)
+    {
+        try
+        {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/popUp.fxml"));
             Parent root = loader.load();
 
-            // Get the pop-up controller and set the toxicity score
             PopUpController controller = loader.getController();
             controller.setToxicityRate(toxicityScore);
 
@@ -132,23 +131,26 @@ public class MainController {
 
             sentence.clear();
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
-    private void showError(String message) {
+    private void showError(String message)
+    {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
         alert.setContentText(message);
-
-        // Show the alert and wait for user to close it
         alert.showAndWait();
     }
 
-    public void setSentenceText(String text) {
-        if (text != null && !text.trim().isEmpty()) {
+    public void setSentenceText(String text)
+    {
+        if (text != null && !text.trim().isEmpty())
+        {
             sentence.setText(text.trim());
         }
     }

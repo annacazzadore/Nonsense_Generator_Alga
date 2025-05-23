@@ -4,12 +4,12 @@ import com.google.cloud.language.v1.AnalyzeSyntaxResponse;
 import java.util.Map;
 import java.util.Set;
 
-public class AnalysisResult {
+public class AnalysisResult
+{
     private String originalText;
     private AnalyzeSyntaxResponse syntaxResponse;
     private Map<String, Set<String>> wordsByType;
 
-    // Getters e Setters
     public String getOriginalText() { return originalText; }
     public void setOriginalText(String originalText) { this.originalText = originalText; }
 
