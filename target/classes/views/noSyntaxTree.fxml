@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Spinner?>
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.NoSyntaxTreeController">
 
    <children>
@@ -44,11 +45,7 @@
                </cursor>
             </TextField>
 
-            <TextField fx:id="number" focusTraversable="false" layoutX="414.0" layoutY="101.0" prefHeight="30.0" prefWidth="63.0" style="-fx-background-color: white;">
-               <font>
-                  <Font name="Hiragino Sans W4" size="18.0" />
-               </font>
-            </TextField>
+            <Spinner fx:id="number" editable="true" focusTraversable="false" layoutX="414.0" layoutY="101.0" prefHeight="30.0" prefWidth="63.0" style="-fx-background-color: #ffffff;" />
 
             <TextField editable="false" focusTraversable="false" layoutX="154.0" layoutY="146.0" prefHeight="30.0" prefWidth="209.0" style="-fx-background-color: transparent;" text="Select a template:">
                <font>

@@ -91,6 +91,7 @@ public class ResultsController {
             } else {
                 NoSyntaxTreeController controller = loader.getController();
                 controller.initializeWithResult(analysisResult);
+                controller.setNumberValue(numberValue);
             }
 
             // Chiudi la finestra corrente

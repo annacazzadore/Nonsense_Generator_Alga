@@ -17,18 +17,17 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class NoSyntaxTreeController {
-    @FXML private TextField number;
+    @FXML private Spinner<Integer> number;
     @FXML private ChoiceBox<String> templates;
     @FXML private Label wordsLabel;
     @FXML private Button generate;
     private AnalysisResult currentResult;
 
+    private int numberValue = 1; // valore di default
+
     public void initializeWithResult(AnalysisResult result) {
         // Salva il risultato come campo della classe
         this.currentResult = result;
-
-        // Mostra il numero di variazioni
-        number.setText("1");
 
         // Prepara il testo da mostrare nel TextField
         StringJoiner wordsJoiner = new StringJoiner(", ");
@@ -80,7 +79,7 @@ public class NoSyntaxTreeController {
             // Ottieni i parametri dall'interfaccia
             int numSentences;
             try {
-                numSentences = Integer.parseInt(number.getText());
+                numSentences = number.getValue();
                 if (numSentences <= 0) {
                     showAlert("Error", "The number of sentences must be greater than 0.");
                     return;
@@ -106,6 +105,8 @@ public class NoSyntaxTreeController {
             SentenceGenerator generator = new SentenceGenerator();
             List<String> sentences = generator.generateSentences(numSentences, template, nouns, verbs, adjectives);
 
+            numberValue = number.getValue();
+
             // Mostra i risultati
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
             Parent root = loader.load();
@@ -113,6 +114,8 @@ public class NoSyntaxTreeController {
             controller.setPreviousView("noTree"); // o "tree" per SyntaxTreeController
             controller.setAnalysisResult(currentResult);
             controller.showGeneratedSentences(sentences);
+            controller.setNumberValue(numberValue);
+
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -134,6 +137,8 @@ public class NoSyntaxTreeController {
     @FXML
     public void initialize() {
         try {
+            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, numberValue); // min, max, initial
+            number.setValueFactory(valueFactory);
             // 1. Leggi tutte le righe dal file
             List<String> options = Files.readAllLines(Paths.get("src/resources/dictionaries/templates.txt"));
 
@@ -160,5 +165,12 @@ public class NoSyntaxTreeController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void setNumberValue(int value) {
+        this.numberValue = value;
+        if (number != null && number.getValueFactory() != null) {
+            number.getValueFactory().setValue(value);
+        }
     }
 }
