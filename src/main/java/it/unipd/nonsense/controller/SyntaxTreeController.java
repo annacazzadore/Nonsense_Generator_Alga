@@ -33,6 +33,8 @@ public class SyntaxTreeController {
 
     private DependencyTreeVisualizer treeVisualizer;
     private int numberValue = 1; // valore di default
+    private String selectedTemplate = "-";
+
 
 
     @FXML
@@ -110,21 +112,28 @@ public class SyntaxTreeController {
     @FXML
     private void handleGenerate(MouseEvent event) {
         try {
-            // Ottieni i parametri dall'interfaccia
+            // Ottieni e valida i parametri dall'interfaccia
             int numSentences;
+            String template;
+
             try {
                 numSentences = number.getValue();
                 if (numSentences <= 0) {
-                    showAlert("Errore", "The number of sentences must be greater than 0.");
+                    showAlert("Error", "The number of sentences must be greater than 0.");
                     return;
                 }
+
+                template = templates.getValue().toString();
+                if (template == null || template.isEmpty() || template.equals("-")) {
+                    showAlert("Error", "Select a valid template.");
+                    return;
+                }
+
+                // Salva il template selezionato
+                this.selectedTemplate = template;
+
             } catch (NumberFormatException e) {
-                showAlert("Errore", "Insert a valid number.");
-                return;
-            }
-            String template = templates.getValue().toString();
-            if (template == null || template.isEmpty() || template.equals("-")) {
-                showAlert("Errore", "Select a valid template.");
+                showAlert("Error", "Insert a valid number.");
                 return;
             }
 
@@ -138,28 +147,34 @@ public class SyntaxTreeController {
             SentenceGenerator generator = new SentenceGenerator();
             List<String> sentences = generator.generateSentences(numSentences, template, nouns, verbs, adjectives);
 
-            numberValue = number.getValue();
+            // Salva il numero di frasi
+            numberValue = numSentences;
 
             // Mostra i risultati
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
             Parent root = loader.load();
-            ResultsController controller = loader.getController();
-            controller.setPreviousView("tree");
-            controller.setAnalysisResult(currentResult);
-            controller.showGeneratedSentences(sentences);
-            controller.setNumberValue(numberValue);
 
+            // Ottieni il controller dei risultati
+            ResultsController resultsController = loader.getController();
+            resultsController.setPreviousView("tree");
+            resultsController.setAnalysisResult(currentResult);
+            resultsController.showGeneratedSentences(sentences);
+            resultsController.setNumberValue(numberValue);
+            resultsController.setSelectedTemplate(selectedTemplate); // Passa il template selezionato
 
+            // Mostra la nuova finestra
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.setTitle("Results");
             stage.show();
 
+            // Chiudi la finestra corrente
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
+
         } catch (IOException e) {
-            showAlert("Error", "An error occurred while generating the sentences." + e.getMessage());
+            showAlert("Error", "An error occurred while generating the sentences: " + e.getMessage());
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
             showAlert("Error", e.getMessage());
@@ -178,22 +193,17 @@ public class SyntaxTreeController {
     @FXML
     public void initializeTemplate() {
         try {
-            // 1. Leggi tutte le righe dal file
+            // Carica i template
             List<String> options = Files.readAllLines(Paths.get("src/resources/dictionaries/templates.txt"));
-
-            // 2. Pulisci eventuali elementi esistenti e aggiungi i nuovi
             templates.getItems().clear();
             templates.getItems().addAll(options);
 
-            // 3. Imposta un valore predefinito (opzionale)
+            // Imposta il valore salvato o il default
             if (!options.isEmpty()) {
-                templates.setValue("-");
+                templates.setValue(selectedTemplate != null ? selectedTemplate : "-");
             }
-
         } catch (IOException e) {
             System.err.println("Failed to load options." + e.getMessage());
-
-            // Fallback con valori di default
             templates.setValue("-");
         }
     }
@@ -202,6 +212,13 @@ public class SyntaxTreeController {
         this.numberValue = value;
         if (number != null && number.getValueFactory() != null) {
             number.getValueFactory().setValue(value);
+        }
+    }
+
+    public void setSelectedTemplate(String template) {
+        this.selectedTemplate = template;
+        if (templates != null) {
+            templates.setValue(template);
         }
     }
 }

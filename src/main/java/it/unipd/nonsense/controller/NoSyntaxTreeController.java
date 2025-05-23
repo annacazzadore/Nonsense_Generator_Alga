@@ -22,6 +22,7 @@ public class NoSyntaxTreeController {
     @FXML private Label wordsLabel;
     @FXML private Button generate;
     private AnalysisResult currentResult;
+    private String selectedTemplate = "-";
 
     private int numberValue = 1; // valore di default
 
@@ -78,19 +79,26 @@ public class NoSyntaxTreeController {
         try {
             // Ottieni i parametri dall'interfaccia
             int numSentences;
+            String template;
+
             try {
                 numSentences = number.getValue();
                 if (numSentences <= 0) {
                     showAlert("Error", "The number of sentences must be greater than 0.");
                     return;
                 }
+
+                template = templates.getValue().toString();
+                if (template == null || template.isEmpty() || template.equals("-")) {
+                    showAlert("Error", "Select a valid template.");
+                    return;
+                }
+
+                // Salva il template selezionato
+                this.selectedTemplate = template;
+
             } catch (NumberFormatException e) {
                 showAlert("Error", "Insert a valid number.");
-                return;
-            }
-            String template = templates.getValue().toString();
-            if (template == null || template.isEmpty() || template.equals("-")) {
-                showAlert("Error", "Select a valid template.");
                 return;
             }
 
@@ -99,34 +107,39 @@ public class NoSyntaxTreeController {
             List<String> nouns = new ArrayList<>(wordsByType.getOrDefault("NOUN", Collections.emptySet()));
             List<String> verbs = new ArrayList<>(wordsByType.getOrDefault("VERB", Collections.emptySet()));
             List<String> adjectives = new ArrayList<>(wordsByType.getOrDefault("ADJ", Collections.emptySet()));
-            
 
             // Genera le frasi
             SentenceGenerator generator = new SentenceGenerator();
             List<String> sentences = generator.generateSentences(numSentences, template, nouns, verbs, adjectives);
 
-            numberValue = number.getValue();
+            // Salva il numero di frasi
+            numberValue = numSentences;
 
             // Mostra i risultati
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
             Parent root = loader.load();
-            ResultsController controller = loader.getController();
-            controller.setPreviousView("noTree"); // o "tree" per SyntaxTreeController
-            controller.setAnalysisResult(currentResult);
-            controller.showGeneratedSentences(sentences);
-            controller.setNumberValue(numberValue);
 
+            // Ottieni il controller dei risultati
+            ResultsController resultsController = loader.getController();
+            resultsController.setPreviousView("noTree");
+            resultsController.setAnalysisResult(currentResult);
+            resultsController.showGeneratedSentences(sentences);
+            resultsController.setNumberValue(numberValue);
+            resultsController.setSelectedTemplate(selectedTemplate); // Passa il template selezionato
 
+            // Mostra la nuova finestra
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.setTitle("Results");
             stage.show();
 
+            // Chiudi la finestra corrente
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
+
         } catch (IOException e) {
-            showAlert("Error", "An error occurred while generating the sentences." + e.getMessage());
+            showAlert("Error", "An error occurred while generating the sentences: " + e.getMessage());
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
             showAlert("Error", e.getMessage());
@@ -148,7 +161,7 @@ public class NoSyntaxTreeController {
 
             // 3. Imposta un valore predefinito (opzionale)
             if (!options.isEmpty()) {
-                templates.setValue("-");
+                templates.setValue(selectedTemplate != null ? selectedTemplate : "-");
             }
 
         } catch (IOException e) {
@@ -171,6 +184,13 @@ public class NoSyntaxTreeController {
         this.numberValue = value;
         if (number != null && number.getValueFactory() != null) {
             number.getValueFactory().setValue(value);
+        }
+    }
+
+    public void setSelectedTemplate(String template) {
+        this.selectedTemplate = template;
+        if (templates != null) {
+            templates.setValue(template);
         }
     }
 }

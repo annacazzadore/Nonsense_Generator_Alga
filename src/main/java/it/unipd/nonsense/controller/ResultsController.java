@@ -37,6 +37,7 @@ public class ResultsController {
     private AnalysisResult analysisResult;
     private String originalText; // testo originale della frase analizzata
     private int numberValue;
+    private String selectedTemplate;
 
 
     public void setPreviousView(String previousView) {
@@ -64,6 +65,10 @@ public class ResultsController {
         Platform.exit();
     }
 
+    public void setSelectedTemplate(String template) {
+        this.selectedTemplate = template;
+    }
+
     @FXML
     private void handleBack(MouseEvent event) {
         try {
@@ -88,10 +93,12 @@ public class ResultsController {
                 SyntaxTreeController controller = loader.getController();
                 controller.initializeWithResult(analysisResult);
                 controller.setNumberValue(numberValue);
+                controller.setSelectedTemplate(selectedTemplate); // Passa il template
             } else {
                 NoSyntaxTreeController controller = loader.getController();
                 controller.initializeWithResult(analysisResult);
                 controller.setNumberValue(numberValue);
+                controller.setSelectedTemplate(selectedTemplate); // Passa il template
             }
 
             // Chiudi la finestra corrente
