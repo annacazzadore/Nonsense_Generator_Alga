@@ -12,3 +12,6 @@ had
 eats
 jumps
 love
+walk
+walks
+pull

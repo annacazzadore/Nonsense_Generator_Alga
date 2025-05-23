@@ -4,7 +4,6 @@ import com.google.cloud.language.v1.Token;
 import com.google.cloud.language.v1.DependencyEdge;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.scene.paint.Color;
@@ -13,7 +12,7 @@ import javafx.scene.text.TextAlignment;
 import java.util.*;
 
 public class DependencyTreeVisualizer {
-    private Pane drawingPane;
+    private final Pane drawingPane;
     private double paneWidth;
     private double paneHeight;
     private List<Token> currentTokens;
@@ -51,44 +50,36 @@ public class DependencyTreeVisualizer {
                 return token;
             }
         }
-        return null; // Nessuna radice trovata
+        return null;
     }
 
     public void drawDependencyTree(List<Token> tokens) {
-        this.currentTokens = tokens; // Per ridisegnare in caso di resize
+        this.currentTokens = tokens;
         drawingPane.getChildren().clear();
         if (tokens.isEmpty()) return;
 
         Token rootToken = findRootToken(tokens);
         if (rootToken == null) return;
 
-        // Costruisce struttura ricorsiva
         TreeNodeLayout rootLayout = buildLayout(rootToken, tokens);
 
-        // Calcola la larghezza totale
         double totalTreeWidth = rootLayout.subtreeWidth;
         double scale = Math.min((paneWidth - 40) / totalTreeWidth, 1.0); // scaling solo se serve
 
-        // Posizionamento centrato
         Map<Token, Position> positions = new HashMap<>();
         double centerX = paneWidth / 2;
-        double treeHalfWidth = rootLayout.subtreeWidth / 2;
-        double rootX = centerX;
         double startY = 20;
-        assignPositions(rootLayout, rootX, startY, positions);
-        // Calcola l'offset medio per centrare meglio tutto l’albero
+        assignPositions(rootLayout, centerX, startY, positions);
         double minX = positions.values().stream().mapToDouble(p -> p.x).min().orElse(0);
         double maxX = positions.values().stream().mapToDouble(p -> p.x).max().orElse(0);
         double actualTreeWidth = maxX - minX;
         double offset = (paneWidth - actualTreeWidth) / 2 - minX;
 
-// Applica l’offset a tutti i nodi
         for (Position pos : positions.values()) {
             pos.x += offset;
         }
 
 
-        // Applica scaling se necessario
         if (scale < 1.0) {
             for (Position pos : positions.values()) {
                 pos.x = centerX + (pos.x - centerX) * scale;
@@ -99,56 +90,6 @@ public class DependencyTreeVisualizer {
         drawAllNodes(tokens, positions);
     }
 
-    // Nuovo metodo per calcolare le dimensioni senza scaling
-    private TreeDimensions calculateRawTreeDimensions(Token root, List<Token> allTokens) {
-        TreeDimensions dimensions = new TreeDimensions();
-        calculateRawDimensions(root, allTokens, 0, 0, dimensions);
-        dimensions.totalWidth = dimensions.maxX - dimensions.minX;
-        return dimensions;
-    }
-
-    private void calculateRawDimensions(Token current, List<Token> allTokens,
-                                        double x, int depth,
-                                        TreeDimensions dimensions) {
-        dimensions.maxDepth = Math.max(dimensions.maxDepth, depth);
-        dimensions.minX = Math.min(dimensions.minX, x);
-        dimensions.maxX = Math.max(dimensions.maxX, x);
-        dimensions.totalHeight = (depth + 1) * VERTICAL_SPACING + NODE_HEIGHT;
-
-        List<Token> children = getChildren(current, allTokens);
-        double childSpacing = calculateChildSpacing(children.size());
-        double startX = x - (childSpacing * (children.size() - 1)) / 2;
-
-        for (int i = 0; i < children.size(); i++) {
-            calculateRawDimensions(children.get(i), allTokens,
-                    startX + i * childSpacing,
-                    depth + 1, dimensions);
-        }
-    }
-
-
-    // Modifica il metodo calculatePositions per usare lo scaling
-    private void calculatePositions(Token current, List<Token> allTokens, double x, double y, Map<Token, Position> positions, int depth, double scale, int maxDepth) {
-        positions.put(current, new Position(x, y));
-
-        List<Token> children = getChildren(current, allTokens);
-        if (children.isEmpty()) return;
-
-        double childSpacing = calculateChildSpacing(children.size()) * scale;
-        double startX = x - (childSpacing * (children.size() - 1)) / 2;
-        double childY = y + (VERTICAL_SPACING * scale);
-
-        for (int i = 0; i < children.size(); i++) {
-            calculatePositions(children.get(i), allTokens,
-                    startX + i * childSpacing, childY,
-                    positions, depth + 1, scale, maxDepth);
-        }
-    }
-
-    private double calculateChildSpacing(int childCount) {
-        if (childCount <= 1) return 0;
-        return Math.max(NODE_WIDTH * 1.5, MIN_H_SPACING);
-    }
 
     private List<Token> getChildren(Token parent, List<Token> allTokens) {
         List<Token> children = new ArrayList<>();
@@ -184,8 +125,8 @@ public class DependencyTreeVisualizer {
                     double endYOffset = 15; // Puoi regolare anche questo se vuoi cambiare il punto di arrivo
 
                     drawConnection(headPos.x, headPos.y + startYOffset,
-                            childPos.x, childPos.y - endYOffset,
-                            edge.getLabel().toString());
+                            childPos.x, childPos.y - endYOffset
+                    );
                 }
             }
         }
@@ -232,7 +173,7 @@ public class DependencyTreeVisualizer {
     }
 
 
-    private void drawConnection(double startX, double startY, double endX, double endY, String label) {
+    private void drawConnection(double startX, double startY, double endX, double endY) {
         Line line = new Line(startX, startY, endX, endY);
         line.setStroke(Color.GRAY);
         line.setStrokeWidth(1);
@@ -272,14 +213,6 @@ public class DependencyTreeVisualizer {
             this.x = x;
             this.y = y;
         }
-    }
-
-    private static class TreeDimensions {
-        double minX = Double.MAX_VALUE;
-        double maxX = Double.MIN_VALUE;
-        double totalWidth;
-        double totalHeight;
-        int maxDepth;
     }
 
     private static class TreeNodeLayout {

@@ -1,20 +1,20 @@
 package it.unipd.nonsense.controller;
 
-import it.unipd.nonsense.utils.AnalysisResult;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 
 public class NoSyntaxTreeController extends SyntaxController {
-    @FXML private Button generate;
+    private static final String VIEW_TYPE = "noTree";
+    public ImageView back;
+    public Button generate;
 
     @Override
     public void initialize() {
-        super.initialize(); // Chiama l'inizializzazione della classe base
-        // Eventuale logica specifica qui (se necessaria)
+        super.initialize();
     }
 
     @Override
     protected String getPreviousViewType() {
-        return "noTree";
+        return VIEW_TYPE;
     }
 }

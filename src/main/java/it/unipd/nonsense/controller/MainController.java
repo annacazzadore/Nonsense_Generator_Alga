@@ -24,8 +24,6 @@ public class MainController {
     @FXML
     private Button analyze;
 
-    private AnalysisResult lastAnalysisResult;
-
     @FXML
     private void analyzeSentence() {
         String inputText = sentence.getText().trim();
@@ -51,7 +49,6 @@ public class MainController {
                 // Custom threshold (e.g., 0.5 = 50%)
                 if (toxicityScore >= 0.5f) {
                     showErrorDialog(
-                            String.format("This sentence may include harmful or offensive language. (rate: %.2f%%)", toxicityScore * 100),
                             toxicityScore
                     );
                     analyzer.close();
@@ -102,7 +99,6 @@ public class MainController {
                     noSyntaxTreeController.initializeWithResult(result);
                 }
 
-                this.lastAnalysisResult = result;
                 newStage.show();
                 analyzer.close();
 
@@ -115,7 +111,7 @@ public class MainController {
         }
     }
 
-    private void showErrorDialog(String message, double toxicityScore) {
+    private void showErrorDialog(double toxicityScore) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/popUp.fxml"));
             Parent root = loader.load();
@@ -131,7 +127,7 @@ public class MainController {
             popUpStage.setY(265);
             popUpStage.setTitle("Error");
             popUpStage.initModality(Modality.APPLICATION_MODAL);
-            popUpStage.initOwner((Stage) analyze.getScene().getWindow());
+            popUpStage.initOwner(analyze.getScene().getWindow());
             popUpStage.showAndWait();
 
             sentence.clear();
@@ -157,7 +153,4 @@ public class MainController {
         }
     }
 
-    public void setAnalysisResult(AnalysisResult result) {
-        this.lastAnalysisResult = result;
-    }
 }

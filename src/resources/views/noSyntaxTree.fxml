@@ -13,67 +13,73 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.Spinner?>
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.NoSyntaxTreeController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EBEBDD;"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="it.unipd.nonsense.controller.NoSyntaxTreeController">
 
-   <children>
-      <Pane layoutX="106.0" layoutY="146.0" prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
-         <children>
+   <Pane layoutX="106.0" layoutY="146.0" prefHeight="300.0" prefWidth="700.0"
+         style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
+      <ImageView id="back_button" fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0"
+                 onMouseClicked="#handleBack" pickOnBounds="true">
+         <Image url="@/views/style/1410611-200.png"/>
+      </ImageView>
 
-            <ImageView id="back_button" fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#handleBack" pickOnBounds="true">
-               <image>
-                  <Image url="@/views/style/1410611-200.png" />
-               </image>
-            </ImageView>
-
-            <ScrollPane fitToHeight="true" fitToWidth="false" hbarPolicy="AS_NEEDED" layoutX="307.0" layoutY="42.0" pannable="false" prefHeight="36.0" prefWidth="328.0" style="-fx-background-color: #ffffff; -fx-padding: 0; -fx-background-insets: 0;" vbarPolicy="NEVER">
-               <content>
-                  <Label fx:id="wordsLabel" style="-fx-background-color: rgba(0,0,0,0);; -fx-padding: 0 10 0 10;" wrapText="false">
-                     <font>
-                        <Font name="Hiragino Sans W4" size="18.0" />
-                     </font>
-                  </Label>
-               </content>
-            </ScrollPane>
+      <ScrollPane fitToHeight="true" layoutX="307.0" layoutY="42.0"
+                  prefHeight="36.0" prefWidth="328.0"
+                  style="-fx-background-color: #ffffff; -fx-padding: 0; -fx-background-insets: 0;"
+                  vbarPolicy="NEVER">
+         <Label fx:id="wordsLabel" style="-fx-background-color: rgba(0,0,0,0);; -fx-padding: 0 10 0 10;"
+         >
+            <font>
+               <Font name="Hiragino Sans W4" size="18.0"/>
+            </font>
+         </Label>
+      </ScrollPane>
 
 
-            <TextField editable="false" focusTraversable="false" layoutX="154.0" layoutY="100.0" prefHeight="30.0" prefWidth="225.0" style="-fx-background-color: rgba(0,0,0,0);" text="Number of variations:">
-               <font>
-                  <Font name="Hiragino Sans W4" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </TextField>
+      <TextField editable="false" focusTraversable="false" layoutX="154.0" layoutY="100.0" prefHeight="30.0"
+                 prefWidth="225.0" style="-fx-background-color: rgba(0,0,0,0);" text="Number of variations:">
+         <font>
+            <Font name="Hiragino Sans W4" size="18.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT"/>
+         </cursor>
+      </TextField>
 
-            <Spinner fx:id="number" editable="true" focusTraversable="false" layoutX="414.0" layoutY="101.0" prefHeight="30.0" prefWidth="63.0" style="-fx-background-color: #ffffff;" />
+      <Spinner fx:id="number" editable="true" focusTraversable="false" layoutX="414.0" layoutY="101.0"
+               prefHeight="30.0" prefWidth="63.0" style="-fx-background-color: #ffffff;"/>
 
-            <TextField editable="false" focusTraversable="false" layoutX="154.0" layoutY="146.0" prefHeight="30.0" prefWidth="209.0" style="-fx-background-color: rgba(0,0,0,0);" text="Select a template:">
-               <font>
-                  <Font name="Hiragino Sans W4" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </TextField>
+      <TextField editable="false" focusTraversable="false" layoutX="154.0" layoutY="146.0" prefHeight="30.0"
+                 prefWidth="209.0" style="-fx-background-color: rgba(0,0,0,0);" text="Select a template:">
+         <font>
+            <Font name="Hiragino Sans W4" size="18.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT"/>
+         </cursor>
+      </TextField>
 
-            <ChoiceBox fx:id="templates" layoutX="400.0" layoutY="154.0" prefHeight="22.0" prefWidth="90.0" style="-fx-background-color: #ffffff;" />
+      <ChoiceBox fx:id="templates" layoutX="400.0" layoutY="154.0" prefHeight="22.0" prefWidth="90.0"
+                 style="-fx-background-color: #ffffff;"/>
 
-            <Button fx:id="generate" layoutX="290.0" layoutY="215.0" mnemonicParsing="false" onMouseClicked="#handleGenerate" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: #ffffff;" text="Generate">
-               <font>
-                  <Font name="Hiragino Sans W5" size="18.0" />
-               </font>
-            </Button>
+      <Button fx:id="generate" layoutX="290.0" layoutY="215.0" mnemonicParsing="false"
+              onMouseClicked="#handleGenerate" prefHeight="42.0" prefWidth="130.0"
+              style="-fx-background-color: #ffffff;" text="Generate">
+         <font>
+            <Font name="Hiragino Sans W5" size="18.0"/>
+         </font>
+      </Button>
 
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="154.0" layoutY="44.0" prefHeight="31.0" prefWidth="148.0" style="-fx-background-color: rgba(0,0,0,0);" text="Used words:">
-               <font>
-                  <Font name="Hiragino Sans W6" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </TextField>
+      <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="154.0" layoutY="44.0"
+                 prefHeight="31.0" prefWidth="148.0" style="-fx-background-color: rgba(0,0,0,0);" text="Used words:">
+         <font>
+            <Font name="Hiragino Sans W6" size="18.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT"/>
+         </cursor>
+      </TextField>
 
-         </children>
-      </Pane>
-   </children>
+   </Pane>
 </AnchorPane>

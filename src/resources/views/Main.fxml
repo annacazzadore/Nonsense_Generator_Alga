@@ -11,54 +11,58 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.MainController">
-   <children>
-      <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="187.0" layoutY="58.0" prefHeight="66.0" prefWidth="526.0" style="-fx-background-color: rgba(0,0,0,0);" text="Random Sentence Generator ALGA">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EBEBDD;"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="it.unipd.nonsense.controller.MainController">
+   <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="187.0" layoutY="58.0"
+              prefHeight="66.0" prefWidth="526.0" style="-fx-background-color: rgba(0,0,0,0);"
+              text="Random Sentence Generator ALGA">
+      <font>
+         <Font name="System Bold" size="30.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="DEFAULT"/>
+      </cursor>
+   </TextField>
+
+   <Pane layoutX="100.0" layoutY="150.0" prefHeight="300.0" prefWidth="700.0"
+         style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
+      <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="201.0" layoutY="22.0"
+                 style="-fx-background-color: rgba(0,0,0,0);" text="Enter your sentence">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="Hiragino Sans W7" size="24.0"/>
          </font>
          <cursor>
-            <Cursor fx:constant="DEFAULT" />
+            <Cursor fx:constant="DEFAULT"/>
          </cursor>
       </TextField>
 
-      <Pane layoutX="100.0" layoutY="150.0" prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
-         <children>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="201.0" layoutY="22.0" style="-fx-background-color: rgba(0,0,0,0);" text="Enter your sentence">
-               <font>
-                  <Font name="Hiragino Sans W7" size="24.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </TextField>
+      <TextField fx:id="sentence" layoutX="40.0" layoutY="100.0" prefHeight="35.0" prefWidth="620.0"
+                 style="-fx-border-radius: 18;">
+         <font>
+            <Font name="Hiragino Sans W4" size="16.0"/>
+         </font>
+      </TextField>
 
-            <TextField fx:id="sentence" layoutX="40.0" layoutY="100.0" prefHeight="35.0" prefWidth="620.0" style="-fx-border-radius: 18;">
-               <font>
-                  <Font name="Hiragino Sans W4" size="16.0" />
-               </font>
-            </TextField>
+      <CheckBox fx:id="tree" layoutX="270.0" layoutY="160.0" prefHeight="22.0" prefWidth="200.0"
+                text="View syntax tree">
+         <font>
+            <Font name="Hiragino Sans W6" size="15.0"/>
+         </font>
+      </CheckBox>
 
-            <CheckBox fx:id="tree" layoutX="270.0" layoutY="160.0" prefHeight="22.0" prefWidth="200.0" text="View syntax tree">
-               <font>
-                  <Font name="Hiragino Sans W6" size="15.0" />
-               </font>
-            </CheckBox>
-
-            <Button id="analyser" fx:id="analyze" layoutX="260.0" layoutY="220.0" mnemonicParsing="false" onAction="#analyzeSentence" prefHeight="35.0" prefWidth="194.0" style="-fx-background-color: #ffffff;" text="Analyse the sentence">
-               <font>
-                  <Font name="Hiragino Sans W5" size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <ImageView fitHeight="84.0" fitWidth="105.0" layoutX="706.0" layoutY="33.0">
-         <image>
-            <Image url="@style/—Pngtree—green seaweed clipart design_8508042.png" />
-         </image>
-         <effect>
-            <ColorAdjust brightness="0.05" contrast="-0.15" hue="-0.05" saturation="-0.47" />
-         </effect>
-      </ImageView>
-   </children>
+      <Button id="analyser" fx:id="analyze" layoutX="260.0" layoutY="220.0" mnemonicParsing="false"
+              onAction="#analyzeSentence" prefHeight="35.0" prefWidth="194.0" style="-fx-background-color: #ffffff;"
+              text="Analyse the sentence">
+         <font>
+            <Font name="Hiragino Sans W5" size="15.0"/>
+         </font>
+      </Button>
+   </Pane>
+   <ImageView fitHeight="84.0" fitWidth="105.0" layoutX="706.0" layoutY="33.0">
+      <effect>
+         <ColorAdjust brightness="0.05" contrast="-0.15" hue="-0.05" saturation="-0.47"/>
+      </effect>
+      <Image url="@style/—Pngtree—green seaweed clipart design_8508042.png"/>
+   </ImageView>
 </AnchorPane>

@@ -2,7 +2,6 @@ package it.unipd.nonsense.controller;
 
 import it.unipd.nonsense.utils.AnalysisResult;
 import it.unipd.nonsense.utils.SentenceAnalyzer;
-import it.unipd.nonsense.utils.SentenceGenerator;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.scene.input.MouseEvent;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -21,92 +18,95 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ResultsController {
-    @FXML
-    private Button end;
-    @FXML
-    private TextArea result;
-    @FXML
-    private ImageView back;
-    @FXML
-    private TextArea resultArea;
+    private static final Logger LOGGER = Logger.getLogger(ResultsController.class.getName());
+    private static final String GENERATED_SENTENCES_FILE = "generated_sentences.txt";
+    private static final float TOXICITY_THRESHOLD = 0.5f;
+    private static final int MAX_ATTEMPTS_MULTIPLIER = 10;
 
-    private String previousView; // "tree" o "noTree
+    @FXML private Button end;
+    @FXML private ImageView back;
+    @FXML private TextArea resultArea;
+
+    private String previousView; // "tree" o "noTree"
     private AnalysisResult analysisResult;
-    private String originalText; // testo originale della frase analizzata
     private int numberValue;
     private String selectedTemplate;
+    private ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 
-
+    // Setter methods
     public void setPreviousView(String previousView) {
-        this.previousView = previousView;
-    }
-
-    public void setOriginalText(String originalText) {
-        this.originalText = originalText;
-    }
-
-    public void setResultText(String text) {
-        result.setText(text);
+        this.previousView = Objects.requireNonNull(previousView, "Previous view cannot be null");
     }
 
     public void setAnalysisResult(AnalysisResult analysisResult) {
-        this.analysisResult = analysisResult;
-    }
-
-    @FXML
-    private void handleEnd(ActionEvent event) {
-        Stage stage = (Stage) end.getScene().getWindow();
-        stage.close();
-
-        // Termina completamente l'applicazione
-        Platform.exit();
+        this.analysisResult = Objects.requireNonNull(analysisResult, "Analysis result cannot be null");
     }
 
     public void setSelectedTemplate(String template) {
         this.selectedTemplate = template;
     }
 
+    public void setNumberValue(int value) {
+        this.numberValue = value;
+    }
+
     @FXML
-    private void handleBack(MouseEvent event) {
+    private void handleEnd() {
+        Stage stage = (Stage) end.getScene().getWindow();
+        stage.close();
+        Platform.exit();
+    }
+
+    @FXML
+    private void handleBack() {
         try {
+            String fxmlFile = "tree".equals(previousView)
+                    ? "/views/syntaxTree.fxml"
+                    : "/views/noSyntaxTree.fxml";
 
-            FXMLLoader loader;
-            if ("tree".equals(previousView)) {
-                loader = new FXMLLoader(getClass().getResource("/views/syntaxTree.fxml"));
-            } else {
-                loader = new FXMLLoader(getClass().getResource("/views/noSyntaxTree.fxml"));
-            }
-
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
+
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.setTitle("Sentence Analyzer");
             stage.show();
 
-            // Passa il testo originale al controller
-            if ("tree".equals(previousView)) {
-                SyntaxTreeController controller = loader.getController();
-                controller.initializeWithResult(analysisResult);
-                controller.setNumberValue(numberValue);
-                controller.setSelectedTemplate(selectedTemplate); // Passa il template
-            } else {
-                NoSyntaxTreeController controller = loader.getController();
-                controller.initializeWithResult(analysisResult);
-                controller.setNumberValue(numberValue);
-                controller.setSelectedTemplate(selectedTemplate); // Passa il template
-            }
+            initializePreviousController(loader);
 
-            // Chiudi la finestra corrente
+            // Close current window
             Stage currentStage = (Stage) back.getScene().getWindow();
             currentStage.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error while navigating back", e);
+            showErrorAlert("Navigation Error", "Unable to load the previous view");
+        }
+    }
+
+    private void initializePreviousController(FXMLLoader loader) {
+        if ("tree".equals(previousView)) {
+            SyntaxTreeController controller = loader.getController();
+            controller.initializeWithResult(analysisResult);
+            controller.setNumberValue(numberValue);
+            controller.setSelectedTemplate(selectedTemplate);
+        } else {
+            NoSyntaxTreeController controller = loader.getController();
+            controller.initializeWithResult(analysisResult);
+            controller.setNumberValue(numberValue);
+            controller.setSelectedTemplate(selectedTemplate);
         }
     }
 
@@ -114,66 +114,56 @@ public class ResultsController {
         Path path = Paths.get(filePath);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             for (int i = 0; i < sentences.size(); i++) {
-                writer.write((i + 1) + ". " + sentences.get(i));
-                writer.newLine();
-                writer.newLine();
+                writer.write(String.format("%d. %s%n%n", i + 1, sentences.get(i)));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error while saving sentences to file", e);
+            showErrorAlert("Save Error", "Unable to save sentences to file");
         }
     }
-
 
     public void showGeneratedSentences(List<String> inputSentences) {
-        try {
-            long start = System.nanoTime(); // <-- inizio misura
+        Objects.requireNonNull(inputSentences, "Input sentences cannot be null");
+        resultArea.clear();
 
-            // Numero di frasi che vuoi mostrare
-            int desiredCount = inputSentences.size();
-            List<String> nonToxicSentences = new ArrayList<>();
-            List<Float> toxicityScores = new ArrayList<>();
-            int attempts = 0;
-            int maxAttempts = desiredCount * 10;
+        // Cancella eventuali task precedenti
+        executorService.shutdownNow();
+        executorService = Executors.newSingleThreadScheduledExecutor();
 
-            SentenceAnalyzer analyzer = new SentenceAnalyzer();
+        AtomicInteger attempts = new AtomicInteger(0);
+        AtomicInteger validSentences = new AtomicInteger(0);
+        List<String> nonToxicSentences = Collections.synchronizedList(new ArrayList<>());
 
-            while (nonToxicSentences.size() < desiredCount && attempts < maxAttempts) {
-                String sentence = inputSentences.get(attempts % inputSentences.size());
-                float toxicity = analyzer.getToxicityScore(sentence);
-                if (toxicity < 0.5f) {
+        Runnable generationTask = () -> {
+            int currentAttempt = attempts.getAndIncrement();
+            if (currentAttempt >= inputSentences.size() * MAX_ATTEMPTS_MULTIPLIER ||
+                    validSentences.get() >= inputSentences.size()) {
+                executorService.shutdown();
+                saveSentencesToFile(nonToxicSentences, GENERATED_SENTENCES_FILE);
+                return;
+            }
+
+            String sentence = inputSentences.get(currentAttempt % inputSentences.size());
+            try (SentenceAnalyzer analyzer = new SentenceAnalyzer()) {
+                float toxicityScore = analyzer.getToxicityScore(sentence);
+
+                Platform.runLater(() -> resultArea.appendText(String.format("%d. %s\nToxicity: %.2f%%\n\n",
+                        validSentences.get(), sentence, toxicityScore * 100)));
+
+                if (toxicityScore < TOXICITY_THRESHOLD) {
                     nonToxicSentences.add(sentence);
-                    toxicityScores.add(toxicity);
+                    validSentences.incrementAndGet();
                 }
-                attempts++;
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, "Error analyzing sentence toxicity", e);
             }
+        };
 
-            analyzer.close();
-            long end = System.nanoTime(); // <-- fine misura
-            System.out.println("Tempo totale per filtrare frasi non tossiche: " + (end - start) / 1_000_000 + " ms");
-
-            // Mostra solo le non tossiche
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < nonToxicSentences.size(); i++) {
-                sb.append((i + 1))
-                        .append(". ")
-                        .append(nonToxicSentences.get(i))
-                        .append("\n   Toxicity score: ")
-                        .append(String.format("%.2f%%", toxicityScores.get(i) * 100))
-                        .append("\n\n");
-            }
-            resultArea.setText(sb.toString());
-
-            // Salva nel file
-            saveSentencesToFile(nonToxicSentences, "generated_sentences.txt");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            resultArea.setText("Error during sentence generation and filtering.");
-        }
+        // Esegui il task ogni 200ms senza bloccare il thread
+        executorService.scheduleAtFixedRate(generationTask, 0, 200, TimeUnit.MILLISECONDS);
     }
 
-    public void setNumberValue(int value) {
-        this.numberValue = value;
+    private void showErrorAlert(String title, String message) {
+        LOGGER.warning(title + ": " + message);
     }
-
 }

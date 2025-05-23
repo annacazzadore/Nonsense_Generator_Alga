@@ -7,17 +7,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class SentenceGenerator {
-    private Noun noun;
-    private Verb verb;
-    private Adjective adjective;
-    private SentenceStructure structure;
 
-    public SentenceGenerator() throws IOException {
-        noun = new Noun();
-        verb = new Verb();
-        adjective = new Adjective();
-        structure = new SentenceStructure();
-    }
+    public SentenceGenerator() throws IOException {}
 
     public List<String> generateSentences(int count, String template, List<String> nouns, List<String> verbs, List<String> adjectives) throws IOException {
         long start = System.nanoTime();

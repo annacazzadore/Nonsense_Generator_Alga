@@ -1,6 +1,5 @@
 package it.unipd.nonsense.controller;
 
-
 import it.unipd.nonsense.utils.AnalysisResult;
 import it.unipd.nonsense.utils.SentenceGenerator;
 import javafx.fxml.FXML;
@@ -16,151 +15,182 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public abstract class SyntaxController {
+    private static final String TEMPLATES_FILE = "src/resources/dictionaries/templates.txt";
+    private static final String DEFAULT_TEMPLATE = "-";
+    private static final String MAIN_VIEW = "/views/main.fxml";
+    private static final String RESULTS_VIEW = "/views/results.fxml";
+    private static final String APP_TITLE = "Random Sentence Generator ALGA";
+
+    private static final String NOUN = "NOUN";
+    private static final String VERB = "VERB";
+    private static final String ADJ = "ADJ";
 
     @FXML protected Spinner<Integer> number;
     @FXML protected ChoiceBox<String> templates;
     @FXML protected Label wordsLabel;
+
     protected AnalysisResult currentResult;
     protected int numberValue = 1;
-    protected String selectedTemplate = "-";
+    protected String selectedTemplate = DEFAULT_TEMPLATE;
 
     @FXML
     public void initialize() {
-        initializeTemplate(); // Inizializza Spinner e ChoiceBox
+        initializeTemplate();
     }
 
-    // Metodo per inizializzare i template (comune a entrambi i controller)
     @FXML
     public void initializeTemplate() {
+        initializeNumberSpinner();
+        initializeTemplateChoiceBox();
+    }
+
+    private void initializeNumberSpinner() {
+        SpinnerValueFactory<Integer> valueFactory =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, numberValue);
+        number.setValueFactory(valueFactory);
+    }
+
+    private void initializeTemplateChoiceBox() {
         try {
-            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, numberValue);
-            number.setValueFactory(valueFactory);
-
-            List<String> options = Files.readAllLines(Paths.get("src/resources/dictionaries/templates.txt"));
-            templates.getItems().clear();
-            templates.getItems().addAll(options);
-
-            if (!options.isEmpty()) {
-                templates.setValue(selectedTemplate != null ? selectedTemplate : "-");
-            }
+            List<String> options = Files.readAllLines(Paths.get(TEMPLATES_FILE));
+            templates.getItems().setAll(options);
+            templates.setValue(selectedTemplate != null ? selectedTemplate : DEFAULT_TEMPLATE);
         } catch (IOException e) {
-            System.err.println("Failed to load options." + e.getMessage());
-            templates.setValue("-");
+            System.err.println("Failed to load templates: " + e.getMessage());
+            templates.setValue(DEFAULT_TEMPLATE);
         }
     }
 
-    // Metodo per mostrare un alert (comune a entrambi i controller)
-    protected void showAlert(String title, String message) {
+    protected void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
+        alert.setTitle("Error");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    // Metodo per tornare alla schermata principale (comune a entrambi i controller)
     @FXML
     protected void handleBack(MouseEvent event) {
+        navigateToView(event, controller -> ((MainController) controller).setSentenceText(currentResult.getOriginalText()));
+    }
+
+    private void navigateToView(MouseEvent event, Consumer<Object> controllerConfigurator) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(SyntaxController.MAIN_VIEW));
             Parent root = loader.load();
 
-            MainController mainController = loader.getController();
-            mainController.setSentenceText(currentResult.getOriginalText());
+            controllerConfigurator.accept(loader.getController());
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.setTitle("Random Sentence Generator ALGA");
+            Stage stage = createStage(root, APP_TITLE);
             stage.show();
 
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
+            closeCurrentStage(event);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Metodo per inizializzare con il risultato (parzialmente comune)
-    public void initializeWithResult(AnalysisResult result) {
-        this.currentResult = result;
-
-        StringJoiner wordsJoiner = new StringJoiner(", ");
-        Map<String, Set<String>> wordsByType = result.getWordsByType();
-
-        if (wordsByType.containsKey("NOUN")) {
-            wordsByType.get("NOUN").forEach(word -> wordsJoiner.add(word));
-        }
-        if (wordsByType.containsKey("VERB")) {
-            wordsByType.get("VERB").forEach(word -> wordsJoiner.add(word));
-        }
-        if (wordsByType.containsKey("ADJ")) {
-            wordsByType.get("ADJ").forEach(word -> wordsJoiner.add(word));
-        }
-
-        wordsLabel.setText(wordsJoiner.toString());
+    private Stage createStage(Parent root, String title) {
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle(title);
+        return stage;
     }
 
-    // Metodo per generare frasi (comune a entrambi i controller)
+    private void closeCurrentStage(MouseEvent event) {
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
+    }
+
+    public void initializeWithResult(AnalysisResult result) {
+        this.currentResult = result;
+        updateWordsLabel();
+    }
+
+    private void updateWordsLabel() {
+        Map<String, Set<String>> wordsByType = currentResult.getWordsByType();
+        String joinedWords = Stream.of(NOUN, VERB, ADJ)
+                .filter(wordsByType::containsKey)
+                .flatMap(type -> wordsByType.get(type).stream())
+                .collect(Collectors.joining(", "));
+
+        wordsLabel.setText(joinedWords);
+    }
+
     @FXML
     protected void handleGenerate(MouseEvent event) {
         try {
-            int numSentences = number.getValue();
-            if (numSentences <= 0) {
-                showAlert("Error", "The number of sentences must be greater than 0.");
-                return;
-            }
+            validateInputs();
 
-            String template = templates.getValue().toString();
-            if (template == null || template.isEmpty() || template.equals("-")) {
-                showAlert("Error", "Select a valid template.");
-                return;
-            }
+            this.selectedTemplate = templates.getValue();
+            this.numberValue = number.getValue();
 
-            this.selectedTemplate = template;
+            List<String> sentences = generateSentences();
+            navigateToResultsView(event, sentences);
 
-            Map<String, Set<String>> wordsByType = currentResult.getWordsByType();
-            List<String> nouns = new ArrayList<>(wordsByType.getOrDefault("NOUN", Collections.emptySet()));
-            List<String> verbs = new ArrayList<>(wordsByType.getOrDefault("VERB", Collections.emptySet()));
-            List<String> adjectives = new ArrayList<>(wordsByType.getOrDefault("ADJ", Collections.emptySet()));
-
-            SentenceGenerator generator = new SentenceGenerator();
-            List<String> sentences = generator.generateSentences(numSentences, template, nouns, verbs, adjectives);
-
-            numberValue = numSentences;
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
-            Parent root = loader.load();
-
-            ResultsController resultsController = loader.getController();
-            resultsController.setPreviousView(getPreviousViewType());
-            resultsController.setAnalysisResult(currentResult);
-            resultsController.showGeneratedSentences(sentences);
-            resultsController.setNumberValue(numberValue);
-            resultsController.setSelectedTemplate(selectedTemplate);
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.setTitle("Results");
-            stage.show();
-
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-        } catch (IOException e) {
-            showAlert("Error", "An error occurred while generating the sentences: " + e.getMessage());
-            e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            showAlert("Error", e.getMessage());
+            showAlert(e.getMessage());
+        } catch (IOException e) {
+            showAlert("An error occurred while generating the sentences: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    // Metodo astratto per ottenere il tipo di vista precedente (da implementare nelle classi figlie)
+    private void validateInputs() {
+        if (number.getValue() <= 0) {
+            throw new IllegalArgumentException("The number of sentences must be greater than 0.");
+        }
+
+        String template = templates.getValue();
+        if (template == null || template.isEmpty() || template.equals(DEFAULT_TEMPLATE)) {
+            throw new IllegalArgumentException("Select a valid template.");
+        }
+    }
+
+    private List<String> generateSentences() {
+        Map<String, Set<String>> wordsByType = currentResult.getWordsByType();
+
+        List<String> nouns = new ArrayList<>(wordsByType.getOrDefault(NOUN, Collections.emptySet()));
+        List<String> verbs = new ArrayList<>(wordsByType.getOrDefault(VERB, Collections.emptySet()));
+        List<String> adjectives = new ArrayList<>(wordsByType.getOrDefault(ADJ, Collections.emptySet()));
+
+        try {
+            return new SentenceGenerator().generateSentences(
+                    numberValue, selectedTemplate, nouns, verbs, adjectives);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void navigateToResultsView(MouseEvent event, List<String> sentences) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(RESULTS_VIEW));
+        Parent root = loader.load();
+
+        ResultsController controller = loader.getController();
+        configureResultsController(controller, sentences);
+
+        Stage stage = createStage(root, "Results");
+        stage.show();
+
+        closeCurrentStage(event);
+    }
+
+    private void configureResultsController(ResultsController controller, List<String> sentences) {
+        controller.setPreviousView(getPreviousViewType());
+        controller.setAnalysisResult(currentResult);
+        controller.showGeneratedSentences(sentences);
+        controller.setNumberValue(numberValue);
+        controller.setSelectedTemplate(selectedTemplate);
+    }
+
     protected abstract String getPreviousViewType();
 
-    // Metodi per settare i valori (comuni a entrambi i controller)
     public void setNumberValue(int value) {
         this.numberValue = value;
         if (number != null && number.getValueFactory() != null) {
