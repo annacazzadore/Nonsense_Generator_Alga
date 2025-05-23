@@ -64,17 +64,28 @@ public class SentenceGenerator {
 
         // Completa le liste se servono più parole
         try {
-            while (nouns.size() < nounCount) {
-                nouns.addAll(getRandomNounFromDictionary());
+            if (nounCount > 0) {
+                Noun nounGenerator = new Noun();
+                while (nouns.size() < nounCount) {
+                    nouns.addAll(nounGenerator.getRandomFromDictionary(nounCount - nouns.size()));
+                }
             }
-            while (verbs.size() < verbCount) {
-                verbs.addAll(getRandomVerbFromDictionary());
+
+            if (verbCount > 0) {
+                Verb verbGenerator = new Verb();
+                while (verbs.size() < verbCount) {
+                    verbs.addAll(verbGenerator.getRandomFromDictionary(verbCount - verbs.size()));
+                }
             }
-            while (adjectives.size() < adjCount) {
-                adjectives.addAll(getRandomAdjectiveFromDictionary());
+
+            if (adjCount > 0) {
+                Adjective adjectiveGenerator = new Adjective();
+                while (adjectives.size() < adjCount) {
+                    adjectives.addAll(adjectiveGenerator.getRandomFromDictionary(adjCount - adjectives.size()));
+                }
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to load word dictionaries", e);
         }
 
         // Prendi solo il numero giusto di parole e mescola
@@ -134,25 +145,8 @@ public class SentenceGenerator {
         return adjectives;
     }
 
-    private List<String> getRandomVerbFromDictionary() throws IOException {
-        Verb verbGenerator = new Verb();
-        List<String> verbs = new ArrayList<>();
-        verbs.add(verbGenerator.getRandom());
-        return verbs;
-    }
-
-    private List<String> getRandomAdjectiveFromDictionary() throws IOException {
-        Adjective adjectiveGenerator = new Adjective();
-        List<String> adjectives = new ArrayList<>();
-        adjectives.add(adjectiveGenerator.getRandom());
-        return adjectives;
-    }
 
 
-    private List<String> getRandomNounFromDictionary() throws IOException {
-        Noun nounGenerator = new Noun();
-        List<String> nouns = new ArrayList<>();
-        nouns.add(nounGenerator.getRandom());
-        return nouns;
-    }
+
+
 }
