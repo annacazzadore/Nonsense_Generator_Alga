@@ -20,6 +20,8 @@ public class SentenceGenerator {
     }
 
     public List<String> generateSentences(int count, String template, List<String> nouns, List<String> verbs, List<String> adjectives) throws IOException {
+        long start = System.nanoTime();
+
         List<String> sentences = new ArrayList<>();
         Random rand = new Random();
 
@@ -50,6 +52,8 @@ public class SentenceGenerator {
 
             sentences.add(sentence);
         }
+        long end = System.nanoTime();
+        System.out.println("Tempo generazione frasi (" + count + "): " + (end - start) / 1_000_000 + " ms");
 
         return sentences;
     }
@@ -99,13 +103,13 @@ public class SentenceGenerator {
 
         // Sostituisci
         for (String noun : nounPool) {
-            result = result.replaceFirst("\\[noun\\]", noun);
+            result = result.replaceFirst("\\[noun]", noun);
         }
         for (String verb : verbPool) {
-            result = result.replaceFirst("\\[verb\\]", verb);
+            result = result.replaceFirst("\\[verb]", verb);
         }
         for (String adj : adjPool) {
-            result = result.replaceFirst("\\[adjective\\]", adj);
+            result = result.replaceFirst("\\[adjective]", adj);
         }
 
         return result;

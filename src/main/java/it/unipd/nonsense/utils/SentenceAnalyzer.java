@@ -60,11 +60,18 @@ public class SentenceAnalyzer {
     }
 
     public AnalyzeSyntaxResponse analyzeSentence(String sentence) throws IOException {
+        long start = System.nanoTime();
+
         Document doc = Document.newBuilder()
                 .setContent(sentence)
                 .setType(Type.PLAIN_TEXT)
                 .build();
-        return language.analyzeSyntax(doc);
+        AnalyzeSyntaxResponse response = language.analyzeSyntax(doc);
+
+        long end = System.nanoTime();
+        System.out.println("Tempo analisi sintattica: " + (end - start) / 1_000_000 + " ms");
+
+        return response;
     }
 
     public Map<String, Set<String>> extractWordsByType(AnalyzeSyntaxResponse response) {
@@ -149,18 +156,26 @@ public class SentenceAnalyzer {
     }
 
     public float getToxicityScore(String sentence) throws IOException {
+        long start = System.nanoTime();
+
         Document doc = Document.newBuilder()
                 .setContent(sentence)
                 .setType(Document.Type.PLAIN_TEXT)
                 .build();
 
         ModerateTextResponse response = language.moderateText(doc);
-        return response.getModerationCategoriesList().stream()
+        float score = response.getModerationCategoriesList().stream()
                 .filter(category -> category.getName().equals("Toxic"))
                 .findFirst()
-                .map(category -> category.getConfidence()) // evita ModerationCategory esplicito
+                .map(category -> category.getConfidence())
                 .orElse(0.0f);
+
+        long end = System.nanoTime();
+        System.out.println("Tempo valutazione tossicità: " + (end - start) / 1_000_000 + " ms");
+
+        return score;
     }
+
 
     public boolean isEnglish(String text) throws IOException {
         Document doc = Document.newBuilder()

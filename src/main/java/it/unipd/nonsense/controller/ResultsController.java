@@ -126,6 +126,8 @@ public class ResultsController {
 
     public void showGeneratedSentences(List<String> inputSentences) {
         try {
+            long start = System.nanoTime(); // <-- inizio misura
+
             // Numero di frasi che vuoi mostrare
             int desiredCount = inputSentences.size();
             List<String> nonToxicSentences = new ArrayList<>();
@@ -146,6 +148,8 @@ public class ResultsController {
             }
 
             analyzer.close();
+            long end = System.nanoTime(); // <-- fine misura
+            System.out.println("Tempo totale per filtrare frasi non tossiche: " + (end - start) / 1_000_000 + " ms");
 
             // Mostra solo le non tossiche
             StringBuilder sb = new StringBuilder();
