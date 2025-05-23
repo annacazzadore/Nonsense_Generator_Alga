@@ -25,12 +25,12 @@
                <font>
                   <Font size="18.0" />
                </font></TextArea>
-            <Button fx:id="end" layoutX="336.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleEnd" style="-fx-background-color: white;" text="End">
+            <Button fx:id="end" layoutX="336.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleEnd" style="-fx-background-color: #ffffff;" text="End">
                <font>
                   <Font name="Hiragino Sans W5" size="18.0" />
                </font>
             </Button>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="197.0" layoutY="5.0" style="-fx-background-color: transparent;" text="Results">
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="197.0" layoutY="5.0" style="-fx-background-color: rgba(0,0,0,0);" text="Results">
                <font>
                   <Font name="Hiragino Sans W7" size="24.0" />
                </font>

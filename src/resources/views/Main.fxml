@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.MainController">
    <children>
-      <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="187.0" layoutY="58.0" prefHeight="66.0" prefWidth="526.0" style="-fx-background-color: transparent;" text="Random Sentence Generator ALGA">
+      <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="187.0" layoutY="58.0" prefHeight="66.0" prefWidth="526.0" style="-fx-background-color: rgba(0,0,0,0);" text="Random Sentence Generator ALGA">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
@@ -24,7 +24,7 @@
 
       <Pane layoutX="100.0" layoutY="150.0" prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
          <children>
-            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="201.0" layoutY="22.0" style="-fx-background-color: transparent;" text="Enter your sentence">
+            <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="201.0" layoutY="22.0" style="-fx-background-color: rgba(0,0,0,0);" text="Enter your sentence">
                <font>
                   <Font name="Hiragino Sans W7" size="24.0" />
                </font>
@@ -45,7 +45,7 @@
                </font>
             </CheckBox>
 
-            <Button id="analyser" fx:id="analyze" layoutX="260.0" layoutY="220.0" mnemonicParsing="false" onAction="#analyzeSentence" prefHeight="35.0" prefWidth="194.0" style="-fx-background-color: white;" text="Analyse the sentence">
+            <Button id="analyser" fx:id="analyze" layoutX="260.0" layoutY="220.0" mnemonicParsing="false" onAction="#analyzeSentence" prefHeight="35.0" prefWidth="194.0" style="-fx-background-color: #ffffff;" text="Analyse the sentence">
                <font>
                   <Font name="Hiragino Sans W5" size="15.0" />
                </font>
