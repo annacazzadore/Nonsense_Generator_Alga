@@ -23,7 +23,8 @@ import java.util.*;
 
 
 public class SyntaxTreeController {
-    @FXML private TextField numberT;
+
+    @FXML private Spinner<Integer> number;
     @FXML private ChoiceBox templates;
     @FXML private Label wordsLabel;
     @FXML private Pane treePane; // Cambiato da TextFlow a Pane per disegnare
@@ -31,10 +32,13 @@ public class SyntaxTreeController {
     private AnalysisResult currentResult;
 
     private DependencyTreeVisualizer treeVisualizer;
+    private int numberValue = 1; // valore di default
+
 
     @FXML
     public void initialize() {
-
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, numberValue); // min, max, initial
+        number.setValueFactory(valueFactory);
         initializeTemplate();
 
         treeVisualizer = new DependencyTreeVisualizer(treePane);
@@ -58,7 +62,7 @@ public class SyntaxTreeController {
         this.currentResult = result;
 
         // Mostra il numero di variazioni
-        numberT.setText("1");
+        //numberT.setText("1");
 
         // Prepara il testo da mostrare nel TextField
         StringJoiner wordsJoiner = new StringJoiner(", ");
@@ -109,7 +113,7 @@ public class SyntaxTreeController {
             // Ottieni i parametri dall'interfaccia
             int numSentences;
             try {
-                numSentences = Integer.parseInt(numberT.getText());
+                numSentences = number.getValue();
                 if (numSentences <= 0) {
                     showAlert("Errore", "The number of sentences must be greater than 0.");
                     return;
@@ -134,6 +138,8 @@ public class SyntaxTreeController {
             SentenceGenerator generator = new SentenceGenerator();
             List<String> sentences = generator.generateSentences(numSentences, template, nouns, verbs, adjectives);
 
+            numberValue = number.getValue();
+
             // Mostra i risultati
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/results.fxml"));
             Parent root = loader.load();
@@ -141,6 +147,8 @@ public class SyntaxTreeController {
             controller.setPreviousView("tree");
             controller.setAnalysisResult(currentResult);
             controller.showGeneratedSentences(sentences);
+            controller.setNumberValue(numberValue);
+
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -187,6 +195,13 @@ public class SyntaxTreeController {
 
             // Fallback con valori di default
             templates.setValue("-");
+        }
+    }
+
+    public void setNumberValue(int value) {
+        this.numberValue = value;
+        if (number != null && number.getValueFactory() != null) {
+            number.getValueFactory().setValue(value);
         }
     }
 }

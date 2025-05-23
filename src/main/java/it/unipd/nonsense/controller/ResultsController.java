@@ -36,6 +36,8 @@ public class ResultsController {
     private String previousView; // "tree" o "noTree
     private AnalysisResult analysisResult;
     private String originalText; // testo originale della frase analizzata
+    private int numberValue;
+
 
     public void setPreviousView(String previousView) {
         this.previousView = previousView;
@@ -65,12 +67,14 @@ public class ResultsController {
     @FXML
     private void handleBack(MouseEvent event) {
         try {
+
             FXMLLoader loader;
             if ("tree".equals(previousView)) {
                 loader = new FXMLLoader(getClass().getResource("/views/syntaxTree.fxml"));
             } else {
                 loader = new FXMLLoader(getClass().getResource("/views/noSyntaxTree.fxml"));
             }
+
 
             Parent root = loader.load();
             Stage stage = new Stage();
@@ -83,9 +87,11 @@ public class ResultsController {
             if ("tree".equals(previousView)) {
                 SyntaxTreeController controller = loader.getController();
                 controller.initializeWithResult(analysisResult);
+                controller.setNumberValue(numberValue);
             } else {
                 NoSyntaxTreeController controller = loader.getController();
                 controller.initializeWithResult(analysisResult);
+                controller.setNumberValue(numberValue);
             }
 
             // Chiudi la finestra corrente
@@ -146,6 +152,10 @@ public class ResultsController {
             e.printStackTrace();
             resultArea.setText("Error during sentence generation and filtering.");
         }
+    }
+
+    public void setNumberValue(int value) {
+        this.numberValue = value;
     }
 
 }
