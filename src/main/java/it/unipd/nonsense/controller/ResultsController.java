@@ -138,41 +138,44 @@ public class ResultsController
         executorService.shutdownNow();
         executorService = Executors.newSingleThreadScheduledExecutor();
 
-        AtomicInteger attempts = new AtomicInteger(0);
-        AtomicInteger validSentences = new AtomicInteger(0);
-        List<String> nonToxicSentences = Collections.synchronizedList(new ArrayList<>());
-
-        Runnable generationTask = () -> {
-            int currentAttempt = attempts.getAndIncrement();
-
-            if (currentAttempt >= inputSentences.size() * MAX_ATTEMPTS_MULTIPLIER || validSentences.get() >= inputSentences.size())
-            {
-                executorService.shutdown();
-                saveSentencesToFile(nonToxicSentences, GENERATED_SENTENCES_FILE);
-                return;
-            }
-
-            String sentence = inputSentences.get(currentAttempt % inputSentences.size());
+        executorService.execute(() -> {
+            List<String> allSentences = new ArrayList<>();
+            List<String> nonToxicSentences = new ArrayList<>();
 
             try (SentenceAnalyzer analyzer = new SentenceAnalyzer())
             {
-                float toxicityScore = analyzer.getToxicityScore(sentence);
+                int sentenceIndex = 1;
 
-                Platform.runLater(() -> resultArea.appendText(String.format("%d. %s\nToxicity: %.2f%%\n\n", validSentences.get(), sentence, toxicityScore * 100)));
-
-                if (toxicityScore < TOXICITY_THRESHOLD)
+                for (String sentence : inputSentences)
                 {
-                    nonToxicSentences.add(sentence);
-                    validSentences.incrementAndGet();
+                    float toxicityScore = analyzer.getToxicityScore(sentence);
+
+                    String resultText = String.format("%d. %s\nToxicity: %.2f%%\n\n", sentenceIndex, sentence, toxicityScore * 100);
+
+                    Platform.runLater(() -> resultArea.appendText(resultText));
+
+                    allSentences.add(sentence);
+                    sentenceIndex++;
+
+                    if (allSentences.size() >= numberValue)
+                    {
+                        break;
+                    }
+
+                    if (toxicityScore < 0.5)
+                    {
+                        nonToxicSentences.add(sentence);
+                    }
                 }
             }
             catch (Exception e)
             {
                 LOGGER.log(Level.SEVERE, "Error analyzing sentence toxicity", e);
             }
-        };
 
-        executorService.scheduleAtFixedRate(generationTask, 0, 200, TimeUnit.MILLISECONDS);
+            saveSentencesToFile(nonToxicSentences, GENERATED_SENTENCES_FILE);
+            executorService.shutdown();
+        });
     }
 
     private void showErrorAlert(String title, String message)
