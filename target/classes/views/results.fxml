@@ -11,30 +11,30 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EBEBDD;"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="it.unipd.nonsense.controller.ResultsController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EBEBDD;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipd.nonsense.controller.ResultsController">
    <Line endX="100.0" startX="-100.0"/>
-   <Pane layoutX="100.0" layoutY="150.0" prefHeight="300.0" prefWidth="700.0"
-         style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
-      <ImageView fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0"
-                 onMouseClicked="#handleBack" pickOnBounds="true">
+   <Pane layoutX="100.0" layoutY="150.0" prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
+
+      <!--Back button-->
+      <ImageView fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#handleBack" pickOnBounds="true">
          <Image url="@/views/style/1410611-200.png"/>
       </ImageView>
-      <TextArea fx:id="resultArea" editable="false" focusTraversable="false" layoutX="39.0" layoutY="50.0"
-                prefHeight="182.0" prefWidth="627.0" wrapText="true">
+
+      <!--Result area-->
+      <TextArea fx:id="resultArea" editable="false" focusTraversable="false" layoutX="39.0" layoutY="50.0" prefHeight="182.0" prefWidth="627.0" wrapText="true">
          <font>
             <Font size="16.0"/>
          </font>
       </TextArea>
-      <Button fx:id="end" layoutX="336.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleEnd"
-              style="-fx-background-color: #ffffff;" text="End">
+
+      <!--end button-->
+      <Button fx:id="end" layoutX="336.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleEnd" style="-fx-background-color: #ffffff;" text="End">
          <font>
             <Font name="Hiragino Sans W5" size="18.0"/>
          </font>
       </Button>
-      <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="197.0" layoutY="5.0"
-                 style="-fx-background-color: rgba(0,0,0,0);" text="Results">
+
+      <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="197.0" layoutY="5.0" style="-fx-background-color: rgba(0,0,0,0);" text="Results">
          <font>
             <Font name="Hiragino Sans W7" size="24.0"/>
          </font>
