@@ -337,16 +337,16 @@ public class SentenceAnalyzer implements AutoCloseable {
      * @param response The syntactic analysis response
      */
     public void printSyntaxTree(AnalyzeSyntaxResponse response) {
-        response.getTokensList().forEach(token ->
-                LOGGER.info(String.format(
-                        // Format: Word, Lemma, Dependency head, Dependency type
-                        "Word: %-10s Lemma: %-10s Depends on: %d  Type: %s",
-                        token.getText().getContent(),
-                        token.getLemma(),
-                        token.getDependencyEdge().getHeadTokenIndex(),
-                        token.getDependencyEdge().getLabel()
-                ))
-        );
+//        response.getTokensList().forEach(token ->
+//                LOGGER.info(String.format(
+//                        // Format: Word, Lemma, Dependency head, Dependency type
+//                        "Word: %-10s Lemma: %-10s Depends on: %d  Type: %s",
+//                        token.getText().getContent(),
+//                        token.getLemma(),
+//                        token.getDependencyEdge().getHeadTokenIndex(),
+//                        token.getDependencyEdge().getLabel()
+//                ))
+//        );
     }
 
     /**

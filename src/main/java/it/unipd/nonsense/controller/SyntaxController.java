@@ -19,62 +19,84 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public abstract class SyntaxController
-{
+/**
+ * Abstract base controller for syntax-related views in the application.
+ * Handles common functionality for sentence generation and navigation between views.
+ */
+public abstract class SyntaxController {
+    // File paths and constants
     private static final String TEMPLATES_FILE = "src/resources/dictionaries/templates.txt";
     private static final String DEFAULT_TEMPLATE = "-";
     private static final String MAIN_VIEW = "/views/main.fxml";
     private static final String RESULTS_VIEW = "/views/results.fxml";
     private static final String APP_TITLE = "Random Sentence Generator ALGA";
 
+    // Constants for word types
     private static final String NOUN = "NOUN";
     private static final String VERB = "VERB";
     private static final String ADJ = "ADJ";
 
-    @FXML protected Spinner<Integer> number;
-    @FXML protected ChoiceBox<String> templates;
-    @FXML protected Label wordsLabel;
+    // FXML injected UI components
+    @FXML protected Spinner<Integer> number;      // Spinner for number of sentences to generate
+    @FXML protected ChoiceBox<String> templates;  // Dropdown for template selection
+    @FXML protected Label wordsLabel;             // Label to display extracted words
 
-    protected AnalysisResult currentResult;
-    protected int numberValue = 1;
-    protected String selectedTemplate = DEFAULT_TEMPLATE;
+    // Controller state
+    protected AnalysisResult currentResult;        // Current analysis results
+    protected int numberValue = 1;                // Default number of sentences
+    protected String selectedTemplate = DEFAULT_TEMPLATE; // Selected template
+
+    /**
+     * Abstract method to be implemented by subclasses.
+     * @return The type of previous view (used for navigation)
+     */
     protected abstract String getPreviousViewType();
 
+    /**
+     * Initializes the controller when FXML is loaded.
+     * Sets up UI components with default values.
+     */
     @FXML
     public void initialize() {
         initializeTemplate();
     }
 
+    /**
+     * Initializes template-related UI components.
+     */
     @FXML
-    public void initializeTemplate()
-    {
+    public void initializeTemplate() {
         initializeNumberSpinner();
         initializeTemplateChoiceBox();
     }
 
-    private void initializeNumberSpinner()
-    {
+    /**
+     * Configures the number spinner with valid range and default value.
+     */
+    private void initializeNumberSpinner() {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, numberValue);
         number.setValueFactory(valueFactory);
     }
 
-    private void initializeTemplateChoiceBox()
-    {
-        try
-        {
+    /**
+     * Loads templates from file and populates the choice box.
+     */
+    private void initializeTemplateChoiceBox() {
+        try {
             List<String> options = Files.readAllLines(Paths.get(TEMPLATES_FILE));
             templates.getItems().setAll(options);
             templates.setValue(selectedTemplate != null ? selectedTemplate : DEFAULT_TEMPLATE);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.err.println("Failed to load templates: " + e.getMessage());
             templates.setValue(DEFAULT_TEMPLATE);
         }
     }
 
-    protected void showAlert(String message)
-    {
+    /**
+     * Displays an error alert dialog.
+     * @param message The error message to display
+     */
+    protected void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
@@ -82,16 +104,22 @@ public abstract class SyntaxController
         alert.showAndWait();
     }
 
+    /**
+     * Handles navigation back to the main view.
+     * @param event The mouse event that triggered this action
+     */
     @FXML
-    protected void handleBack(MouseEvent event)
-    {
+    protected void handleBack(MouseEvent event) {
         navigateToView(event, controller -> ((MainController) controller).setSentenceText(currentResult.getOriginalText()));
     }
 
-    private void navigateToView(MouseEvent event, Consumer<Object> controllerConfigurator)
-    {
-        try
-        {
+    /**
+     * Generic method for navigating to a view.
+     * @param event The triggering mouse event
+     * @param controllerConfigurator Consumer to configure the target controller
+     */
+    private void navigateToView(MouseEvent event, Consumer<Object> controllerConfigurator) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(SyntaxController.MAIN_VIEW));
             Parent root = loader.load();
 
@@ -101,15 +129,18 @@ public abstract class SyntaxController
             stage.show();
 
             closeCurrentStage(event);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private Stage createStage(Parent root, String title)
-    {
+    /**
+     * Creates a new stage with common configuration.
+     * @param root The root node of the scene
+     * @param title The window title
+     * @return The configured Stage
+     */
+    private Stage createStage(Parent root, String title) {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
@@ -117,30 +148,40 @@ public abstract class SyntaxController
         return stage;
     }
 
-    private void closeCurrentStage(MouseEvent event)
-    {
+    /**
+     * Closes the current stage.
+     * @param event The mouse event that contains stage information
+     */
+    private void closeCurrentStage(MouseEvent event) {
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.close();
     }
 
-    public void initializeWithResult(AnalysisResult result)
-    {
+    /**
+     * Initializes the controller with analysis results.
+     * @param result The analysis results to display
+     */
+    public void initializeWithResult(AnalysisResult result) {
         this.currentResult = result;
         updateWordsLabel();
     }
 
-    private void updateWordsLabel()
-    {
+    /**
+     * Updates the words label with extracted words from the analysis.
+     */
+    private void updateWordsLabel() {
         Map<String, Set<String>> wordsByType = currentResult.getWordsByType();
         String joinedWords = Stream.of(NOUN, VERB, ADJ).filter(wordsByType::containsKey).flatMap(type -> wordsByType.get(type).stream()).collect(Collectors.joining(", "));
         wordsLabel.setText(joinedWords);
     }
 
+    /**
+     * Handles sentence generation when the generate button is clicked.
+     * @param event The mouse event that triggered this action
+     */
     @FXML
-    protected void handleGenerate(MouseEvent event)
-    {
-        try
-        {
+    protected void handleGenerate(MouseEvent event) {
+        try {
             validateInputs();
 
             this.selectedTemplate = templates.getValue();
@@ -149,52 +190,55 @@ public abstract class SyntaxController
             List<String> sentences = generateSentences();
             navigateToResultsView(event, sentences);
 
-        }
-        catch (IllegalArgumentException e)
-        {
+        } catch (IllegalArgumentException e) {
             showAlert(e.getMessage());
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             showAlert("An error occurred while generating the sentences: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private void validateInputs()
-    {
-        if (number.getValue() <= 0)
-        {
+    /**
+     * Validates user inputs before generation.
+     * @throws IllegalArgumentException if inputs are invalid
+     */
+    private void validateInputs() {
+        if (number.getValue() <= 0) {
             throw new IllegalArgumentException("The number of sentences must be greater than 0.");
         }
 
         String template = templates.getValue();
-        if (template == null || template.isEmpty() || template.equals(DEFAULT_TEMPLATE))
-        {
+        if (template == null || template.isEmpty() || template.equals(DEFAULT_TEMPLATE)) {
             throw new IllegalArgumentException("Select a valid template.");
         }
     }
 
-    private List<String> generateSentences()
-    {
+    /**
+     * Generates sentences based on current settings.
+     * @return List of generated sentences
+     */
+    private List<String> generateSentences() {
         Map<String, Set<String>> wordsByType = currentResult.getWordsByType();
 
         List<String> nouns = new ArrayList<>(wordsByType.getOrDefault(NOUN, Collections.emptySet()));
         List<String> verbs = new ArrayList<>(wordsByType.getOrDefault(VERB, Collections.emptySet()));
         List<String> adjectives = new ArrayList<>(wordsByType.getOrDefault(ADJ, Collections.emptySet()));
 
-        try
-        {
-            return new SentenceGenerator().generateSentences(numberValue, selectedTemplate, nouns, verbs, adjectives);
-        }
-        catch (IOException e)
-        {
+        try {
+            return new SentenceGenerator().generateSentences(
+                    numberValue, selectedTemplate, nouns, verbs, adjectives);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void navigateToResultsView(MouseEvent event, List<String> sentences) throws IOException
-    {
+    /**
+     * Navigates to the results view with generated sentences.
+     * @param event The triggering mouse event
+     * @param sentences The sentences to display in results view
+     * @throws IOException if view loading fails
+     */
+    private void navigateToResultsView(MouseEvent event, List<String> sentences) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(RESULTS_VIEW));
         Parent root = loader.load();
 
@@ -207,8 +251,12 @@ public abstract class SyntaxController
         closeCurrentStage(event);
     }
 
-    private void configureResultsController(ResultsController controller, List<String> sentences)
-    {
+    /**
+     * Configures the results controller before showing the view.
+     * @param controller The results controller to configure
+     * @param sentences The sentences to display
+     */
+    private void configureResultsController(ResultsController controller, List<String> sentences) {
         controller.setPreviousView(getPreviousViewType());
         controller.setAnalysisResult(currentResult);
         controller.showGeneratedSentences(sentences);
@@ -216,20 +264,24 @@ public abstract class SyntaxController
         controller.setSelectedTemplate(selectedTemplate);
     }
 
-    public void setNumberValue(int value)
-    {
+    /**
+     * Sets the number of sentences to generate.
+     * @param value The number value
+     */
+    public void setNumberValue(int value) {
         this.numberValue = value;
-        if (number != null && number.getValueFactory() != null)
-        {
+        if (number != null && number.getValueFactory() != null) {
             number.getValueFactory().setValue(value);
         }
     }
 
-    public void setSelectedTemplate(String template)
-    {
+    /**
+     * Sets the selected template.
+     * @param template The template to select
+     */
+    public void setSelectedTemplate(String template) {
         this.selectedTemplate = template;
-        if (templates != null)
-        {
+        if (templates != null) {
             templates.setValue(template);
         }
     }
