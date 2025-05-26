@@ -44,7 +44,9 @@ public class MainController {
 
                 // Toxicity check
                 float toxicityScore = analyzer.getToxicityScore(inputText);
-                System.out.printf("Toxicity rate: %.2f%%%n", toxicityScore * 100);
+                double toxicityPercentage = toxicityScore * 100;
+                System.out.printf("Toxicity rate: %.2f%%%n", toxicityPercentage);
+
 
                 if (toxicityScore >= 0.5f) {
                     showErrorDialog(toxicityScore);
@@ -67,11 +69,6 @@ public class MainController {
                 result.setOriginalText(inputText);
                 result.setSyntaxResponse(syntaxResponse);
                 result.setWordsByType(analyzer.extractWordsByType(syntaxResponse));
-
-                // Optional syntax tree logging
-                if (tree.isSelected()) {
-                    analyzer.printSyntaxTree(syntaxResponse);
-                }
 
                 // Save any new words to dictionaries
                 analyzer.saveWordsToDictionaries(result.getWordsByType());

@@ -198,9 +198,8 @@ public class SentenceAnalyzer implements AutoCloseable {
         // Create document object for API request
         Document doc = createDocument(sentence);
         // Perform syntactic analysis
-        AnalyzeSyntaxResponse response = language.analyzeSyntax(doc);
 
-        return response;
+        return language.analyzeSyntax(doc);
     }
 
     /**
@@ -329,24 +328,6 @@ public class SentenceAnalyzer implements AutoCloseable {
             }
             return words;
         }
-    }
-
-    /**
-     * Logs the syntactic structure of a sentence.
-     *
-     * @param response The syntactic analysis response
-     */
-    public void printSyntaxTree(AnalyzeSyntaxResponse response) {
-//        response.getTokensList().forEach(token ->
-//                LOGGER.info(String.format(
-//                        // Format: Word, Lemma, Dependency head, Dependency type
-//                        "Word: %-10s Lemma: %-10s Depends on: %d  Type: %s",
-//                        token.getText().getContent(),
-//                        token.getLemma(),
-//                        token.getDependencyEdge().getHeadTokenIndex(),
-//                        token.getDependencyEdge().getLabel()
-//                ))
-//        );
     }
 
     /**

@@ -28,7 +28,6 @@ public class SentenceGenerator {
      * @throws IllegalArgumentException for invalid parameters
      */
     public List<String> generateSentences(int count, String template, List<String> nouns, List<String> verbs, List<String> adjectives) throws IOException {
-        long start = System.nanoTime();
 
         // Validate input parameters
         if (count <= 0) {
@@ -61,10 +60,6 @@ public class SentenceGenerator {
             sentence = replacePlaceholders(sentence, currentNouns, currentVerbs, currentAdjectives, rand);
             sentences.add(sentence);
         }
-
-        // Log generation time
-        long end = System.nanoTime();
-        System.out.println("Time generation phrases (" + count + "): " + (end - start) / 1_000_000 + " ms");
 
         return sentences;
     }

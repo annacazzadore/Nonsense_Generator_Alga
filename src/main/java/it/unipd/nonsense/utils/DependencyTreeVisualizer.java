@@ -229,7 +229,7 @@ public class DependencyTreeVisualizer {
         Line line = new Line(startX, startY, endX, endY);
         line.setStroke(Color.GRAY);
         line.setStrokeWidth(1);
-        line.getStrokeDashArray().addAll(2d, 4d);
+        line.getStrokeDashArray().addAll(Double.valueOf(2), Double.valueOf(4));
         drawingPane.getChildren().add(line);
 
         drawArrowHead(startX, startY, endX, endY);

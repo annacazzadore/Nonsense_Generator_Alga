@@ -1,6 +1,5 @@
 package it.unipd.nonsense.controller;
 
-import it.unipd.nonsense.utils.Words;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
