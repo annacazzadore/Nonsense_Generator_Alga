@@ -17,4 +17,5 @@ cook
 paint
 climb
 laugh
-explore
+explorehave
+have

@@ -19,6 +19,6 @@ public class Noun extends Words
      */
     public Noun() throws IOException
     {
-        super("dictionaries/nouns.txt");
+        super("/it/unipd/nonsense/dictionaries/nouns.txt");
     }
 }

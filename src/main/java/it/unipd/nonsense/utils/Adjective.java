@@ -17,6 +17,6 @@ public class Adjective extends Words {
      *                    or if there's an error reading the file
      */
     public Adjective() throws IOException {
-        super("dictionaries/adjectives.txt");
+        super("/it/unipd/nonsense/dictionaries/adjectives.txt");
     }
 }

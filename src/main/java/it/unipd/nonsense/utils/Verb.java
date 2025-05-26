@@ -17,6 +17,6 @@ public class Verb extends Words {
      *                    or if there's an error reading the file
      */
     public Verb() throws IOException {
-        super("dictionaries/verbs.txt");
+        super("/it/unipd/nonsense/dictionaries/verbs.txt");
     }
 }

@@ -17,4 +17,7 @@ pencil
 queen
 river
 sun
-tree
+treedog
+dog
+pitbul
+mouse

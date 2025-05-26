@@ -25,10 +25,10 @@ import java.util.stream.Stream;
  */
 public abstract class SyntaxController {
     // File paths and constants
-    private static final String TEMPLATES_FILE = "src/resources/dictionaries/templates.txt";
+    private static final String TEMPLATES_FILE = "src/main/resources/it/unipd/nonsense/dictionaries/templates.txt";
     private static final String DEFAULT_TEMPLATE = "-";
-    private static final String MAIN_VIEW = "/views/main.fxml";
-    private static final String RESULTS_VIEW = "/views/results.fxml";
+    private static final String MAIN_VIEW = "/it/unipd/nonsense/views/main.fxml";
+    private static final String RESULTS_VIEW = "/it/unipd/nonsense/views/results.fxml";
     private static final String APP_TITLE = "Random Sentence Generator ALGA";
 
     // Constants for word types
@@ -225,8 +225,7 @@ public abstract class SyntaxController {
         List<String> adjectives = new ArrayList<>(wordsByType.getOrDefault(ADJ, Collections.emptySet()));
 
         try {
-            return new SentenceGenerator().generateSentences(
-                    numberValue, selectedTemplate, nouns, verbs, adjectives);
+            return new SentenceGenerator().generateSentences(numberValue, selectedTemplate, nouns, verbs, adjectives);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

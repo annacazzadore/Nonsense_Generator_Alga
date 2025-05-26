@@ -22,7 +22,7 @@ public abstract class Words {
      */
     public Words(String dictionaryPath) throws IOException {
         // Get the dictionary file as an input stream from resources
-        InputStream input = getClass().getClassLoader().getResourceAsStream(dictionaryPath);
+        InputStream input = getClass().getResourceAsStream(dictionaryPath);
 
         if (input == null) {
             throw new IOException("Dictionary file not found: " + dictionaryPath);

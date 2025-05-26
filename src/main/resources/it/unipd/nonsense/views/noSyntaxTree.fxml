@@ -17,7 +17,7 @@
    <Pane layoutX="106.0" layoutY="146.0" prefHeight="300.0" prefWidth="700.0" style="-fx-background-color: #9eb59c; -fx-border-radius: 18; -fx-background-radius: 18;">
       <!--Back button-->
       <ImageView id="back_button" fx:id="back" fitHeight="28.0" fitWidth="28.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#handleBack" pickOnBounds="true">
-         <Image url="@/views/style/1410611-200.png"/>
+         <Image url="@/it/unipd/nonsense/views/style/1410611-200.png"/>
       </ImageView>
 
       <!--Display of used words-->
