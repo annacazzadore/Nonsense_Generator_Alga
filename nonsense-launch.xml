@@ -1,0 +1,25 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\target\Nonsense_Generator_Alga-1.0-SNAPSHOT.jar</jar>
+  <outfile>C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\NonsenseGenerator.exe</outfile>
+  <errTitle/>
+  <cmdLine/>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl/>
+  <supportUrl/>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest/>
+  <icon>C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\resources\icon.ico</icon>
+
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion>24</minVersion>
+    <maxVersion/>
+    <opt>--module-path C:\javafx-sdk-24.0.1\lib --add-modules javafx.controls,javafx.fxml,java.base,java.compiler,java.desktop,java.naming,java.scripting,java.security.jgss,java.sql,jdk.jfr,jdk.unsupported</opt>
+  </jre>
+</launch4jConfig>

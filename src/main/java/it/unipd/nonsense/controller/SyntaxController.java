@@ -27,7 +27,7 @@ public abstract class SyntaxController {
     // File paths and constants
     private static final String TEMPLATES_FILE = "src/main/resources/it/unipd/nonsense/dictionaries/templates.txt";
     private static final String DEFAULT_TEMPLATE = "-";
-    private static final String MAIN_VIEW = "/it/unipd/nonsense/views/main.fxml";
+    private static final String MAIN_VIEW = "/it/unipd/nonsense/views/Main.fxml";
     private static final String RESULTS_VIEW = "/it/unipd/nonsense/views/results.fxml";
     private static final String APP_TITLE = "Random Sentence Generator ALGA";
 
@@ -120,7 +120,7 @@ public abstract class SyntaxController {
      */
     private void navigateToView(MouseEvent event, Consumer<Object> controllerConfigurator) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(SyntaxController.MAIN_VIEW));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(MAIN_VIEW));
             Parent root = loader.load();
 
             controllerConfigurator.accept(loader.getController());
