@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/controller/MainControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/NounTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceAnalyzerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceGeneratorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/nouns.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,33 +50,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Nonsense_Generator_Alga.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;Applicazione.Nonsense_Generator_Alga.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2551724&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Nonsense_Generator_Alga.executor": "Run",
+    "Application.main.executor": "Run",
+    "Applicazione.Nonsense_Generator_Alga.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.MainControllerTest.executor": "Run",
+    "JUnit.NounTest.executor": "Run",
+    "JUnit.SentenceAnalyzerTest.executor": "Run",
+    "JUnit.SentenceGeneratorTest.executor": "Run",
+    "JUnit.WordsTest.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/annavardiero/Nonsense_Generator_Alga",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2551724",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="it.unipd.nonsense" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.SentenceAnalyzerTest">
     <configuration name="Nonsense_Generator_Alga" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-24" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -77,7 +95,7 @@
         <env name="GOOGLE_APPLICATION_CREDENTIALS" value="" />
       </envs>
       <option name="envFilePaths">
-        <option value="$PROJECT_DIR$/../../../../../nonsense-generator-alga-4496c59a3154.json" />
+        <option value="$PROJECT_DIR$/../../nonsense-generator-alga-4496c59a3154.json" />
       </option>
       <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.main" />
       <module name="Nonsense_Generator_Alga" />
@@ -86,6 +104,98 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Nonsense_Generator_Alga" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.nonsense.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.nonsense.controller" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.controller.MainControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NounTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Nonsense_Generator_Alga" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.nonsense.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.nonsense.utils" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.NounTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SentenceAnalyzerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Nonsense_Generator_Alga" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.nonsense.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.nonsense.utils" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.SentenceAnalyzerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SentenceGeneratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Nonsense_Generator_Alga" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.nonsense.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.nonsense.utils" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.SentenceGeneratorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WordsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Nonsense_Generator_Alga" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.nonsense.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.nonsense.utils" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.WordsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Nonsense_Generator_Alga" />
+      <item itemvalue="JUnit.MainControllerTest" />
+      <item itemvalue="JUnit.NounTest" />
+      <item itemvalue="JUnit.SentenceAnalyzerTest" />
+      <item itemvalue="JUnit.SentenceGeneratorTest" />
+      <item itemvalue="JUnit.WordsTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SentenceAnalyzerTest" />
+        <item itemvalue="JUnit.SentenceGeneratorTest" />
+        <item itemvalue="JUnit.MainControllerTest" />
+        <item itemvalue="JUnit.NounTest" />
+        <item itemvalue="JUnit.WordsTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -112,6 +222,8 @@
       <workItem from="1747747648081" duration="978000" />
       <workItem from="1747748633610" duration="6230000" />
       <workItem from="1747899191318" duration="3293000" />
+      <workItem from="1748349477463" duration="4681000" />
+      <workItem from="1748355154551" duration="4556000" />
     </task>
     <servers />
   </component>
