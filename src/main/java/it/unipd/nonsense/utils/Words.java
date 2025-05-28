@@ -1,6 +1,7 @@
 package it.unipd.nonsense.utils;
 
 import java.io.*;
+import java.nio.file.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,19 +22,26 @@ public abstract class Words {
      * @throws IOException if the dictionary file cannot be found or read
      */
     public Words(String dictionaryPath) throws IOException {
-        // Get the dictionary file as an input stream from resources
-        InputStream input = getClass().getResourceAsStream(dictionaryPath);
+        List<String> loadedWords;
 
-        if (input == null) {
-            throw new IOException("Dictionary file not found: " + dictionaryPath);
+        Path filePath = Paths.get(dictionaryPath);
+        if (Files.exists(filePath)) {
+            // If it's a valid file path
+            loadedWords = Files.readAllLines(filePath);
+        } else {
+            // Try to load it as a resource from classpath
+            InputStream input = getClass().getResourceAsStream(dictionaryPath);
+            if (input == null) {
+                throw new IOException("Dictionary file not found: " + dictionaryPath);
+            }
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+                loadedWords = reader.lines().collect(Collectors.toList());
+            }
         }
 
-        // Try-with-resources to ensure the reader is closed automatically
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
-            // Read all lines from the file and collect them into a List
-            words = reader.lines().collect(Collectors.toList());
-        }
+        this.words = loadedWords;
     }
+
 
     /**
      * Gets a random word from the loaded dictionary.
@@ -41,6 +49,9 @@ public abstract class Words {
      * @return a randomly selected word from the dictionary
      */
     public String getRandom() {
+        if (words.isEmpty()) {
+            throw new NoSuchElementException("Cannot get random word from an empty dictionary.");
+        }
         return words.get(rand.nextInt(words.size()));
     }
 

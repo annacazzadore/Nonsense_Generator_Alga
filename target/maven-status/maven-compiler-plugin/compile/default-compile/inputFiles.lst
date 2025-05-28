@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /Users/annavardiero/Nonsense_Generator_Alga/src/main/java/it/unipd/nonsense/utils/Noun.java
 /Users/annavardiero/Nonsense_Generator_Alga/src/main/java/it/unipd/nonsense/utils/SentenceAnalyzer.java
 /Users/annavardiero/Nonsense_Generator_Alga/src/main/java/it/unipd/nonsense/utils/Adjective.java
@@ -14,3 +15,20 @@
 /Users/annavardiero/Nonsense_Generator_Alga/src/main/java/it/unipd/nonsense/controller/SyntaxController.java
 /Users/annavardiero/Nonsense_Generator_Alga/src/main/java/it/unipd/nonsense/utils/InputHandler.java
 /Users/annavardiero/Nonsense_Generator_Alga/src/main/java/it/unipd/nonsense/controller/MainController.java
+=======
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\utils\AnalysisResult.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\utils\Noun.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\utils\SentenceGenerator.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\controller\MainController.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\utils\DependencyTreeVisualizer.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\utils\Verb.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\Main.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\controller\SyntaxController.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\utils\Adjective.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\utils\SentenceAnalyzer.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\utils\Words.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\controller\SyntaxTreeController.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\controller\PopUpController.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\controller\NoSyntaxTreeController.java
+C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\main\java\it\unipd\nonsense\controller\ResultsController.java
+>>>>>>> Stashed changes

@@ -4,19 +4,26 @@ import java.io.IOException;
 
 /**
  * A specialized word dictionary implementation for adjectives.
- * Extends the base {@link Words} class to provide adjectives-specific functionality.
+ * Extends the base {@link Words} class to provide adjective-specific functionality.
  * Loads adjectives from a predefined text file in the application resources.
  */
 public class Adjective extends Words {
+    private static final String DEFAULT_ADJ_PATH = "/it/unipd/nonsense/dictionaries/adjectives.txt";
 
     /**
-     * Constructs a new adjective dictionary by loading adjectives from the default adjectives file.
-     * The adjectives are loaded from "dictionaries/adjectives.txt" in the application resources.
-     *
-     * @throws IOException if the adjectives dictionary file cannot be found at the specified path,
-     *                    or if there's an error reading the file
+     * Constructs a new adjective dictionary using the default path.
+     * @throws IOException if the adjectives dictionary file cannot be read
      */
     public Adjective() throws IOException {
-        super("/it/unipd/nonsense/dictionaries/adjectives.txt");
+        this(DEFAULT_ADJ_PATH);
+    }
+
+    /**
+     * Constructs a new adjective dictionary with a custom path (for testing)
+     * @param dictionaryPath path to the adjectives dictionary
+     * @throws IOException if the dictionary file cannot be read
+     */
+    Adjective(String dictionaryPath) throws IOException {
+        super(dictionaryPath);
     }
 }

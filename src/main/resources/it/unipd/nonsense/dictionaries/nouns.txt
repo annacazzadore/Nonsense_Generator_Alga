@@ -22,3 +22,8 @@ dog
 pitbul
 mouse
 cow
+bellissima
+casa
+bello
+words
+girl

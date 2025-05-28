@@ -43,6 +43,19 @@ public class SentenceAnalyzer implements AutoCloseable {
     });
 
     /**
+     * Constructor that initializes the SentenceAnalyzer with Google Cloud credentials.
+     * Loads configuration and sets up the language service client.
+     *
+     * @throws IOException If configuration or credentials cannot be loaded
+     */
+    public SentenceAnalyzer() throws IOException {
+        Properties props = loadConfiguration();
+        String credPath = getCredentialsPath(props);
+        GoogleCredentials credentials = loadCredentials(credPath);
+        this.language = createLanguageClient(credentials);
+    }
+
+    /**
      * Calculates a toxicity score for the given sentence using Google's Perspective API.
      * Implements caching to improve performance for repeated sentences.
      *
@@ -97,19 +110,6 @@ public class SentenceAnalyzer implements AutoCloseable {
         }
 
         return DEFAULT_TOXICITY_SCORE;
-    }
-
-    /**
-     * Constructor that initializes the SentenceAnalyzer with Google Cloud credentials.
-     * Loads configuration and sets up the language service client.
-     *
-     * @throws IOException If configuration or credentials cannot be loaded
-     */
-    public SentenceAnalyzer() throws IOException {
-        Properties props = loadConfiguration();
-        String credPath = getCredentialsPath(props);
-        GoogleCredentials credentials = loadCredentials(credPath);
-        this.language = createLanguageClient(credentials);
     }
 
     /**
@@ -195,10 +195,13 @@ public class SentenceAnalyzer implements AutoCloseable {
      * @return Analysis response containing tokens and dependencies
      */
     public AnalyzeSyntaxResponse analyzeSentence(String sentence) {
+        // Add input validation
+        if (sentence == null || sentence.trim().isEmpty()) {
+            throw new IllegalArgumentException("Sentence cannot be empty");
+        }
         // Create document object for API request
         Document doc = createDocument(sentence);
         // Perform syntactic analysis
-
         return language.analyzeSyntax(doc);
     }
 
@@ -337,6 +340,11 @@ public class SentenceAnalyzer implements AutoCloseable {
      * @return true if text is identified as English
      */
     public boolean isEnglish(String text) {
+        // Handle empty string case
+        if (text == null || text.trim().isEmpty()) {
+            return false;
+        }
+
         // Create document for API request
         Document doc = createDocument(text);
         AnalyzeEntitiesResponse response = language.analyzeEntities(

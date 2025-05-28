@@ -7,18 +7,23 @@ import java.io.IOException;
  * Extends the base {@link Words} class to provide noun-specific functionality.
  * Loads nouns from a predefined text file in the application resources.
  */
-public class Noun extends Words
-{
+public class Noun extends Words {
+    private static final String DEFAULT_NOUN_PATH = "/it/unipd/nonsense/dictionaries/nouns.txt";
 
     /**
-     * Constructs a new noun dictionary by loading nouns from the default nouns file.
-     * The nouns are loaded from "dictionaries/nouns.txt" in the application resources.
-     *
-     * @throws IOException if the nouns dictionary file cannot be found at the specified path,
-     *                    or if there's an error reading the file
+     * Constructs a new noun dictionary using the default path.
+     * @throws IOException if the nouns dictionary file cannot be read
      */
-    public Noun() throws IOException
-    {
-        super("/it/unipd/nonsense/dictionaries/nouns.txt");
+    public Noun() throws IOException {
+        this(DEFAULT_NOUN_PATH);
+    }
+
+    /**
+     * Constructs a new noun dictionary with a custom path (for testing)
+     * @param dictionaryPath path to the nouns dictionary
+     * @throws IOException if the dictionary file cannot be read
+     */
+    Noun(String dictionaryPath) throws IOException {
+        super(dictionaryPath);
     }
 }
