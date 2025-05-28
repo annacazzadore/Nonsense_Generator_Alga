@@ -70,7 +70,6 @@ mvn javafx:run
 
 ## 4. Main Reused Libraries (Excluding Basic Ones)
 
-<<<<<<< Updated upstream
 | Library                          | Purpose |
 |----------------------------------|---------|
 | `com.google.cloud:google-cloud-language` | Text semantic analysis |
@@ -79,16 +78,6 @@ mvn javafx:run
 | `com.google.code.gson:gson`     | JSON parsing and serialization |
 | `org.openjfx:javafx-*`          | GUI (FXML, controls) |
 | `org.junit.jupiter:*`           | Unit and integration testing |
-=======
-| Library                                  | Purpose                                               |
-|------------------------------------------|-------------------------------------------------------|
-| `com.google.cloud:google-cloud-language` | Text semantic analysis                                |
-| `io.grpc:*`                              | Communication with remote services (Google Cloud API) |
-| `com.google.guava:guava`                 | Utilities (collections, cache, immutability)          |
-| `com.google.code.gson:gson`              | JSON parsing and serialization                        |
-| `org.openjfx:javafx-*`                   | GUI (FXML, controls)                                  |
-| `org.junit.jupiter:*`                    | Unit and integration testing                          |
->>>>>>> Stashed changes
 
 ---
 
@@ -107,11 +96,7 @@ You must:
 
   (Win: C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\it\unipd\nonsense\config.properties;
 
-<<<<<<< Updated upstream
-   macOS: /Users/lari/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties) 
-=======
   macOS: /Users/lari/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties)
->>>>>>> Stashed changes
 
   file where you can put the path of your credentials file
 
