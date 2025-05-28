@@ -1,0 +1,71 @@
+@startuml
+title Internal SD – Sentence Analysis
+
+participant InputSentence
+participant SentenceAnalyzer
+participant Dictionary
+participant Word
+
+InputSentence -> SentenceAnalyzer : analyze()
+SentenceAnalyzer -> Word : splitIntoWords(sentence)
+loop for every word
+  Word -> Dictionary : insert(word)
+end
+@enduml
+
+@startuml
+title Internal SD – Random Sentences generation
+
+participant SentenceGenerator
+participant Dictionary
+participant Word
+participant NonSenseSentence
+
+SentenceGenerator -> Dictionary : getWords()
+loop n times
+  Dictionary -> Word : getRandom(type)
+  Word -> NonSenseSentence : form()
+end
+SentenceGenerator -> NonSenseSentence : returnOutput()
+@enduml
+
+@startuml
+title Internal SD – Input Analysis Toxicity Check
+
+participant InputSentence
+participant SentenceAnalyzer
+participant GoogleAPI
+participant Output
+
+InputSentence -> SentenceAnalyzer : analyze()
+  SentenceAnalyzer -> GoogleAPI : isToxic(sentence)
+  alt safe sentence
+    GoogleAPI -> Output : show(words)
+  else toxic sentence
+    GoogleAPI -> Output : showWarning()
+  end
+@enduml
+
+@startuml
+title Internal SD – Sentence Generation Toxicity Check
+
+participant SentenceGenerator
+participant ToxicityAPI
+participant Output
+
+loop Generate n sentences
+    loop until sentence is safe
+        SentenceGenerator -> SentenceGenerator: generateRandomSentence()
+        SentenceGenerator -> ToxicityAPI: checkContext(sentence)
+
+        alt context is toxic
+            ToxicityAPI --> SentenceGenerator: TOXIC_CONTEXT
+            SentenceGenerator -> SentenceGenerator: **regenerateSentence()**
+        else context is safe
+            ToxicityAPI --> SentenceGenerator: SAFE
+            SentenceGenerator -> Output: addToResults(sentence)
+            break
+        end
+    end
+end
+@enduml

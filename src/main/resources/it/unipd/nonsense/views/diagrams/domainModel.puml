@@ -1,0 +1,35 @@
+@startuml
+object User
+object InputSentence
+object SentenceAnalyzer
+object Words
+object Word {
+Noun
+Verb
+Adjective
+}
+object SentenceGenerator
+object SyntaxTree
+object Template
+object OutputValidator
+object NumberOfSentences
+object Output
+
+User "1"--> "1" InputSentence : inserts
+User "1" --> "0..1" SyntaxTree : requests
+User "1" --> "1" Template : selects
+User "1" --> "1" NumberOfSentences : chooses
+User "1" --> "1" Output : views
+User "1" --> "1" SentenceGenerator : requests
+SentenceAnalyzer "1" --> "0..*" Word : extracts
+SentenceAnalyzer "1" --> "0..1" SyntaxTree : generates
+InputSentence "1"--> "1" SentenceAnalyzer : invokes
+Words "1" --> "0..*" Word : contains
+Word "0..*" --> "1" Words : gets added to
+SentenceGenerator  "1"--> "1" Words : accesses
+SentenceGenerator "1" --> "1" Template : sets
+SentenceGenerator "1" --> "1" NumberOfSentences : sets
+OutputValidator "1" --> "1" Output : generates
+SentenceGenerator "1"--> "1" OutputValidator : recalls
+
+@enduml
