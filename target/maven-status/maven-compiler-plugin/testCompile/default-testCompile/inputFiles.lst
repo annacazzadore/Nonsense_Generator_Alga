@@ -1,15 +1,8 @@
-<<<<<<< Updated upstream
-/Users/annavardiero/Nonsense_Generator_Alga/src/test/java/it/unipd/nonsense/utils/InputHandlerTest.java
-/Users/annavardiero/Nonsense_Generator_Alga/src/test/java/it/unipd/nonsense/utils/SentenceAnalyzerTest.java
-/Users/annavardiero/Nonsense_Generator_Alga/src/test/java/it/unipd/nonsense/utils/NounTest.java
-/Users/annavardiero/Nonsense_Generator_Alga/src/test/java/it/unipd/nonsense/controller/MainControllerTest.java
-/Users/annavardiero/Nonsense_Generator_Alga/src/test/java/it/unipd/nonsense/utils/SentenceGeneratorTest.java
-=======
-C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\AdjectiveTest.java
-C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\SentenceAnalyzerTest.java
-C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\SentenceGeneratorTest.java
-C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\WordsTest.java
-C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\VerbTest.java
-C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\AnalysisResultTest.java
-C:\Users\acazz\OneDrive\Documenti\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\NounTest.java
->>>>>>> Stashed changes
+C:\Users\Giada\Documents\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\SentenceGeneratorTest.java
+C:\Users\Giada\Documents\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\WordsTest.java
+C:\Users\Giada\Documents\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\NounTest.java
+C:\Users\Giada\Documents\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\AdjectiveTest.java
+C:\Users\Giada\Documents\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\AnalysisResultTest.java
+C:\Users\Giada\Documents\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\VerbTest.java
+C:\Users\Giada\Documents\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\InputHandlerTest.java
+C:\Users\Giada\Documents\GitHub\Nonsense_Generator_Alga\src\test\java\it\unipd\nonsense\utils\SentenceAnalyzerTest.java
