@@ -96,7 +96,7 @@ You must:
 
   (Win: C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\it\unipd\nonsense\config.properties;
 
-macOS: /Users/lari/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties) file where you can put the path of your credentials file
+   macOS: /Users/lari/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties) file where you can put the path of your credentials file
 
 Example:
 
