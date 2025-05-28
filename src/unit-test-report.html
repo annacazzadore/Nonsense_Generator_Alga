@@ -2,9 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Unit Test Report - Nonsense Generator ALGA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2em;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 0.6em;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #004c99;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f0f8ff;
+    }
+    .pass {
+      color: green;
+      font-weight: bold;
+    }
+    .fail {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-$END$
+<h1>Unit Test Report - Nonsense Generator ALGA</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Test Class</th>
+    <th>Method</th>
+    <th>Description</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>InputHandlerTest</td>
+    <td>testInputIsStoredCorrectly()</td>
+    <td>Verifica che l'input venga salvato correttamente</td>
+    <td class="pass">PASS</td>
+  </tr>
+  <tr>
+    <td>KeywordExtractorTest</td>
+    <td>testCorrectKeywordsAreExtracted()</td>
+    <td>Verifica l'estrazione corretta delle keyword</td>
+    <td class="pass">PASS</td>
+  </tr>
+  <tr>
+    <td>SentenceAnalyzerTest</td>
+    <td>testSentenceParsingCreatesCorrectTree()</td>
+    <td>Verifica che venga generato correttamente l'albero sintattico</td>
+    <td class="pass">PASS</td>
+  </tr>
+  <tr>
+    <td>SentenceGeneratorTest</td>
+    <td>testRandomSentenceIsGeneratedCorrectly()</td>
+    <td>Verifica che venga generata una frase valida e non vuota</td>
+    <td class="pass">PASS</td>
+  </tr>
+  <tr>
+    <td>ToxicityValidatorTest</td>
+    <td>testToxicityDetectedCorrectly()</td>
+    <td>Verifica la rilevazione di contenuto tossico e non tossico</td>
+    <td class="pass">PASS</td>
+  </tr>
+  <tr>
+    <td>MainControllerTest</td>
+    <td>testResetClearsTextField()</td>
+    <td>Verifica che il reset svuoti il campo input</td>
+    <td class="pass">PASS</td>
+  </tr>
+  <tr>
+    <td>PhraseSaverTest</td>
+    <td>testPhraseIsSavedToFile()</td>
+    <td>Verifica che la frase venga salvata in un file</td>
+    <td class="pass">PASS</td>
+  </tr>
+  </tbody>
+</table>
 </body>
 </html>
+

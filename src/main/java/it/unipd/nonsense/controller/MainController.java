@@ -151,4 +151,15 @@ public class MainController {
             sentence.setText(text.trim());
         }
     }
+
+
+
+    public String getSentenceText() {
+        return sentence.getText();
+    }
+
+
+    public void reset() {
+        sentence.clear();
+    }
 }
