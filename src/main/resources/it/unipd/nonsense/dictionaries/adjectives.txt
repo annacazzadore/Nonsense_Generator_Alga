@@ -20,4 +20,3 @@ clean
 dirtynew
 new
 pink
-beautiful

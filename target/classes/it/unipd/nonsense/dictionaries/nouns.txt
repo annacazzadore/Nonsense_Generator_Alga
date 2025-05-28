@@ -17,13 +17,4 @@ pencil
 queen
 river
 sun
-treedog
-dog
-pitbul
-mouse
-cow
-bellissima
-casa
-bello
-words
-girl
+treewords

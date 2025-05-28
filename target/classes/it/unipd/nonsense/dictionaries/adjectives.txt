@@ -18,6 +18,3 @@ strong
 weak
 clean
 dirtynew
-new
-pink
-beautiful

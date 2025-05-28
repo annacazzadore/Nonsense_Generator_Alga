@@ -16,3 +16,4 @@ it\unipd\nonsense\Main.class
 it\unipd\nonsense\utils\Words.class
 it\unipd\nonsense\utils\SentenceAnalyzer.class
 it\unipd\nonsense\controller\ResultsController.class
+it\unipd\nonsense\utils\InputHandler.class
