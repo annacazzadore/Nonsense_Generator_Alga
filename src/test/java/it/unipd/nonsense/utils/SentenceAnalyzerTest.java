@@ -1,22 +1,30 @@
 package it.unipd.nonsense.utils;
 
 import com.google.cloud.language.v1.AnalyzeSyntaxResponse;
+import it.unipd.nonsense.utils.SentenceAnalyzer;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 
-public class SentenceAnalyzerTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class SentenceAnalyzerTest {
+    private SentenceAnalyzer analyzer;
+
+    @BeforeEach
+    void setUp()  throws IOException{
+        analyzer = new SentenceAnalyzer();
+    }
 
     @Test
     void testAnalyzeSentenceReturnsValidResponse() throws IOException {
-        try (SentenceAnalyzer analyzer = new SentenceAnalyzer()) {
-            String sentence = "The cat jumps over the lazy dog.";
-            AnalyzeSyntaxResponse response = analyzer.analyzeSentence(sentence);
-
-            assertNotNull(response);
-            assertFalse(response.getTokensList().isEmpty(), "Tokens should not be empty");
-        }
+        AnalyzeSyntaxResponse response = analyzer.analyzeSentence("Il gatto salta sul tavolo");
+        assertNotNull(response);
+        assertFalse(response.getTokensList().isEmpty());
     }
+
+
+
+
 }
