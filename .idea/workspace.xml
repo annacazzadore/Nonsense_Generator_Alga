@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/controller/MainControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/NounTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceAnalyzerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceGeneratorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unit-test-report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/nouns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/InputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/InputHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/controller/MainControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/controller/MainControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/InputHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/InputHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceAnalyzerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceAnalyzerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +28,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -55,6 +61,7 @@
     "Application.Nonsense_Generator_Alga.executor": "Run",
     "Application.main.executor": "Run",
     "Applicazione.Nonsense_Generator_Alga.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.MainControllerTest.executor": "Run",
     "JUnit.NounTest.executor": "Run",
@@ -69,6 +76,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
+    "last_directory_selection": "/Users/annavardiero/Nonsense_Generator_Alga/src/test/java/it/unipd/nonsense/utils",
     "last_opened_file_path": "/Users/annavardiero/Nonsense_Generator_Alga",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -223,7 +231,9 @@
       <workItem from="1747748633610" duration="6230000" />
       <workItem from="1747899191318" duration="3293000" />
       <workItem from="1748349477463" duration="4681000" />
-      <workItem from="1748355154551" duration="4556000" />
+      <workItem from="1748355154551" duration="12297000" />
+      <workItem from="1748424036652" duration="1491000" />
+      <workItem from="1748425652646" duration="524000" />
     </task>
     <servers />
   </component>
