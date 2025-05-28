@@ -92,8 +92,9 @@ You must:
 
 - Enable the API on your Google Cloud project
 - Set credentials via `GOOGLE_APPLICATION_CREDENTIALS`
-- At the moment there is a config.properties (Win: C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\it\unipd\nonsense\config.properties;
-macOS: /Users/YourUsername/...) file where you can put the path of your credentials file
+- At the moment there is a config.properties
+  (Win: C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\it\unipd\nonsense\config.properties;
+macOS: /Users/lari/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties) file where you can put the path of your credentials file
 
 Example:
 
