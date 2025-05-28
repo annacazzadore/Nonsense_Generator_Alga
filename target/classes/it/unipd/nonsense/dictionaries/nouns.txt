@@ -21,3 +21,4 @@ treedog
 dog
 pitbul
 mouse
+cow
