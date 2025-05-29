@@ -19,9 +19,7 @@ The project is structured to be modular, testable (JUnit5), and portable using M
 - JavaFX **24.0.1**
 - Internet connection (required for Google Cloud APIs)
 - Google Cloud account with **Natural Language API** enabled
-
-#### ✅ Additional Requirements
-- Maven **3.9.9**
+- Maven **3.9.9** (required for macOs only, recomended for Windows) 
 
 #### 🪟 For **Windows** users
 1. Install **JDK 24**  
@@ -88,7 +86,7 @@ java --module-path "C:\javafx-sdk-24.0.1\lib" ^
      -jar target/Nonsense_Generator_Alga-1.0-SNAPSHOT.jar
 ```
 
-**macOS/Linux:**
+**macOS:**
 
 ```bash
 java --module-path "/path/to/javafx-sdk-24.0.1/lib" \
@@ -115,10 +113,8 @@ If an `.exe` version of the program is provided:
 
 - **Java:** JDK 24
 - **Maven:** Used for building and managing dependencies
-- **OS:** Compatible with Windows, macOS, and Linux
+- **OS:** Compatible with Windows, macOS
 - **UI Framework:** JavaFX 24.0.1
-
-> ⚠️ Ensure JavaFX is properly set up in your environment. Some Linux systems may require additional libraries (`libopenjfx`).
 
 ---
 
@@ -144,13 +140,7 @@ If an `.exe` version of the program is provided:
 
 1. Enable the **Natural Language API** in your Google Cloud project.
 2. Download your service account JSON key file.
-3. Set the path to credentials via environment variable:
-
-```bash
-export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/key.json"
-```
-
-Or configure the credentials path inside the `config.properties` file.
+3. Configure the credentials path inside the `config.properties` file.
 
 **Windows path:**
 
