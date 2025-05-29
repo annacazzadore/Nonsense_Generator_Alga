@@ -56,7 +56,7 @@ Make sure `JAVA_HOME` and JavaFX are properly configured in your shell (e.g., `.
 
 1. Clone or download the project:
    ```bash
-   git clone https://your.repo.url/Nonsense_Generator_Alga.git
+   git clone https://github.com/annacazzadore/Nonsense_Generator_Alga.git
    cd Nonsense_Generator_Alga
    ```
 
