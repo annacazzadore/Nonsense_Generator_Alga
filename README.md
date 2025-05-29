@@ -14,15 +14,45 @@ The project is structured to be modular, testable (JUnit5), and portable using M
 
 ### ⚙️ Requirements
 
+#### ✅ Common Requirements
 - Java **JDK 24**
-- Maven **3.6+**
-- Internet connection (required for external APIs)
-- Google Cloud account with Natural Language API enabled
+- JavaFX **24.0.1**
+- Internet connection (required for Google Cloud APIs)
+- Google Cloud account with **Natural Language API** enabled
 
-There are three metod of installation/launch:
-- **Maven-based**: Run `mvn clean package` to build the project, then `mv
-- **IDE-based**: Import the project into your IDE (e.g., Eclipse, IntelliJ IDEA)
-- **Executable-based**: launch the executable file (.exe for windows or .dmg for macOS)
+#### ✅ Additional Requirements
+- Maven **3.9.9**
+
+#### 🪟 For **Windows** users
+1. Install **JDK 24**  
+   ➤ [Download JDK](https://www.oracle.com/java/technologies/javase/jdk24-archive-downloads.html)  
+   ➤ Add `JAVA_HOME` and update your system `PATH`.
+
+2. Install **JavaFX 24**  
+   ➤ [Download JavaFX SDK](https://gluonhq.com/products/javafx/)  
+   ➤ Extract it to a folder, e.g., `C:\javafx-sdk-24.0.1`.
+
+3. Install **Maven 3.9.9**  
+   ➤ [Download Maven](https://maven.apache.org/download.cgi)  
+   ➤ Add `MAVEN_HOME` and update your system `PATH`.
+
+#### 🍎 For **macOS** users
+You can use [Homebrew](https://brew.sh/) to install JDK and Maven:
+
+```bash
+brew install openjdk@24
+brew install maven
+```
+
+You can also install JavaFX via Homebrew:
+
+```bash
+brew install --cask gluonhq-openjfx
+```
+
+Make sure `JAVA_HOME` and JavaFX are properly configured in your shell (e.g., `.zshrc` or `.bash_profile`).
+
+---
 
 ### 🔧 Installation
 
@@ -37,23 +67,47 @@ There are three metod of installation/launch:
    mvn clean package
    ```
 
-   This generates an executable JAR with all dependencies (`target/*.jar`).
+   This will generate an executable JAR with all dependencies in the `target/` directory:
 
-### 🚀 Launch
+  ```text
+  target/Nonsense_Generator_Alga-1.0-SNAPSHOT.jar
+  ```
 
-Run the program using:
+---
+
+### 🚀 Launch Instructions
+
+#### ▶️ Run with JAR (Cross-platform)
+Make sure JavaFX SDK is correctly referenced in the module path.
+
+**Windows:**
 
 ```bash
-java --module-path "C:\javafx-sdk-24.0.1\lib" `
-     --add-modules javafx.controls,javafx.fxml `
-     -jar target/Nonsense_Generator_Alga-1.0-SNAPSHOT.jar 
+java --module-path "C:\javafx-sdk-24.0.1\lib" ^
+     --add-modules javafx.controls,javafx.fxml ^
+     -jar target/Nonsense_Generator_Alga-1.0-SNAPSHOT.jar
 ```
 
-Or (if JavaFX plugin is configured)?????:
+**macOS/Linux:**
+
+```bash
+java --module-path "/path/to/javafx-sdk-24.0.1/lib" \
+     --add-modules javafx.controls,javafx.fxml \
+     -jar target/Nonsense_Generator_Alga-1.0-SNAPSHOT.jar
+```
+
+#### ▶️ Run with Maven (if JavaFX plugin is configured)
 
 ```bash
 mvn javafx:run
 ```
+
+#### ▶️ Run Executable File (Windows only)
+
+If an `.exe` version of the program is provided:
+
+1. Ensure **JDK 24** and **JavaFX 24** are installed.
+2. Double-click the `.exe` file to launch the application.
 
 ---
 
@@ -86,24 +140,28 @@ mvn javafx:run
 - **Google Cloud Natural Language API**  
   Used for syntactic and semantic analysis of text to generate nonsense sentences.
 
-### Usage Instructions
+### 🔐 Google Cloud Configuration
 
-You must:
-
-- Enable the API on your Google Cloud project
-- Set credentials via `GOOGLE_APPLICATION_CREDENTIALS`
-- At the moment there is a config.properties
-
-  (Win: C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\it\unipd\nonsense\config.properties;
-
-  macOS: /Users/lari/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties)
-
-  file where you can put the path of your credentials file
-
-Example:
+1. Enable the **Natural Language API** in your Google Cloud project.
+2. Download your service account JSON key file.
+3. Set the path to credentials via environment variable:
 
 ```bash
 export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/key.json"
+```
+
+Or configure the credentials path inside the `config.properties` file.
+
+**Windows path:**
+
+```text
+C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\it\unipd\nonsense\config.properties
+```
+
+**macOS path:**
+
+```text
+/Users/YourUsername/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties
 ```
 
 ---
