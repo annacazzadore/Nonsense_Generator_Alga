@@ -1,0 +1,35 @@
+@startuml
+actor User
+participant UI
+participant "SentenceAnalyzer" as SA
+participant "Words" as W
+participant "DependencyTreeVisualizer" as DTV
+participant "SentenceGenerator" as SG
+participant "OutputValidator" as OV
+participant "Output" as O
+
+
+== Input analysis ==
+User -> UI : insertSentence()
+UI -> SA : analyzeSentence(sentence)
+SA -> W : saveToDictionary(words)
+
+== Syntax tree visualization ==
+User -> UI : generateSyntaxTree()
+UI -> DTV : show(syntaxTree)
+
+== Sentence generation ==
+User -> UI : selectNumberOfSentences(n)
+User -> UI : selectTemplate(template)
+UI -> SG : generateSentences(n, template, words)
+SG -> W : getWords()
+SG -> SG : regenerateSentences(n)
+
+== Toxicity check ==
+SG -> OV : toxicityCheck(sentence)
+OV -> OV : filterSafeSentences()
+
+== Output visualization ==
+OV -> O : show(safeSentences)
+User -> UI : getOutput()
+@enduml

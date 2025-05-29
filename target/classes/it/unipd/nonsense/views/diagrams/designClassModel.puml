@@ -1,0 +1,251 @@
+@startuml
+class SentenceGenerator {
+  - getAllAdjectivesFromDictionary() : List<String>
+  - getAllVerbsFromDictionary() : List<String>
+  - getAllNounsFromDictionary() : List<String>
+  - countPlaceholders(text: String, placeholderRegex: String) : int
+  - replacePlaceholders(template: String, nouns: List<String>, verbs: List<String>, adjectives: List<String>, rand: Random) : String
+  + generateSentences(count: int, template: String, nouns: List<String>, verbs: List<String>, adjectives: List<String>) : List<String>
+  + SentenceGenerator()
+}
+
+class DependencyTreeVisualizer {
+  {static} {readOnly} NODE_HEIGHT : double
+  {static} {readOnly} NODE_WIDTH : double
+  {static} {readOnly} MIN_H_SPACING : double
+  {static} {readOnly} VERTICAL_SPACING : double
+  - currentTokens : List<Token>
+  - paneHeight : double
+  - paneWidth : double
+  {readOnly} drawingPane : Pane
+
+  + DependencyTreeVisualizer(drawingPane: Pane)
+  - redrawTree(): void
+  - findRootToken(tokens: List<Token>): Token
+  + drawDependencyTree(tokens: List<Token>): void
+  - getChildren(parent: Token, allTokens: List<Token>): List<Token>
+  - drawAllConnections(tokens: List<Token>, positions: Map<Token, Position>): void
+  - drawAllNodes(tokens: List<Token>, positions: Map<Token, Position>): void
+  - drawNode(token: Token, x: double, y: double): void
+  - drawConnection(startX: double, startY: double, endX: double, endY: double): void
+  - drawArrowHead(startX: double, startY: double, endX: double, endY: double): void
+  - buildLayout(current: Token, allTokens: List<Token>): TreeNodeLayout
+  - assignPositions(node: TreeNodeLayout, x: double, y: double, positions: Map<Token, Position>): void
+}
+
+class SyntaxTreeController {
+  - treePane : Pane
+  + generateT : Button
+  + treeScrollPane : ScrollPane
+  + back : ImageView
+  {readOnly} - sizeListener : ChangeListener<Number>
+  - treeVisualizer : DependencyTreeVisualizer
+  {readOnly} - SIZE_CHANGE_THRESHOLD : double
+
+  - redrawDependencyTree(result : AnalysisResult) : void
+  - handlePaneSizeChange(obs : ObservableValue<? extends Number>, oldVal : Number, newVal : Number) : void
+  - setupSizeListeners() : void
+  - initializeTreeVisualizer() : void
+  # getPreviousViewType() : String
+  + initializeWithResult(result : AnalysisResult) : void
+  + initialize() : void
+}
+
+class SentenceAnalyzer {
+    - {readOnly} toxicityCache : Map<String, float>
+    - {readOnly} MAX_CACHE_SIZE : int
+    - {readOnly} TOXIC_CATEGORIES : Set<String>
+    - {readOnly} DEFAULT_TOXICITY_SCORE : float
+    - {readOnly} language : LanguageServiceClient
+    - {readOnly} ENGLISH_LANGUAGE_CODE : String
+    - {readOnly} CONFIG_FILE : String
+    - {readOnly} DICTIONARIES_DIR : String
+    - {readOnly} LOGGER : Logger
+
+    + SentenceAnalyzer()
+    + getToxicityScore(sentence : String) : float
+    + analyzeSentence(sentence : String) : AnalyzeSyntaxResponse
+    + extractWordsByType(response : AnalyzeSyntaxResponse) : Map<String, Set<String>>
+    + saveWordsToDictionaries(words : Map<String, Set<String>>) : void
+    + printSyntaxTree(response : AnalyzeSyntaxResponse) : void
+    + isEnglish(text : String) : boolean
+    + close() : void
+
+    - calculateToxicityScore(sentence : String) : float
+    - loadConfiguration() : Properties
+    - getCredentialsPath(props : Properties) : String
+    - loadCredentials(credPath : String) : GoogleCredentials
+    - createLanguageClient(credentials : GoogleCredentials) : LanguageServiceClient
+    - initializeDictionary() : Map<String, Set<String>>
+    - saveDictionary(fileName : String, newWords : Set<String>) : void
+    - ensureFileExists(file : File) : void
+    - filterNewWords(newWords : Set<String>, existingWords : Set<String>) : List<String>
+    - appendToFile(file : File, words : List<String>) : void
+    - loadDictionary(file : File) : Set<String>
+    - createDocument(content : String) : Document
+}
+
+class SyntaxController {
+  {readOnly} - ADJ : String
+  {readOnly} - VERB : String
+  {readOnly} - NOUN : String
+  {readOnly} - APP_TITLE : String
+  {readOnly} - RESULTS_VIEW : String
+  {readOnly} - MAIN_VIEW : String
+  {readOnly} - DEFAULT_TEMPLATE : String
+  {readOnly} - TEMPLATES_FILE : String
+
+  # selectedTemplate : String
+  # numberValue : int
+  # currentResult : AnalysisResult
+  # wordsLabel : Label
+  # templates : ChoiceBox<String>
+  # number : Spinner<Integer>
+
+  # getPreviousViewType() : String
+  + initialize() : void
+  + initializeTemplate() : void
+  - initializeNumberSpinner() : void
+  - initializeTemplateChoiceBox() : void
+  # showAlert(message : String) : void
+  # handleBack(event : MouseEvent) : void
+  - navigateToView(event : MouseEvent, controllerConfigurator : Consumer<Object>) : void
+  - createStage(root : Parent, title : String) : Stage
+  - closeCurrentStage(event : MouseEvent) : void
+  + initializeWithResult(result : AnalysisResult) : void
+  - updateWordsLabel() : void
+  # handleGenerate(event : MouseEvent) : void
+  - validateInputs() : void
+  - generateSentences() : List<String>
+  - navigateToResultsView(event : MouseEvent, sentences : List<String>) : void
+  - configureResultsController(controller : ResultsController, sentences : List<String>) : void
+  + setNumberValue(value : int) : void
+}
+
+class ResultsController {
+  {readOnly} - MAX_ATTEMPTS_MULTIPLIER : int
+  {readOnly} - TOXICITY_THRESHOLD : float
+  {readOnly} - GENERATED_SENTENCES_FILE : String
+  {readOnly} - LOGGER : Logger
+
+  - executorService : ScheduledExecutorService
+  - selectedTemplate : String
+  - numberValue : int
+  - analysisResult : AnalysisResult
+  - previousView : String
+  - resultArea : TextArea
+  - back : ImageView
+  - end : Button
+
+  + setPreviousView(previousView : String) : void
+  + setAnalysisResult(analysisResult : AnalysisResult) : void
+  + setSelectedTemplate(template : String) : void
+  + setNumberValue(value : int) : void
+  - handleEnd() : void
+  - handleBack() : void
+  - initializePreviousController(loader : FXMLLoader) : void
+  + saveSentencesToFile(sentences : List<String>, filePath : String) : void
+  + showGeneratedSentences(inputSentences : List<String>) : void
+  - showErrorAlert(title : String, message : String) : void
+}
+
+class MainController {
+  - analyze : Button
+  - tree : CheckBox
+  - sentence : TextField
+
+  + setSentenceText(text : String) : void
+  - showError(message : String) : void
+  - showErrorDialog(toxicityScore : double) : void
+  - analyzeSentence() : void
+}
+
+class Main {
+  {readOnly} - MIN_HEIGHT : int
+  {readOnly} - MIN_WIDTH : int
+  {readOnly} - APP_TITLE : String
+  {readOnly} - FXML_PATH : String
+
+  + main(args : String[]) : void
+  - handleLaunchException(e : Exception) : void
+  + start(primaryStage : Stage) : void
+}
+
+class NoSyntaxTreeController {
+  + {static} VIEW_TYPE : String {readOnly}
+  + generate : Button
+  + back : ImageView
+  # getPreviousViewType() : String
+  + initialize() : void
+}
+
+class AnalysisResult {
+  - wordsByType : Map<String, Set<String>>
+  - syntaxResponse : AnalyzeSyntaxResponse
+  - originalText : String
+
+  + setWordsByType(wordsByType : Map<String, Set<String>>) : void
+  + getWordsByType() : Map<String, Set<String>>
+  + setSyntaxResponse(syntaxResponse : AnalyzeSyntaxResponse) : void
+  + getSyntaxResponse() : AnalyzeSyntaxResponse
+  + setOriginalText(originalText : String) : void
+  + getOriginalText() : String
+}
+
+class PopUpController {
+  - toxicity : TextField
+  - {static} PERCENTAGE_MULTIPLIER : double {readOnly}
+  - {static} TOXICITY_RATE_FORMAT : String {readOnly}
+
+  - formatToxicityRate(rate : double {readOnly}) : String
+  - validateToxicityRate(rate : double {readOnly}) : void
+  + setToxicityRate(rate : double {readOnly}) : void
+}
+
+class Words {
+    - {readOnly} rand : Random
+    # words : List<String>
+
+    + Words(dictionaryPath : String)
+    + getRandom() : String
+    # getRandomFromDictionary(count : int) : List<String>
+}
+
+class Adjective {
+  + Adjective()
+}
+
+class Noun {
+  + Noun()
+}
+
+class Verb {
+  + Verb()
+}
+
+Words <|-- Noun
+Words <|-- Adjective
+Words <|-- Verb
+SyntaxController <|-- SyntaxTreeController
+SyntaxController <|-- NoSyntaxTreeController
+
+SyntaxTreeController ..> AnalysisResult
+SyntaxTreeController --> DependencyTreeVisualizer
+SyntaxController --> AnalysisResult
+SyntaxController ..> SentenceGenerator
+SyntaxController ..> MainController
+SyntaxController ..> ResultsController
+ResultsController --> AnalysisResult
+ResultsController ..> SentenceAnalyzer
+ResultsController ..> SyntaxTreeController
+ResultsController ..> NoSyntaxTreeController
+MainController ..> AnalysisResult
+MainController ..> SentenceAnalyzer
+MainController ..> SyntaxTreeController
+MainController ..> NoSyntaxTreeController
+MainController ..> PopUpController
+Main ..> MainController
+SentenceGenerator ..> Adjective
+SentenceGenerator ..> Noun
+SentenceGenerator ..> Verb
+@enduml
