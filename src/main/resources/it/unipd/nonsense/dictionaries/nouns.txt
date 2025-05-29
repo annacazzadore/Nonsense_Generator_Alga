@@ -20,3 +20,8 @@ sun
 treecow
 words
 cow
+table
+dawdle
+oodles
+jargon
+mom
