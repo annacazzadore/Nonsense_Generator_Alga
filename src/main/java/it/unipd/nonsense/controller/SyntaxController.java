@@ -47,18 +47,27 @@ public abstract class SyntaxController {
     protected String selectedTemplate = DEFAULT_TEMPLATE; // Selected template
 
     /**
-     * Abstract method to be implemented by subclasses.
-     * @return The type of previous view (used for navigation)
-     */
-    protected abstract String getPreviousViewType();
-
-    /**
      * Initializes the controller when FXML is loaded.
      * Sets up UI components with default values.
      */
     @FXML
     public void initialize() {
         initializeTemplate();
+    }
+
+    /**
+     * Abstract method to be implemented by subclasses.
+     * @return The type of previous view (used for navigation)
+     */
+    protected abstract String getPreviousViewType();
+
+    /**
+     * Initializes the controller with analysis results.
+     * @param result The analysis results to display
+     */
+    public void initializeWithResult(AnalysisResult result) {
+        this.currentResult = result;
+        updateWordsLabel();
     }
 
     /**
@@ -155,15 +164,6 @@ public abstract class SyntaxController {
     private void closeCurrentStage(MouseEvent event) {
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.close();
-    }
-
-    /**
-     * Initializes the controller with analysis results.
-     * @param result The analysis results to display
-     */
-    public void initializeWithResult(AnalysisResult result) {
-        this.currentResult = result;
-        updateWordsLabel();
     }
 
     /**

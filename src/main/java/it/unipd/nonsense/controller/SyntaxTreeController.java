@@ -17,26 +17,23 @@ import javafx.scene.layout.Pane;
  * and managing dependency parse tree visualizations.
  */
 public class SyntaxTreeController extends SyntaxController {
-    /**
-     * Minimum size change (in pixels) required to trigger tree redraw
-     */
+    // Constant identifying this view type for navigation purposes
+    private static final String VIEW_TYPE = "tree";
+
+    // Minimum size change (in pixels) required to trigger tree redraw
     private static final double SIZE_CHANGE_THRESHOLD = 5.0;
 
-    /**
-     * Visualizer component that handles the actual tree drawing
-     */
+    // Visualizer component that handles the actual tree drawing
     private DependencyTreeVisualizer treeVisualizer;
 
-    /**
-     * Listener for pane size changes to enable responsive tree redrawing
-     */
+    // Listener for pane size changes to enable responsive tree redrawing
     private final ChangeListener<Number> sizeListener = this::handlePaneSizeChange;
 
     // FXML-injected UI components
-    public ImageView back;               // Back navigation button
-    public ScrollPane treeScrollPane;    // Scroll container for the tree
-    public Button generateT;             // Generate sentences button
-    @FXML private Pane treePane;         // Drawing surface for the dependency tree
+    @FXML private ImageView back;               // Back navigation button
+    @FXML private Button generateT;              // Generate sentences button
+    @FXML private ScrollPane treeScrollPane;    // Scroll container for the tree
+    @FXML private Pane treePane;
 
     /**
      * Initializes the controller after FXML loading.
@@ -50,6 +47,16 @@ public class SyntaxTreeController extends SyntaxController {
     }
 
     /**
+     * Gets the view type identifier for navigation purposes.
+     *
+     * @return The string "tree" identifying this view type
+     */
+    @Override
+    protected String getPreviousViewType(){
+        return VIEW_TYPE;
+    }
+
+    /**
      * Initializes the controller with analysis results.
      * Draws the dependency tree visualization.
      *
@@ -59,16 +66,6 @@ public class SyntaxTreeController extends SyntaxController {
     public void initializeWithResult(AnalysisResult result) {
         super.initializeWithResult(result);
         redrawDependencyTree(result);
-    }
-
-    /**
-     * Gets the view type identifier for navigation purposes.
-     *
-     * @return The string "tree" identifying this view type
-     */
-    @Override
-    protected String getPreviousViewType() {
-        return "tree";
     }
 
     /**

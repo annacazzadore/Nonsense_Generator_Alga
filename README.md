@@ -23,7 +23,7 @@ The project is structured to be modular, testable (JUnit5), and portable using M
 
 #### 🪟 For **Windows** users
 1. Install **JDK 24**  
-   ➤ [Download JDK](https://www.oracle.com/java/technologies/javase/jdk24-archive-downloads.html)  
+   ➤ [Download JDK](https://www.oracle.com/java/technologies/downloads/#jdk24-windows)  
    ➤ Add `JAVA_HOME` and update your system `PATH`.
 
 2. Install **JavaFX 24**  
@@ -35,18 +35,19 @@ The project is structured to be modular, testable (JUnit5), and portable using M
    ➤ Add `MAVEN_HOME` and update your system `PATH`.
 
 #### 🍎 For **macOS** users
-You can use [Homebrew](https://brew.sh/) to install JDK and Maven:
+1. Install **JDK 24**  
+   ➤ [Download JDK](https://www.oracle.com/java/technologies/downloads/#jdk24-mac)  
+   ➤ Add `JAVA_HOME` and update your system `PATH`.
 
-```bash
-brew install openjdk@24
-brew install maven
-```
+2. Install **JavaFX 24**  
+   ➤ [Download JavaFX SDK](https://gluonhq.com/products/javafx/)  
+   ➤ Extract it to a folder, e.g., `C:\javafx-sdk-24.0.1`.
 
-You can also install JavaFX via Homebrew:
-
-```bash
-brew install --cask gluonhq-openjfx
-```
+3. Install **Maven 3.9.9**  
+   You can use [Homebrew](https://brew.sh/) to install Maven:
+   ```bash
+   brew install maven
+   ```
 
 Make sure `JAVA_HOME` and JavaFX are properly configured in your shell (e.g., `.zshrc` or `.bash_profile`).
 
@@ -92,12 +93,6 @@ java --module-path "C:\javafx-sdk-24.0.1\lib" ^
 java --module-path "/path/to/javafx-sdk-24.0.1/lib" \
      --add-modules javafx.controls,javafx.fxml \
      -jar target/Nonsense_Generator_Alga-1.0-SNAPSHOT.jar
-```
-
-#### ▶️ Run with Maven (if JavaFX plugin is configured)
-
-```bash
-mvn javafx:run
 ```
 
 #### ▶️ Run Executable File (Windows only)

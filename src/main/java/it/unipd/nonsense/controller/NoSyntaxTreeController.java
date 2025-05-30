@@ -1,5 +1,6 @@
 package it.unipd.nonsense.controller;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
@@ -9,20 +10,12 @@ import javafx.scene.image.ImageView;
  * for the simplified sentence analysis view.
  */
 public class NoSyntaxTreeController extends SyntaxController {
-    /**
-     * Constant identifying this view type for navigation purposes
-     */
+    // Constant identifying this view type for navigation purposes
     private static final String VIEW_TYPE = "noTree";
 
-    /**
-     * Back button with custom image/icon
-     */
-    public ImageView back;
-
-    /**
-     * Button to trigger sentence generation
-     */
-    public Button generate;
+    // FXML-injected UI components
+    @FXML private ImageView back;               // Back navigation button
+    @FXML private Button generate;             // Button to trigger sentence generation
 
     /**
      * Initializes the controller after FXML loading.
