@@ -3,12 +3,12 @@
 Below are the references to the deliverables of the project:
 
 - **User Stories**: The user stories are available at the following link: [User Stories](https://nonsense-generator-alga.atlassian.net/jira/software/projects/ALGA/boards/67).
-- **Diagrams**: All UML and supporting diagrams are located in the `deliverables/diagrams/` directory.
-- **Test Report**: The reports generated from test execution can be found in the `` directory.
-- **Class Documentation**: The class documentation, generated using Javadoc, is located in the `javadocs/index.html` directory.
-- **Test Documentation**: The documentation related to unit testing is available in the `target/` directory.
+- **Design document**: All UML and supporting diagrams are located in the `deliverables/diagrams/` directory.
+- **Class Documentation**: The class documentation, generated using Javadoc, is located in the `JavaDocs/index.html` directory.
+- **System test document**: The reports generated from test execution can be found in the `deliverables/SystemTest-ALGA.pdf` directory.
+- **Test Documentation**: The documentation related to unit testing is available in the `target/site/surefire-report.html` directory.
 
-**Manual below**
+**Manual below** ⬇️
 
 # 📘 Nonsense Generator ALGA
 
