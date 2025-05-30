@@ -57,12 +57,12 @@ public class WordsTest {
      */
     @BeforeAll
     static void createTempFiles() throws IOException {
-        // Create dictionary with sample words
+        // Create a dictionary with sample words
         tempDictionary = Files.createTempFile("test-dictionary", ".txt");
         List<String> sampleWords = List.of("apple", "banana", "cherry", "date", "elderberry");
         Files.write(tempDictionary, sampleWords);
 
-        // Create empty dictionary file
+        // Create an empty dictionary file
         emptyTempDictionary = Files.createTempFile("empty-dictionary", ".txt");
     }
 
@@ -84,7 +84,7 @@ public class WordsTest {
      * Verifies that:
      * <ul>
      *   <li>The words list is properly initialized</li>
-     *   <li>The correct number of words are loaded</li>
+     *   <li>The correct number of words is loaded</li>
      * </ul>
      *
      * @throws IOException if an I/O error occurs
@@ -149,7 +149,7 @@ public class WordsTest {
 
     /**
      * Tests getting random word from empty dictionary.
-     * Verifies that NoSuchElementException is thrown when dictionary is empty.
+     * Verifies that NoSuchElementException is thrown when the dictionary is empty.
      *
      * @throws IOException if an I/O error occurs
      */
@@ -165,7 +165,7 @@ public class WordsTest {
      * Tests getting multiple random words from dictionary.
      * Verifies:
      * <ul>
-     *   <li>The correct number of words are returned</li>
+     *   <li>The correct number of words is returned</li>
      *   <li>All returned words are from the dictionary</li>
      * </ul>
      *
@@ -181,8 +181,8 @@ public class WordsTest {
     }
 
     /**
-     * Tests edge case of requesting zero random words.
-     * Verifies that an empty list is returned when count is 0.
+     * Tests the edge case of requesting zero random words.
+     * Verifies that an empty list is returned when the count is 0.
      *
      * @throws IOException if an I/O error occurs
      */

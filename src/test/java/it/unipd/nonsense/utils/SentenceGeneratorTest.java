@@ -43,7 +43,7 @@ public class SentenceGeneratorTest {
      * Tests sentence generation with custom word lists.
      * Verifies that:
      * <ul>
-     *   <li>The correct number of sentences are generated</li>
+     *   <li>The correct number of sentences is generated</li>
      *   <li>All placeholders are properly replaced</li>
      *   <li>Generated sentences match the expected pattern</li>
      * </ul>
@@ -209,7 +209,7 @@ public class SentenceGeneratorTest {
      * <ul>
      *   <li>File is created successfully</li>
      *   <li>File contains all generated sentences</li>
-     *   <li>Each sentence is properly written on its own line</li>
+     *   <li>Each sentence is properly written in its own line</li>
      * </ul>
      *
      * @throws IOException if file operations fail

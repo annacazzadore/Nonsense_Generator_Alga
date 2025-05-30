@@ -20,14 +20,14 @@
          <Image url="@/it/unipd/nonsense/views/style/1410611-200.png"/>
       </ImageView>
 
-      <!--Result area-->
+      <!--Results area-->
       <TextArea fx:id="resultArea" editable="false" focusTraversable="false" layoutX="39.0" layoutY="50.0" prefHeight="182.0" prefWidth="627.0" wrapText="true">
          <font>
             <Font size="16.0"/>
          </font>
       </TextArea>
 
-      <!--end button-->
+      <!--End button-->
       <Button fx:id="end" layoutX="336.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleEnd" style="-fx-background-color: #ffffff;" text="End">
          <font>
             <Font name="Hiragino Sans W5" size="18.0"/>

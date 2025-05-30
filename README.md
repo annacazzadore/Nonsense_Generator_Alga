@@ -19,7 +19,7 @@ The project is structured to be modular, testable (JUnit5), and portable using M
 - JavaFX **24.0.1**
 - Internet connection (required for Google Cloud APIs)
 - Google Cloud account with **Natural Language API** enabled
-- Maven **3.9.9** (required for macOs only, recomended for Windows) 
+- Maven **3.9.9** (required for macOS only, recommended for Windows) 
 
 #### 🪟 For **Windows** users
 1. Install **JDK 24**  

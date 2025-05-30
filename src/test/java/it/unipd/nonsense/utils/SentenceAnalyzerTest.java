@@ -124,7 +124,7 @@ public class SentenceAnalyzerTest {
     /**
      * Tests word categorization with null analysis response.
      * Verifies that:
-     * 1. {@link NullPointerException} is thrown when null response is provided
+     * 1. {@link NullPointerException} is thrown when a null response is provided
      * 2. The exception is of the correct type
      */
     @Test
@@ -176,7 +176,7 @@ public class SentenceAnalyzerTest {
     /**
      * Tests toxicity scoring for toxic content.
      * Verifies:
-     * 1. Returned score is within valid range [0.0, 1.0]
+     * 1. The returned score is within valid range [0.0, 1.0]
      * 2. Toxic sentences yield higher scores
      */
     @Test

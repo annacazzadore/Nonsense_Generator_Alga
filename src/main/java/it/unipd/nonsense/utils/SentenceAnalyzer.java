@@ -116,7 +116,7 @@ public class SentenceAnalyzer implements AutoCloseable {
      * Loads application configuration from properties file.
      *
      * @return Loaded properties
-     * @throws IOException If configuration file cannot be read
+     * @throws IOException If the configuration file cannot be read
      */
     private Properties loadConfiguration() throws IOException {
         Properties props = new Properties();
