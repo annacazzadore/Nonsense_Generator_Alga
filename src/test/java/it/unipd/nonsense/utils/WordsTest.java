@@ -3,34 +3,48 @@ package it.unipd.nonsense.utils;
 import org.junit.jupiter.api.*;
 import java.io.*;
 import java.nio.file.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test class for the abstract {@link Words} base class.
- * Verifies common dictionary functionality including:
- * - Dictionary loading from files
- * - Random word generation
- * - Edge case handling
- * - Error conditions
+ * Test class for the abstract {@link it.unipd.nonsense.utils.Words} base class.
+ * This class verifies common dictionary functionality including:
+ * <ul>
+ *   <li>Dictionary loading from files</li>
+ *   <li>Random word generation</li>
+ *   <li>Edge case handling</li>
+ *   <li>Error conditions</li>
+ * </ul>
  *
- * Uses a test subclass of Words to test the abstract base class functionality.
+ * <p>The class uses a test subclass of {@code Words} to test the abstract base class functionality.
+ * It creates temporary dictionary files for testing and cleans them up after tests complete.</p>
+ *
+ * @see it.unipd.nonsense.utils.Words
  */
 public class WordsTest {
 
-    // Temporary files for testing
+    /**
+     * Temporary dictionary file path containing sample words for testing.
+     */
     private static Path tempDictionary;
+
+    /**
+     * Temporary empty dictionary file path for testing edge cases.
+     */
     private static Path emptyTempDictionary;
 
     /**
-     * Test implementation of the abstract Words class.
-     * Allows testing of the base class functionality.
+     * Test implementation of the abstract {@link Words} class.
+     * This concrete subclass allows testing of the base class functionality.
      */
     static class TestWords extends Words {
+        /**
+         * Creates a new TestWords instance with the specified dictionary file.
+         *
+         * @param dictionaryPath path to the dictionary file
+         * @throws IOException if an I/O error occurs reading the dictionary
+         */
         public TestWords(String dictionaryPath) throws IOException {
             super(dictionaryPath);
         }
@@ -38,10 +52,8 @@ public class WordsTest {
 
     /**
      * Creates temporary dictionary files before all tests run.
-     * - One with sample words
-     * - One empty dictionary
      *
-     * @throws IOException if file creation fails
+     * @throws IOException if an I/O error occurs while creating temporary files
      */
     @BeforeAll
     static void createTempFiles() throws IOException {
@@ -50,15 +62,14 @@ public class WordsTest {
         List<String> sampleWords = List.of("apple", "banana", "cherry", "date", "elderberry");
         Files.write(tempDictionary, sampleWords);
 
-        // Create empty dictionary
+        // Create empty dictionary file
         emptyTempDictionary = Files.createTempFile("empty-dictionary", ".txt");
-        // Intentionally left empty
     }
 
     /**
      * Cleans up temporary files after all tests complete.
      *
-     * @throws IOException if file deletion fails
+     * @throws IOException if an I/O error occurs while deleting temporary files
      */
     @AfterAll
     static void cleanup() throws IOException {
@@ -66,13 +77,17 @@ public class WordsTest {
         Files.deleteIfExists(emptyTempDictionary);
     }
 
+    /* Dictionary loading tests */
+
     /**
      * Tests loading words from a valid dictionary file.
-     * Verifies:
-     * - Words list is initialized
-     * - Correct number of words loaded
+     * Verifies that:
+     * <ul>
+     *   <li>The words list is properly initialized</li>
+     *   <li>The correct number of words are loaded</li>
+     * </ul>
      *
-     * @throws IOException if file reading fails
+     * @throws IOException if an I/O error occurs
      */
     @Test
     public void testLoadWordsFromFile() throws IOException {
@@ -83,9 +98,9 @@ public class WordsTest {
 
     /**
      * Tests loading an empty dictionary file.
-     * Verifies the words list is empty but initialized.
+     * Verifies that the dictionary is properly initialized as empty.
      *
-     * @throws IOException if file reading fails
+     * @throws IOException if an I/O error occurs
      */
     @Test
     public void testLoadEmptyDictionary() throws IOException {
@@ -94,39 +109,49 @@ public class WordsTest {
     }
 
     /**
-     * Tests getting a single random word from dictionary.
-     * Verifies the returned word exists in the dictionary.
+     * Tests that the dictionary doesn't contain duplicate words.
+     * Verifies that all loaded words are unique.
      *
-     * @throws IOException if file reading fails
+     * @throws IOException if an I/O error occurs
+     */
+    @Test
+    public void testDictionaryHasNoDuplicates() throws IOException {
+        TestWords words = new TestWords(tempDictionary.toString());
+        Set<String> uniqueWords = new HashSet<>(words.words);
+        assertEquals(words.words.size(), uniqueWords.size(),
+                "Dictionary should not contain duplicate words");
+    }
+
+    /**
+     * Tests behavior with an invalid dictionary path.
+     * Verifies that an IOException is thrown when the dictionary file doesn't exist.
+     */
+    @Test
+    public void testInvalidDictionaryPathThrowsException() {
+        assertThrows(IOException.class, () -> new TestWords("/nonexistent.txt"));
+    }
+
+    /* Single word retrieval tests */
+
+    /**
+     * Tests getting a single random word from dictionary.
+     * Verifies that the returned word exists in the dictionary.
+     *
+     * @throws IOException if an I/O error occurs
      */
     @Test
     public void testGetRandomReturnsWord() throws IOException {
         TestWords words = new TestWords(tempDictionary.toString());
         String word = words.getRandom();
-        assertTrue(words.words.contains(word), "Random word should be in the list");
-    }
-
-    /**
-     * Tests getting multiple random words from dictionary.
-     * Verifies:
-     * - Correct number of words returned
-     * - All words are from the dictionary
-     *
-     * @throws IOException if file reading fails
-     */
-    @Test
-    public void testGetRandomFromDictionary() throws IOException {
-        TestWords words = new TestWords(tempDictionary.toString());
-        List<String> randomWords = words.getRandomFromDictionary(3);
-        assertEquals(3, randomWords.size(), "Should return exactly 3 words");
-        assertTrue(words.words.containsAll(randomWords), "All returned words should be from dictionary");
+        assertTrue(words.words.contains(word),
+                "Random word should be in the list");
     }
 
     /**
      * Tests getting random word from empty dictionary.
-     * Verifies NoSuchElementException is thrown.
+     * Verifies that NoSuchElementException is thrown when dictionary is empty.
      *
-     * @throws IOException if file reading fails
+     * @throws IOException if an I/O error occurs
      */
     @Test
     public void testGetRandomFromEmptyDictionary() throws IOException {
@@ -134,38 +159,38 @@ public class WordsTest {
         assertThrows(NoSuchElementException.class, words::getRandom);
     }
 
+    /* Multiple words retrieval tests */
+
+    /**
+     * Tests getting multiple random words from dictionary.
+     * Verifies:
+     * <ul>
+     *   <li>The correct number of words are returned</li>
+     *   <li>All returned words are from the dictionary</li>
+     * </ul>
+     *
+     * @throws IOException if an I/O error occurs
+     */
+    @Test
+    public void testGetRandomFromDictionary() throws IOException {
+        TestWords words = new TestWords(tempDictionary.toString());
+        List<String> randomWords = words.getRandomFromDictionary(3);
+        assertEquals(3, randomWords.size(), "Should return exactly 3 words");
+        assertTrue(words.words.containsAll(randomWords),
+                "All returned words should be from dictionary");
+    }
+
     /**
      * Tests edge case of requesting zero random words.
-     * Verifies empty list is returned.
+     * Verifies that an empty list is returned when count is 0.
      *
-     * @throws IOException if file reading fails
+     * @throws IOException if an I/O error occurs
      */
     @Test
     public void testGetRandomFromDictionaryWithZeroCount() throws IOException {
         TestWords words = new TestWords(tempDictionary.toString());
         List<String> randomWords = words.getRandomFromDictionary(0);
-        assertTrue(randomWords.isEmpty(), "Should return empty list when count is 0");
-    }
-
-    /**
-     * Tests that the dictionary doesn't contain duplicate words.
-     * Verifies all words in the loaded dictionary are unique.
-     *
-     * @throws IOException if file reading fails
-     */
-    @Test
-    public void testDictionaryHasNoDuplicates() throws IOException {
-        TestWords words = new TestWords(tempDictionary.toString());
-        Set<String> uniqueWords = new HashSet<>(words.words);
-        assertEquals(words.words.size(), uniqueWords.size(), "Dictionary should not contain duplicate words");
-    }
-
-    /**
-     * Tests behavior with invalid dictionary path.
-     * Verifies IOException is thrown.
-     */
-    @Test
-    public void testInvalidDictionaryPathThrowsException() {
-        assertThrows(IOException.class, () -> new TestWords("/nonexistent.txt"));
+        assertTrue(randomWords.isEmpty(),
+                "Should return empty list when count is 0");
     }
 }
