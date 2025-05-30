@@ -11,32 +11,43 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test class for {@link SentenceGenerator}.
- * Verifies the functionality of sentence generation including:
- * - Template processing with placeholders
- * - Word substitution from custom lists
- * - Default dictionary usage
- * - Error handling for invalid inputs
+ * Comprehensive test class for {@link SentenceGenerator} that verifies all aspects
+ * of sentence generation functionality including template processing, word substitution,
+ * default dictionary usage, and error handling.
+ *
+ * <p>The tests are organized into logical groups:
+ * <ul>
+ *   <li>Positive test cases for normal operation</li>
+ *   <li>File operation tests for persistence functionality</li>
+ *   <li>Negative test cases for error handling</li>
+ * </ul>
  */
 public class SentenceGeneratorTest {
 
+    /** The SentenceGenerator instance under test */
     private SentenceGenerator generator;
 
     /**
-     * Initializes a fresh SentenceGenerator instance before each test.
-     * @throws IOException if dictionary loading fails
+     * Initializes a fresh SentenceGenerator instance before each test method execution.
+     *
+     * @throws IOException if there's an error loading default dictionaries
      */
     @BeforeEach
     public void setUp() throws IOException {
         generator = new SentenceGenerator();
     }
 
+    /* POSITIVE TEST CASES */
+
     /**
      * Tests sentence generation with custom word lists.
-     * Verifies:
-     * - Correct number of sentences generated
-     * - All placeholders are properly replaced
-     * - Generated sentences match expected pattern
+     * Verifies that:
+     * <ul>
+     *   <li>The correct number of sentences are generated</li>
+     *   <li>All placeholders are properly replaced</li>
+     *   <li>Generated sentences match the expected pattern</li>
+     * </ul>
+     *
      * @throws IOException if dictionary operations fail
      */
     @Test
@@ -59,11 +70,9 @@ public class SentenceGeneratorTest {
     }
 
     /**
-     * Tests sentence generation with null word lists (should use default dictionaries).
-     * Verifies:
-     * - Proper handling of null inputs
-     * - Placeholders still get replaced
-     * - Sentences maintain structure
+     * Tests sentence generation with null word lists, which should trigger
+     * the use of default dictionaries.
+     *
      * @throws IOException if dictionary operations fail
      */
     @Test
@@ -82,11 +91,9 @@ public class SentenceGeneratorTest {
     }
 
     /**
-     * Tests sentence generation with empty word lists (should use default dictionaries).
-     * Verifies:
-     * - Proper handling of empty collections
-     * - Placeholders still get replaced
-     * - Single sentence generation
+     * Tests sentence generation with empty word lists, which should trigger
+     * the use of default dictionaries.
+     *
      * @throws IOException if dictionary operations fail
      */
     @Test
@@ -104,11 +111,9 @@ public class SentenceGeneratorTest {
     }
 
     /**
-     * Tests complex templates with multiple placeholders.
-     * Verifies:
-     * - Correct handling of duplicate placeholders
-     * - Proper sentence structure
-     * - All placeholders replaced
+     * Tests complex templates with multiple placeholders of the same type.
+     * Verifies that all instances of each placeholder type are properly replaced.
+     *
      * @throws IOException if dictionary operations fail
      */
     @Test
@@ -126,17 +131,87 @@ public class SentenceGeneratorTest {
             assertFalse(sentence.contains("[noun]"));
             assertFalse(sentence.contains("[verb]"));
             assertFalse(sentence.contains("[adjective]"));
-            // Verify the structure of the sentence
             assertTrue(sentence.matches("\\w+ \\w+ \\w+ and \\w+ \\w+ \\w+\\."));
         }
     }
 
     /**
+     * Tests generation of exactly one sentence when count parameter is 1.
+     * Verifies both the quantity and exact expected output.
+     *
+     * @throws IOException if dictionary operations fail
+     */
+    @Test
+    public void testGenerateSentences_SingleSentence_WhenCountIsOne() throws IOException {
+        String template = "The [adjective] [noun] [verb].";
+        List<String> nouns = List.of("cat");
+        List<String> verbs = List.of("jumps");
+        List<String> adjectives = List.of("quick");
+
+        List<String> sentences = generator.generateSentences(1, template, nouns, verbs, adjectives);
+
+        assertEquals(1, sentences.size());
+        String result = sentences.getFirst();
+        assertFalse(result.contains("[adjective]") || result.contains("[noun]") || result.contains("[verb]"));
+        assertEquals("The quick cat jumps.", result);
+    }
+
+    /**
+     * Tests complex template with multiple occurrences of each placeholder type.
+     * Verifies:
+     * <ul>
+     *   <li>All placeholders are replaced</li>
+     *   <li>Correct number of each word type appears</li>
+     *   <li>All words come from expected sources</li>
+     * </ul>
+     *
+     * @throws IOException if dictionary operations fail
+     */
+    @Test
+    public void testReplacePlaceholders_ComplexTemplate() throws IOException {
+        String template = "The [adjective] [noun] [verb] over the [adjective] [noun], and then [verb] a [noun].";
+        List<String> nouns = Arrays.asList("cat", "dog", "house");
+        List<String> verbs = Arrays.asList("jumps", "runs", "sings");
+        List<String> adjectives = Arrays.asList("quick", "lazy", "bright");
+
+        List<String> sentences = generator.generateSentences(1, template, nouns, verbs, adjectives);
+        String result = sentences.getFirst();
+
+        assertFalse(
+                result.contains("[noun]") || result.contains("[verb]") || result.contains("[adjective]"),
+                "Sentence contains unreplaced placeholders"
+        );
+
+        String[] words = result.split("\\s+");
+        for (String word : words) {
+            String cleanedWord = word.replaceAll("[^a-zA-Z]", "");
+            if (nouns.contains(cleanedWord)) continue;
+            if (verbs.contains(cleanedWord)) continue;
+            if (adjectives.contains(cleanedWord)) continue;
+            if (Arrays.asList("The", "over", "the", "and", "then", "a").contains(word)) continue;
+            fail("Unrecognized word: " + word);
+        }
+
+        long nounCount = nouns.stream().filter(noun -> result.matches(".*\\b" + noun + "\\b.*")).count();
+        long verbCount = verbs.stream().filter(verb -> result.matches(".*\\b" + verb + "\\b.*")).count();
+        long adjCount = adjectives.stream().filter(adj -> result.matches(".*\\b" + adj + "\\b.*")).count();
+
+        assertEquals(3, nounCount);
+        assertEquals(2, verbCount);
+        assertEquals(2, adjCount);
+    }
+
+    /* FILE OPERATIONS TESTS */
+
+    /**
      * Tests saving generated sentences to a text file.
      * Verifies:
-     * - File is created successfully
-     * - File contains all generated sentences
-     * - Each sentence is on a new line
+     * <ul>
+     *   <li>File is created successfully</li>
+     *   <li>File contains all generated sentences</li>
+     *   <li>Each sentence is properly written on its own line</li>
+     * </ul>
+     *
      * @throws IOException if file operations fail
      */
     @Test
@@ -146,25 +221,26 @@ public class SentenceGeneratorTest {
 
         Path tempFile = Files.createTempFile("generated-sentences", ".txt");
         try {
-            // Save sentences to file
             Files.write(tempFile, sentences);
-
-            // Verify file content
             List<String> fileContent = Files.readAllLines(tempFile);
-            assertEquals(sentences.size(), fileContent.size(), "File should contain all sentences");
+            assertEquals(sentences.size(), fileContent.size());
             for (int i = 0; i < sentences.size(); i++) {
-                assertEquals(sentences.get(i), fileContent.get(i), "Sentence should match file content");
+                assertEquals(sentences.get(i), fileContent.get(i));
             }
         } finally {
             Files.deleteIfExists(tempFile);
         }
     }
 
+    /* NEGATIVE TEST CASES */
+
     /**
-     * Tests invalid sentence count parameter.
-     * Verifies:
-     * - Proper exception thrown for zero count
-     * - Correct exception message
+     * Tests behavior when invalid sentence count (0) is provided.
+     * Verifies that:
+     * <ul>
+     *   <li>An IllegalArgumentException is thrown</li>
+     *   <li>The exception message is correct</li>
+     * </ul>
      */
     @Test
     public void testGenerateSentences_InvalidCount_ThrowsException() {
@@ -175,11 +251,13 @@ public class SentenceGeneratorTest {
     }
 
     /**
-     * Tests invalid template formats.
-     * Verifies:
-     * - Exception thrown for invalid templates
-     * - Different invalid cases (dash, empty, null)
-     * - Consistent error message
+     * Tests behavior with various invalid template formats.
+     * Verifies proper exception throwing for:
+     * <ul>
+     *   <li>Dash-only template</li>
+     *   <li>Empty string template</li>
+     *   <li>Null template</li>
+     * </ul>
      */
     @Test
     public void testGenerateSentences_InvalidTemplate_ThrowsException() {
