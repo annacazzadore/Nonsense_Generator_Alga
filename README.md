@@ -60,8 +60,25 @@ Make sure `JAVA_HOME` and JavaFX are properly configured in your shell (e.g., `.
    git clone https://github.com/annacazzadore/Nonsense_Generator_Alga.git
    cd Nonsense_Generator_Alga
    ```
+2. 🔐 Google Cloud Configuration
 
-2. Build the project with Maven:
+   1. Enable the **Natural Language API** in your Google Cloud project.
+   2. Download your service account JSON key file.
+   3. Configure the credentials path inside the `config.properties` file.
+
+   **Windows path:**
+
+   ```text
+   C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\it\unipd\nonsense\config.properties
+   ```
+   
+   **macOS path:**
+   
+   ```text
+   /Users/YourUsername/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties
+   ```
+
+3. Build the project with Maven:
    ```bash
    mvn clean package
    ```
@@ -130,23 +147,5 @@ If an `.exe` version of the program is provided:
 
 - **Google Cloud Natural Language API**  
   Used for syntactic and semantic analysis of text to generate nonsense sentences.
-
-### 🔐 Google Cloud Configuration
-
-1. Enable the **Natural Language API** in your Google Cloud project.
-2. Download your service account JSON key file.
-3. Configure the credentials path inside the `config.properties` file.
-
-**Windows path:**
-
-```text
-C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\it\unipd\nonsense\config.properties
-```
-
-**macOS path:**
-
-```text
-/Users/YourUsername/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties
-```
 
 ---
