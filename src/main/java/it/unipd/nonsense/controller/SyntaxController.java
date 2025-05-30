@@ -102,18 +102,6 @@ public abstract class SyntaxController {
     }
 
     /**
-     * Displays an error alert dialog.
-     * @param message The error message to display
-     */
-    protected void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-    /**
      * Handles navigation back to the main view.
      * @param event The mouse event that triggered this action
      */
@@ -123,22 +111,24 @@ public abstract class SyntaxController {
     }
 
     /**
-     * Generic method for navigating to a view.
-     * @param event The triggering mouse event
-     * @param controllerConfigurator Consumer to configure the target controller
+     * Handles sentence generation when the generate button is clicked.
+     * @param event The mouse event that triggered this action
      */
-    private void navigateToView(MouseEvent event, Consumer<Object> controllerConfigurator) {
+    @FXML
+    protected void handleGenerate(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(MAIN_VIEW));
-            Parent root = loader.load();
+            validateInputs();
 
-            controllerConfigurator.accept(loader.getController());
+            this.selectedTemplate = templates.getValue();
+            this.numberValue = number.getValue();
 
-            Stage stage = createStage(root, APP_TITLE);
-            stage.show();
+            List<String> sentences = generateSentences();
+            navigateToResultsView(event, sentences);
 
-            closeCurrentStage(event);
+        } catch (IllegalArgumentException e) {
+            showAlert(e.getMessage());
         } catch (IOException e) {
+            showAlert("An error occurred while generating the sentences: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -176,29 +166,6 @@ public abstract class SyntaxController {
     }
 
     /**
-     * Handles sentence generation when the generate button is clicked.
-     * @param event The mouse event that triggered this action
-     */
-    @FXML
-    protected void handleGenerate(MouseEvent event) {
-        try {
-            validateInputs();
-
-            this.selectedTemplate = templates.getValue();
-            this.numberValue = number.getValue();
-
-            List<String> sentences = generateSentences();
-            navigateToResultsView(event, sentences);
-
-        } catch (IllegalArgumentException e) {
-            showAlert(e.getMessage());
-        } catch (IOException e) {
-            showAlert("An error occurred while generating the sentences: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Validates user inputs before generation.
      * @throws IllegalArgumentException if inputs are invalid
      */
@@ -228,6 +195,27 @@ public abstract class SyntaxController {
             return new SentenceGenerator().generateSentences(numberValue, selectedTemplate, nouns, verbs, adjectives);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Generic method for navigating to a view.
+     * @param event The triggering mouse event
+     * @param controllerConfigurator Consumer to configure the target controller
+     */
+    private void navigateToView(MouseEvent event, Consumer<Object> controllerConfigurator) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(MAIN_VIEW));
+            Parent root = loader.load();
+
+            controllerConfigurator.accept(loader.getController());
+
+            Stage stage = createStage(root, APP_TITLE);
+            stage.show();
+
+            closeCurrentStage(event);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -283,5 +271,17 @@ public abstract class SyntaxController {
         if (templates != null) {
             templates.setValue(template);
         }
+    }
+
+    /**
+     * Displays an error alert dialog.
+     * @param message The error message to display
+     */
+    protected void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
