@@ -17,10 +17,4 @@ pencil
 queen
 river
 sun
-treecow
-words
-cow
-table
-dawdle
-oodles
-jargon
+tree
