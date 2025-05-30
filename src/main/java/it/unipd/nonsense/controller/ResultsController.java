@@ -45,7 +45,7 @@ public class ResultsController {
     // Controller state
     private String previousView;       // Type of previous view ("tree" or "noTree")
     private AnalysisResult analysisResult; // Analysis results from previous view
-    private int numberValue;           // Number of sentences requested
+    private int numberValue;           // Number of requested sentences
     private String selectedTemplate;   // Template used for generation
 
     /**
