@@ -10,8 +10,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test class for {@link AnalysisResult}.
- * This class contains Junit tests to verify the functionality of the AnalysisResult class,
+ * This class contains unit tests to verify the functionality of the AnalysisResult class,
  * including its getter and setter methods for various properties.
+ *
+ * <p>The tests cover:
+ * <ul>
+ *   <li>Basic getter/setter functionality</li>
+ *   <li>Edge cases (empty strings, null values)</li>
+ *   <li>Map operations and immutability</li>
+ *   <li>Combined state verification</li>
+ * </ul>
  */
 public class AnalysisResultTest {
 
@@ -61,9 +69,11 @@ public class AnalysisResultTest {
     /**
      * Tests the setWordsByType and getWordsByType methods with a populated map.
      * Verifies that:
-     * - The map is stored correctly
-     * - All keys are preserved
-     * - Values are correctly maintained in the sets
+     * <ul>
+     *   <li>The map is stored correctly</li>
+     *   <li>All keys are preserved</li>
+     *   <li>Values are correctly maintained in the sets</li>
+     * </ul>
      */
     @Test
     public void testSetAndGetWordsByType() {
@@ -104,6 +114,10 @@ public class AnalysisResultTest {
         assertNull(analysisResult.getWordsByType().get("ADJ"));
     }
 
+    /**
+     * Tests the immutability of the wordsByType map after being set in AnalysisResult.
+     * Verifies that modifications to the returned map don't affect the internal state.
+     */
     @Test
     public void testWordsByTypeImmutability() {
         Map<String, Set<String>> wordsMap = new HashMap<>();
@@ -115,6 +129,22 @@ public class AnalysisResultTest {
         assertFalse(analysisResult.getWordsByType().containsKey("VERB"));
     }
 
+    /**
+     * Tests that the syntaxResponse field can be set to null.
+     * Verifies that null values are accepted for the syntax response.
+     */
+    @Test
+    void testSetNullSyntaxResponse() {
+        AnalysisResult result = new AnalysisResult();
+        result.setSyntaxResponse(null);
+
+        assertNull(result.getSyntaxResponse(), "Syntax response should be nullable");
+    }
+
+    /**
+     * Tests the combined state of the AnalysisResult object when multiple properties are set.
+     * Verifies that all properties maintain their values when set together.
+     */
     @Test
     public void testCombinedState() {
         String text = "Sample text";

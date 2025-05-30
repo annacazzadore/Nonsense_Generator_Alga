@@ -77,7 +77,7 @@ public class AnalysisResult {
         }
         Map<String, Set<String>> copy = new HashMap<>();
         for (Map.Entry<String, Set<String>> entry : wordsByType.entrySet()) {
-            copy.put(entry.getKey(), new HashSet<>(entry.getValue()));
+            copy.put(entry.getKey(), entry.getValue() == null ? null : new HashSet<>(entry.getValue()));
         }
         return copy;
     }
