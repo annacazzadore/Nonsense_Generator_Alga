@@ -6,19 +6,251 @@
   <component name="ChangeListManager">
     <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NonsenseGeneratorAlga.exe" beforeDir="false" afterPath="$PROJECT_DIR$/NonsenseGeneratorAlga.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/System Test - ALGA.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-15.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-16.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/Main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/controller/MainController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/controller/NoSyntaxTreeController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/controller/PopUpController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/controller/ResultsController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/controller/SyntaxController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/controller/SyntaxTreeController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/controller/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/controller/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/Adjective.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/AdjectiveTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/AnalysisResult.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/AnalysisResultTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/DependencyTreeVisualizer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/Noun.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/NounTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/SentenceAnalyzer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/SentenceAnalyzerTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/SentenceGenerator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/SentenceGeneratorTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/Verb.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/VerbTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/Words.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/WordsTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/it/unipd/nonsense/utils/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/legal/COPYRIGHT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/legal/dejavufonts.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSans-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSans-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSans-Oblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSans-Oblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSans.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSans.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSansMono-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSansMono-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSansMono.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSansMono.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSerif-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSerif-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSerif-Italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSerif-Italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSerif.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/DejaVuLGCSerif.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/fonts/dejavu.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/link.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resource-files/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script-files/jquery-3.7.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script-files/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script-files/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script-files/search-page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script-files/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/type-search-index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/generated_sentences.txt" beforeDir="false" afterPath="$PROJECT_DIR$/generated_sentences.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/NoSyntaxTreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/NoSyntaxTreeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nonsense-launch.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nonsense-launch.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/ResultsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/ResultsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxTreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/controller/SyntaxTreeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/dictionaries/nouns.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/dictionaries/verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/dictionaries/verbs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/nouns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/nouns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/Adjective.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/Adjective.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/Noun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/Noun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/SentenceAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/SentenceAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/Verb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/Verb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/dictionaries/adjectives.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/dictionaries/nouns.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/dictionaries/templates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/dictionaries/verbs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/Main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/designClassModel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/designClassModel.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/domainModel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/domainModel.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams-Internal_SD___Input_Analysis_Toxicity_Check.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams-Internal_SD___Random_Sentences_generation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams-Internal_SD___Sentence_Analysis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams-Internal_SD___Sentence_Generation_Toxicity_Check.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/systemSequenceDiagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/diagrams/systemSequenceDiagram.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/noSyntaxTree.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/popUp.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/results.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/style/1410611-200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/style/—Pngtree—green seaweed clipart design_8508042.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/it/unipd/nonsense/views/syntaxTree.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unit-test-report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Nonsense_Generator_Alga-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Nonsense_Generator_Alga-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/icon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/adjectives.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/nouns.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/templates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/dictionaries/verbs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/Main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/designClassModel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/designClassModel.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/domainModel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/domainModel.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams-Internal_SD___Input_Analysis_Toxicity_Check.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams-Internal_SD___Random_Sentences_generation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams-Internal_SD___Sentence_Analysis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams-Internal_SD___Sentence_Generation_Toxicity_Check.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/internalSequenceDiagrams.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/systemSequenceDiagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/diagrams/systemSequenceDiagram.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/noSyntaxTree.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/popUp.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/results.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/style/1410611-200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/style/—Pngtree—green seaweed clipart design_8508042.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/unipd/nonsense/views/syntaxTree.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/animal-sniffer-annotations-1.23.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/annotations-4.1.1.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/api-common-2.29.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/apiguardian-api-1.1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/auto-value-annotations-1.10.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/checker-qual-3.42.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/commons-codec-1.16.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/conscrypt-openjdk-uber-2.5.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/error_prone_annotations-2.26.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/failureaccess-1.0.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/gax-2.46.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/gax-grpc-2.46.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/gax-httpjson-2.46.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/google-auth-library-credentials-1.23.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/google-auth-library-oauth2-http-1.23.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/google-cloud-language-2.40.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/google-http-client-1.44.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/google-http-client-gson-1.44.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-alts-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-api-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-auth-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-context-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-core-1.60.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-googleapis-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-grpclb-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-inprocess-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-netty-shaded-1.60.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-protobuf-1.63.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-protobuf-lite-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-services-1.60.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-stub-1.63.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-util-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/grpc-xds-1.62.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/gson-2.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/guava-32.1.3-jre.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/httpclient-4.5.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/httpcore-4.4.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/j2objc-annotations-3.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/javafx-base-24.0.1-win.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/javafx-base-24.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/javafx-controls-24.0.1-win.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/javafx-controls-24.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/javafx-fxml-24.0.1-win.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/javafx-fxml-24.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/javafx-graphics-24.0.1-win.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/javafx-graphics-24.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/javax.annotation-api-1.3.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/jsr305-3.0.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/junit-jupiter-api-5.10.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/junit-jupiter-engine-5.10.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/junit-platform-commons-1.10.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/junit-platform-engine-1.10.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/opencensus-api-0.31.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/opencensus-contrib-http-util-0.31.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/opencensus-proto-0.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/opentelemetry-api-1.36.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/opentelemetry-context-1.36.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/opentest4j-1.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/perfmark-api-0.27.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/proto-google-cloud-language-v1-2.40.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/proto-google-cloud-language-v1beta2-0.127.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/proto-google-cloud-language-v2-2.40.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/proto-google-common-protos-2.37.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/proto-google-iam-v1-1.32.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/protobuf-java-3.25.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/protobuf-java-util-3.25.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/re2j-1.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dependency/threetenbp-1.6.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-Nonsense_Generator_Alga-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-Nonsense_Generator_Alga-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -73,6 +305,7 @@
     &quot;JUnit.WordsTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.WordsTest.testLoadWordsWithWhitespaceAndEmptyLines.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.it.unipd.nonsense.utils in Nonsense_Generator_Alga.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Nonsense_Generator_Alga [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
     &quot;Maven.Nonsense_Generator_Alga [test].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
@@ -92,7 +325,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2551724&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -109,11 +342,11 @@
         <env name="GOOGLE_APPLICATION_CREDENTIALS" value="" />
       </envs>
       <option name="envFilePaths">
-        <option value="$PROJECT_DIR$/../../../../nonsense-generator-alga-4496c59a3154.json" />
+        <option value="$PROJECT_DIR$/../../../../../nonsense-generator-alga-4496c59a3154.json" />
       </option>
       <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.Main" />
       <module name="Nonsense_Generator_Alga" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/../../../../../javafx-sdk-24.0.1/lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --enable-native-access=ALL-UNNAMED" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/../../../../../../javafx-sdk-24.0.1/lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --enable-native-access=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -204,10 +437,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AnalysisResultTest.testWordsByTypeImmutability" />
-        <item itemvalue="JUnit.AnalysisResultTest.testCombinedState" />
         <item itemvalue="JUnit.AnalysisResultTest" />
         <item itemvalue="JUnit.SentenceAnalyzerTest" />
+        <item itemvalue="JUnit.AnalysisResultTest.testWordsByTypeImmutability" />
+        <item itemvalue="JUnit.AnalysisResultTest.testCombinedState" />
         <item itemvalue="JUnit.it.unipd.nonsense.utils in Nonsense_Generator_Alga" />
       </list>
     </recent_temporary>
@@ -250,6 +483,11 @@
       <workItem from="1748580964135" duration="845000" />
       <workItem from="1748583347674" duration="965000" />
       <workItem from="1748589897324" duration="3010000" />
+      <workItem from="1748608039616" duration="423000" />
+      <workItem from="1748609546765" duration="1658000" />
+      <workItem from="1748611246882" duration="739000" />
+      <workItem from="1748612270566" duration="29000" />
+      <workItem from="1748612880320" duration="405000" />
     </task>
     <servers />
   </component>

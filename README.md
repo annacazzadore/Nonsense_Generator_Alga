@@ -69,13 +69,13 @@ Make sure `JAVA_HOME` and JavaFX are properly configured in your shell (e.g., `.
    **Windows path:**
 
    ```text
-   C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\it\unipd\nonsense\config.properties
+   C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\config.properties
    ```
    
    **macOS path:**
    
    ```text
-   /Users/YourUsername/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/it/unipd/nonsense/config.properties
+   /Users/YourUsername/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/config.properties
    ```
 
 3. Build the project with Maven:

@@ -55,7 +55,7 @@ public class MainController {
 
                 // Prepare the result view
                 Stage currentStage = (Stage) analyze.getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(tree.isSelected() ? "/it/unipd/nonsense/views/syntaxTree.fxml" : "/it/unipd/nonsense/views/noSyntaxTree.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(tree.isSelected() ? "/views/syntaxTree.fxml" : "/views/noSyntaxTree.fxml"));
 
                 // Load the appropriate view
                 Parent root = loader.load();
@@ -102,7 +102,7 @@ public class MainController {
      */
     private void showErrorDialog(double toxicityScore) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/it/unipd/nonsense/views/popUp.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/popUp.fxml"));
             Parent root = loader.load();
 
             // Configure the popup controller
@@ -150,16 +150,5 @@ public class MainController {
         if (text != null && !text.trim().isEmpty()) {
             sentence.setText(text.trim());
         }
-    }
-
-
-
-    public String getSentenceText() {
-        return sentence.getText();
-    }
-
-
-    public void reset() {
-        sentence.clear();
     }
 }

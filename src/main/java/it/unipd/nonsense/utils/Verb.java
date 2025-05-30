@@ -8,7 +8,7 @@ import java.io.IOException;
  * Loads verbs from a predefined text file in the application resources.
  */
 public class Verb extends Words {
-    private static final String DEFAULT_VERB_PATH = "/it/unipd/nonsense/dictionaries/verbs.txt";
+    private static final String DEFAULT_VERB_PATH = "/dictionaries/verbs.txt";
 
     /**
      * Constructs a new verb dictionary using the default path.

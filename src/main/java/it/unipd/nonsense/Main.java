@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
     // Path to the FXML file that defines the UI layout
-    private static final String FXML_PATH = "/it/unipd/nonsense/views/Main.fxml";
+    private static final String FXML_PATH = "/views/Main.fxml";
     // Title to be displayed in the application window
     private static final String APP_TITLE = "Random Sentence Generator ALGA";
     // Minimum width of the application window

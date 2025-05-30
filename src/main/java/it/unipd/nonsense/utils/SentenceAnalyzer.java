@@ -20,8 +20,8 @@ public class SentenceAnalyzer implements AutoCloseable {
     private static final Logger LOGGER = Logger.getLogger(SentenceAnalyzer.class.getName());
 
     // Path to configuration constants
-    private static final String DICTIONARIES_DIR = "src/main/resources/it/unipd/nonsense/dictionaries/";
-    private static final String CONFIG_FILE = "src/main/resources/it/unipd/nonsense/config.properties";
+    private static final String DICTIONARIES_DIR = "src/main/resources/dictionaries/";
+    private static final String CONFIG_FILE = "src/main/resources/config.properties";
 
     // Used language
     private static final String ENGLISH_LANGUAGE_CODE = "en";

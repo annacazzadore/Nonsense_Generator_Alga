@@ -8,7 +8,7 @@ import java.io.IOException;
  * Loads adjectives from a predefined text file in the application resources.
  */
 public class Adjective extends Words {
-    private static final String DEFAULT_ADJ_PATH = "/it/unipd/nonsense/dictionaries/adjectives.txt";
+    private static final String DEFAULT_ADJ_PATH = "/dictionaries/adjectives.txt";
 
     /**
      * Constructs a new adjective dictionary using the default path.

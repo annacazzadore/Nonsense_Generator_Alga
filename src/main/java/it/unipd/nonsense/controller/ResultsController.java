@@ -107,8 +107,8 @@ public class ResultsController {
         try {
             // Determine which view to return to
             String fxmlFile = "tree".equals(previousView)
-                    ? "/it/unipd/nonsense/views/syntaxTree.fxml"
-                    : "/it/unipd/nonsense/views/noSyntaxTree.fxml";
+                    ? "/views/syntaxTree.fxml"
+                    : "/views/noSyntaxTree.fxml";
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();

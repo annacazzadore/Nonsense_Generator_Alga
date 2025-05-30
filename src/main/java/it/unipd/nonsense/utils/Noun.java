@@ -8,7 +8,7 @@ import java.io.IOException;
  * Loads nouns from a predefined text file in the application resources.
  */
 public class Noun extends Words {
-    private static final String DEFAULT_NOUN_PATH = "/it/unipd/nonsense/dictionaries/nouns.txt";
+    private static final String DEFAULT_NOUN_PATH = "/dictionaries/nouns.txt";
 
     /**
      * Constructs a new noun dictionary using the default path.
