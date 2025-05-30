@@ -24,7 +24,7 @@ public class AnalysisResult {
     private AnalyzeSyntaxResponse syntaxResponse;
 
     /**
-     * A map categorizing words by their grammatical types (NOUN, VERB, ADJ etc.)
+     * A map categorizing words by their grammatical types (NOUN, VERB, ADJ)
      * where the key is the grammatical type and the value is a set of words
      */
     private Map<String, Set<String>> wordsByType;

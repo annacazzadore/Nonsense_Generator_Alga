@@ -88,7 +88,7 @@ public abstract class SyntaxController {
     }
 
     /**
-     * Loads templates from file and populates the choice box.
+     * Loads templates from file and fills the choice box.
      */
     private void initializeTemplateChoiceBox() {
         try {

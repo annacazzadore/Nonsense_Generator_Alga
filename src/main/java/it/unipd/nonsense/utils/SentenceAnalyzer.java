@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class SentenceAnalyzer implements AutoCloseable {
     private static final Logger LOGGER = Logger.getLogger(SentenceAnalyzer.class.getName());
 
-    // Path configuration constants
+    // Path to configuration constants
     private static final String DICTIONARIES_DIR = "src/main/resources/it/unipd/nonsense/dictionaries/";
     private static final String CONFIG_FILE = "src/main/resources/it/unipd/nonsense/config.properties";
 
