@@ -6,7 +6,9 @@ import org.junit.jupiter.api.AfterAll;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,6 +62,19 @@ public class NounTest {
         Noun noun = new Noun(tempNounDictionary.toString());
         assertNotNull(noun.words, "Nouns list should not be null");
         assertFalse(noun.words.isEmpty(), "Nouns list should not be empty");
+    }
+
+    /**
+     * Tests that the noun dictionary doesn't contain duplicates.
+     * Verifies all nouns in the loaded dictionary are unique.
+     *
+     * @throws IOException if file reading fails
+     */
+    @Test
+    public void testNounDictionaryHasNoDuplicates() throws IOException {
+        Noun noun = new Noun(tempNounDictionary.toString());
+        Set<String> uniqueNouns = new HashSet<>(noun.words);
+        assertEquals(noun.words.size(), uniqueNouns.size(), "Noun dictionary should not contain duplicates");
     }
 
     /**

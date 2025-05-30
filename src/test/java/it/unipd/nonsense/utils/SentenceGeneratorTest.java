@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -126,6 +128,35 @@ public class SentenceGeneratorTest {
             assertFalse(sentence.contains("[adjective]"));
             // Verify the structure of the sentence
             assertTrue(sentence.matches("\\w+ \\w+ \\w+ and \\w+ \\w+ \\w+\\."));
+        }
+    }
+
+    /**
+     * Tests saving generated sentences to a text file.
+     * Verifies:
+     * - File is created successfully
+     * - File contains all generated sentences
+     * - Each sentence is on a new line
+     * @throws IOException if file operations fail
+     */
+    @Test
+    public void testSaveSentencesToFile() throws IOException {
+        String template = "The [noun] [verb].";
+        List<String> sentences = generator.generateSentences(3, template, null, null, null);
+
+        Path tempFile = Files.createTempFile("generated-sentences", ".txt");
+        try {
+            // Save sentences to file
+            Files.write(tempFile, sentences);
+
+            // Verify file content
+            List<String> fileContent = Files.readAllLines(tempFile);
+            assertEquals(sentences.size(), fileContent.size(), "File should contain all sentences");
+            for (int i = 0; i < sentences.size(); i++) {
+                assertEquals(sentences.get(i), fileContent.get(i), "Sentence should match file content");
+            }
+        } finally {
+            Files.deleteIfExists(tempFile);
         }
     }
 

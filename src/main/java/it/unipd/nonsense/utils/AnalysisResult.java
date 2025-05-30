@@ -1,6 +1,9 @@
 package it.unipd.nonsense.utils;
 
 import com.google.cloud.language.v1.AnalyzeSyntaxResponse;
+
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -69,9 +72,15 @@ public class AnalysisResult {
      *         and values are sets of words belonging to each type
      */
     public Map<String, Set<String>> getWordsByType() {
-        return wordsByType;
+        if (wordsByType == null) {
+            return null;
+        }
+        Map<String, Set<String>> copy = new HashMap<>();
+        for (Map.Entry<String, Set<String>> entry : wordsByType.entrySet()) {
+            copy.put(entry.getKey(), new HashSet<>(entry.getValue()));
+        }
+        return copy;
     }
-
     /**
      * Sets the categorized words collection
      *

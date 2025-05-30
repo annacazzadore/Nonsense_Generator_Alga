@@ -3,8 +3,10 @@ package it.unipd.nonsense.utils;
 import org.junit.jupiter.api.*;
 import java.io.*;
 import java.nio.file.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -143,6 +145,19 @@ public class WordsTest {
         TestWords words = new TestWords(tempDictionary.toString());
         List<String> randomWords = words.getRandomFromDictionary(0);
         assertTrue(randomWords.isEmpty(), "Should return empty list when count is 0");
+    }
+
+    /**
+     * Tests that the dictionary doesn't contain duplicate words.
+     * Verifies all words in the loaded dictionary are unique.
+     *
+     * @throws IOException if file reading fails
+     */
+    @Test
+    public void testDictionaryHasNoDuplicates() throws IOException {
+        TestWords words = new TestWords(tempDictionary.toString());
+        Set<String> uniqueWords = new HashSet<>(words.words);
+        assertEquals(words.words.size(), uniqueWords.size(), "Dictionary should not contain duplicate words");
     }
 
     /**

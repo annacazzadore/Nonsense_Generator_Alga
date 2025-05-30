@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="System Test ALGA pdf">
+    <list default="true" id="e5cfe217-6b56-40ad-956f-0133fbb9b575" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_media1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_media1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/AnalysisResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/AnalysisResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/nonsense/utils/InputHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/AdjectiveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/AdjectiveTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/AnalysisResultTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/AnalysisResultTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/NounTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/NounTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceAnalyzerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceAnalyzerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/SentenceGeneratorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/VerbTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/VerbTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/WordsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/nonsense/utils/WordsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,50 +57,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Nonsense_Generator_Alga.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;Applicazione.Nonsense_Generator_Alga.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.AdjectiveTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AnalysisResultTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MainControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.NounTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SentenceAnalyzerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SentenceGeneratorTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VerbTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WordsTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Nonsense_Generator_Alga [test].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_directory_selection&quot;: &quot;/Users/annavardiero/Nonsense_Generator_Alga/src/test/java/it/unipd/nonsense/utils&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/annavardiero/Nonsense_Generator_Alga&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2551724&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Nonsense_Generator_Alga.executor": "Run",
+    "Application.main.executor": "Run",
+    "Applicazione.Nonsense_Generator_Alga.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.AdjectiveTest.executor": "Run",
+    "JUnit.AnalysisResultTest.executor": "Run",
+    "JUnit.AnalysisResultTest.testCombinedState.executor": "Run",
+    "JUnit.AnalysisResultTest.testWordsByTypeImmutability.executor": "Run",
+    "JUnit.MainControllerTest.executor": "Run",
+    "JUnit.NounTest.executor": "Run",
+    "JUnit.SentenceAnalyzerTest.executor": "Run",
+    "JUnit.SentenceGeneratorTest.executor": "Run",
+    "JUnit.SentenceGeneratorTest.testGenerateSentences_FiltersInappropriateWords.executor": "Run",
+    "JUnit.SentenceGeneratorTest.testToxicSentencesAreFiltered.executor": "Run",
+    "JUnit.VerbTest.executor": "Run",
+    "JUnit.WordsTest.executor": "Run",
+    "JUnit.WordsTest.testLoadWordsWithWhitespaceAndEmptyLines.executor": "Run",
+    "JUnit.it.unipd.nonsense.utils in Nonsense_Generator_Alga.executor": "Run",
+    "Maven.Nonsense_Generator_Alga [test].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_directory_selection": "/Users/annavardiero/Nonsense_Generator_Alga/src/test/java/it/unipd/nonsense/utils",
+    "last_opened_file_path": "/Users/annavardiero/Nonsense_Generator_Alga",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2551724",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="it.unipd.nonsense" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SentenceAnalyzerTest">
+  <component name="RunManager" selected="JUnit.AnalysisResultTest.testWordsByTypeImmutability">
     <configuration name="Nonsense_Generator_Alga" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-24" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -104,7 +123,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdjectiveTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnalysisResultTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Nonsense_Generator_Alga" />
       <extension name="coverage">
         <pattern>
@@ -113,13 +132,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.unipd.nonsense.utils" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.AdjectiveTest" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.AnalysisResultTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NounTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnalysisResultTest.testCombinedState" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Nonsense_Generator_Alga" />
       <extension name="coverage">
         <pattern>
@@ -128,8 +147,25 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.unipd.nonsense.utils" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.NounTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.AnalysisResultTest" />
+      <option name="METHOD_NAME" value="testCombinedState" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnalysisResultTest.testWordsByTypeImmutability" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Nonsense_Generator_Alga" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.nonsense.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.nonsense.utils" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.AnalysisResultTest" />
+      <option name="METHOD_NAME" value="testWordsByTypeImmutability" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -149,7 +185,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VerbTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="it.unipd.nonsense.utils in Nonsense_Generator_Alga" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Nonsense_Generator_Alga" />
       <extension name="coverage">
         <pattern>
@@ -158,42 +194,26 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.unipd.nonsense.utils" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.VerbTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WordsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Nonsense_Generator_Alga" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.nonsense.utils.SentenceAnalyzerIntegrationTest" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.nonsense.utils" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.nonsense.utils.WordsTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.Nonsense_Generator_Alga" />
+      <item itemvalue="JUnit.AnalysisResultTest" />
+      <item itemvalue="JUnit.AnalysisResultTest.testCombinedState" />
+      <item itemvalue="JUnit.AnalysisResultTest.testWordsByTypeImmutability" />
       <item itemvalue="JUnit.SentenceAnalyzerTest" />
-      <item itemvalue="JUnit.AdjectiveTest" />
-      <item itemvalue="JUnit.NounTest" />
-      <item itemvalue="JUnit.VerbTest" />
-      <item itemvalue="JUnit.WordsTest" />
+      <item itemvalue="JUnit.it.unipd.nonsense.utils in Nonsense_Generator_Alga" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AnalysisResultTest.testWordsByTypeImmutability" />
+        <item itemvalue="JUnit.AnalysisResultTest.testCombinedState" />
+        <item itemvalue="JUnit.AnalysisResultTest" />
         <item itemvalue="JUnit.SentenceAnalyzerTest" />
-        <item itemvalue="JUnit.AdjectiveTest" />
-        <item itemvalue="JUnit.NounTest" />
-        <item itemvalue="JUnit.VerbTest" />
-        <item itemvalue="JUnit.WordsTest" />
+        <item itemvalue="JUnit.it.unipd.nonsense.utils in Nonsense_Generator_Alga" />
       </list>
     </recent_temporary>
   </component>
@@ -231,37 +251,14 @@
       <workItem from="1748417090435" duration="8693000" />
       <workItem from="1748426877886" duration="1000" />
       <workItem from="1748437076691" duration="7373000" />
-      <workItem from="1748535071992" duration="2234000" />
-      <workItem from="1748541857772" duration="120000" />
+      <workItem from="1748532704387" duration="5351000" />
+      <workItem from="1748580964135" duration="845000" />
+      <workItem from="1748583347674" duration="965000" />
     </task>
-    <task id="LOCAL-00001" summary="System Test ALGA pdf">
-      <option name="closed" value="true" />
-      <created>1748541786001</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1748541786001</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="System Test ALGA pdf" />
-    <option name="LAST_COMMIT_MESSAGE" value="System Test ALGA pdf" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

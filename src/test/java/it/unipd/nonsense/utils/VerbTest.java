@@ -6,7 +6,9 @@ import org.junit.jupiter.api.AfterAll;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,6 +62,19 @@ public class VerbTest {
         Verb verb = new Verb(tempVerbDictionary.toString());
         assertNotNull(verb.words, "Verb list should not be null");
         assertFalse(verb.words.isEmpty(), "Verb list should not be empty");
+    }
+
+    /**
+     * Tests that the verb dictionary doesn't contain duplicates.
+     * Verifies all verbs in the loaded dictionary are unique.
+     *
+     * @throws IOException if file reading fails
+     */
+    @Test
+    public void testVerbDictionaryHasNoDuplicates() throws IOException {
+        Verb verb = new Verb(tempVerbDictionary.toString());
+        Set<String> uniqueVerbs = new HashSet<>(verb.words);
+        assertEquals(verb.words.size(), uniqueVerbs.size(), "Verb dictionary should not contain duplicates");
     }
 
     /**

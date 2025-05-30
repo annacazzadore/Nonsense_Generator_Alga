@@ -6,7 +6,9 @@ import org.junit.jupiter.api.AfterAll;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,6 +56,19 @@ public class AdjectiveTest {
         Adjective adj = new Adjective(tempAdjDictionary.toString());
         assertNotNull(adj.words, "Adjectives list should not be null");
         assertFalse(adj.words.isEmpty(), "Adjectives list should not be empty");
+    }
+
+    /**
+     * Tests that the adjective dictionary doesn't contain duplicates.
+     * Verifies all adjectives in the loaded dictionary are unique.
+     *
+     * @throws IOException if file reading fails
+     */
+    @Test
+    public void testAdjectiveDictionaryHasNoDuplicates() throws IOException {
+        Adjective adj = new Adjective(tempAdjDictionary.toString());
+        Set<String> uniqueAdjectives = new HashSet<>(adj.words);
+        assertEquals(adj.words.size(), uniqueAdjectives.size(), "Adjective dictionary should not contain duplicates");
     }
 
     /**

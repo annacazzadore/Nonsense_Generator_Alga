@@ -103,4 +103,31 @@ public class AnalysisResultTest {
         assertTrue(analysisResult.getWordsByType().containsKey("ADJ"));
         assertNull(analysisResult.getWordsByType().get("ADJ"));
     }
+
+    @Test
+    public void testWordsByTypeImmutability() {
+        Map<String, Set<String>> wordsMap = new HashMap<>();
+        wordsMap.put("NOUN", new HashSet<>(Arrays.asList("dog", "cat")));
+        analysisResult.setWordsByType(wordsMap);
+
+        Map<String, Set<String>> result = analysisResult.getWordsByType();
+        result.put("VERB", new HashSet<>(Collections.singletonList("jump")));
+        assertFalse(analysisResult.getWordsByType().containsKey("VERB"));
+    }
+
+    @Test
+    public void testCombinedState() {
+        String text = "Sample text";
+        AnalyzeSyntaxResponse response = AnalyzeSyntaxResponse.newBuilder().build();
+        Map<String, Set<String>> wordsMap = new HashMap<>();
+        wordsMap.put("NOUN", new HashSet<>(Arrays.asList("house", "car")));
+
+        analysisResult.setOriginalText(text);
+        analysisResult.setSyntaxResponse(response);
+        analysisResult.setWordsByType(wordsMap);
+
+        assertEquals(text, analysisResult.getOriginalText());
+        assertEquals(response, analysisResult.getSyntaxResponse());
+        assertEquals(wordsMap, analysisResult.getWordsByType());
+    }
 }

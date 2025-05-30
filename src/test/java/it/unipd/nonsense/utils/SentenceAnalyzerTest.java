@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -71,6 +72,11 @@ public class SentenceAnalyzerTest {
                 "Exception should have specific message");
     }
 
+    @Test
+    public void testAnalyzeSentence_NullInput_ThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> analyzer.analyzeSentence(null));
+    }
+
     /**
      * Tests word categorization by grammatical type.
      * Verifies that words in a valid sentence are correctly classified as:
@@ -109,6 +115,11 @@ public class SentenceAnalyzerTest {
         );
     }
 
+    @Test
+    public void testExtractWordsByType_NullInput_ThrowsException() {
+        assertThrows(NullPointerException.class, () -> analyzer.extractWordsByType(null));
+    }
+
     /**
      * Tests English language detection with valid English input.
      * Verifies that English sentences are correctly identified.
@@ -138,6 +149,11 @@ public class SentenceAnalyzerTest {
                 "Empty string should not be considered English");
     }
 
+    @Test
+    public void testIsEnglish_NullInput_ReturnsFalse() {
+        assertFalse(analyzer.isEnglish(null));
+    }
+
     /**
      * Tests toxicity scoring for toxic content.
      * Verifies:
@@ -151,6 +167,11 @@ public class SentenceAnalyzerTest {
 
         assertTrue(score >= 0.0f && score <= 1.0f,
                 "Score should be between 0 and 1");
+    }
+
+    @Test
+    public void testToxicityScore_NullInput_ReturnsZero() {
+        assertEquals(0.0f, analyzer.getToxicityScore(null));
     }
 
     /**
@@ -202,5 +223,20 @@ public class SentenceAnalyzerTest {
         Map<String, Set<String>> wordsByType = analyzer.extractWordsByType(response);
 
         assertDoesNotThrow(() -> analyzer.saveWordsToDictionaries(wordsByType));
+    }
+
+    @Test
+    public void testSaveWordsToDictionaries_NullInput_ThrowsException() {
+        assertThrows(NullPointerException.class, () -> analyzer.saveWordsToDictionaries(null));
+    }
+
+    @Test
+    public void testSaveWordsToDictionaries_EmptyMap_DoesNotThrowException() {
+        assertDoesNotThrow(() -> analyzer.saveWordsToDictionaries(new HashMap<>()));
+    }
+
+    @Test
+    public void testClose_DoesNotThrowException() {
+        assertDoesNotThrow(() -> analyzer.close());
     }
 }
