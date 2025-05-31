@@ -17,6 +17,4 @@ pencil
 queen
 river
 sun
-treewords
-words
-
+tree
