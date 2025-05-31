@@ -17,8 +17,4 @@ cook
 paint
 climb
 laugh
-explorebe
-saved
-should
-be
-have
+explore
