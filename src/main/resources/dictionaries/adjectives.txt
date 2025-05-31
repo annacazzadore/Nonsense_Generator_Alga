@@ -17,5 +17,4 @@ shy
 strong
 weak
 clean
-dirtynew
-new
+dirty
