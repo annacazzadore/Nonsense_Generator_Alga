@@ -79,13 +79,13 @@ Make sure `JAVA_HOME` and JavaFX are properly configured in your shell (e.g., `.
    **Windows path:**
 
    ```text
-   C:\Users\YourUsername\Documents\GitHub\Nonsense_Generator_Alga\src\main\resources\config.properties
+   Nonsense_Generator_Alga\src\main\resources\config.properties
    ```
    
    **macOS path:**
    
    ```text
-   /Users/YourUsername/Documents/GitHub/Nonsense_Generator_Alga/src/main/resources/config.properties
+   /Nonsense_Generator_Alga/src/main/resources/config.properties
    ```
 
 3. Build the project with Maven:
@@ -135,7 +135,7 @@ If an `.exe` version of the program is provided:
 
 - **Java:** JDK 24
 - **Maven:** Used for building and managing dependencies
-- **OS:** Compatible with Windows, macOS
+- **OS:** Compatible with Windows (10, 11), macOS (11.7 and later)
 - **UI Framework:** JavaFX 24.0.1
 
 ---
